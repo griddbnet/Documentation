@@ -46,7 +46,7 @@ I/O is a common bottleneck in any DBMS that can cause the CPU to be under-utiliz
 
 **Parallel Processing** – GridDB achieves high performance through parallel processing within a node and across nodes. Parallel processing across nodes is done by distributing a large dataset among multiple nodes (partitioning). Parallelism is made possible by the event-driven engine which processes multiple requests using the least amount of resources.
 
-## High Scalability <badge text="Commercial version" type="warning"/>
+## High Scalability <a href="https://www.global.toshiba/ww/products-solutions/ai-iot/griddb/product/griddb-ee.html?utm_source=griddb.net&utm_medium=referral&utm_campaign=commercial_badge"><badge text="Commercial version" type="warning"/></a>
 
 **GridDB scales linearly and horizontally on commodity hardware maintaining excellent performance.**
 
@@ -54,7 +54,7 @@ Traditional RDBMS are built on Scale-Up architecture (add more capacity to exist
 
 GridDB scales out horizontally with commodity hardware maintaining the same level of performance. Contrary to other scale-out NoSQL databases, GridDB offers strong data consistency at the container level and provides ACID transaction guarantees similar to that of an RDB. Proprietary algorithms of GridDB allow nodes to be added on the fly online without having to stop the service or operation. GridDB offers a dual advantage for businesses that need a scale-out database for large amounts of data but still want to maintain data consistency.
 
-## High Availability <badge text="Commercial version" type="warning"/>
+## High Availability <a href="https://www.global.toshiba/ww/products-solutions/ai-iot/griddb/product/griddb-ee.html?utm_source=griddb.net&utm_medium=referral&utm_campaign=commercial_badge"><badge text="Commercial version" type="warning"/></a>
 
 **Hybrid cluster management and high fault-tolerant system of GridDB is exceptional for mission-critical applications.**
 
