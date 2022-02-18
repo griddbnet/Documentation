@@ -12,11 +12,11 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '17.x'
   displayName: 'Install Node.js'
 
 - script: |
     npm install -D vuepress
     npm install
-    npm run vuepress build
+    npm run build
   displayName: 'npm install and vuepress build'
