@@ -13,12 +13,12 @@ yarn add -D vuepress # OR npm install -D vuepress
 
 3. Run in dev mode
 ``` sh
-yarn docs:dev # OR npm run docs:dev
+yarn docs:dev # OR cd docs && npm run dev
 ```
 
 4. To generate statis assets
 ``` sh
-yarn docs:build # OR npm run docs:build
+yarn docs:build # OR cd docs && npm run build
 ```
 
 ## Markdown Guide
