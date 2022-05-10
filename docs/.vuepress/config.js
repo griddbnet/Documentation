@@ -110,24 +110,35 @@ module.exports = {
           indexName: 'griddb',
         },
         nav: [
-          { text: 'Docs', link: '/about/what-is-griddb', ariaLabel: 'docs' },
+          { 
+            text: 'Docs', 
+            ariaLabel: 'docs',
+            items: [
+              { text: 'latest', link: '/latest/about/what-is-griddb' },
+              { text: 'v4.6', link: '/v4.6/about/what-is-griddb' },
+            ]
+          },
           { text: 'Blogs', link: 'https://griddb.net/en/blog', ariaLabel: 'blogs' },
           { text: 'Community', link: 'https://griddb.net/en/community', ariaLabel: 'community' },
           { text: 'Resources', link: 'https://griddb.net/en/resources', ariaLabel: 'resources' },
         ],
         // english sidebar
         sidebar: {
-          '/': [
+          '/latest': [
+            {
+              title:'GridDB (latest)',
+              collapsable: false,  
+            },
             {
               title: 'About GridDB',
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'about/what-is-griddb',
-                'about/what-is-time-series-database',
+                '/latest/about/what-is-griddb',
+                '/latest/about/what-is-time-series-database',
                 //'about/benchmark-comparisons',
-                'about/release-notes',
-                'about/faq'
+                '/latest/about/release-notes',
+                '/latest/about/faq'
               ]
             },
             {
@@ -135,19 +146,18 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'gettingstarted/introduction',
-                'gettingstarted/webshell',
-                'gettingstarted/using-source-code',
-                'gettingstarted/using-rpmyum',
+                '/latest/gettingstarted/introduction',
+                '/latest/gettingstarted/using-source-code',
+                '/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
                   collapsable: false,
                   children: [
-                    'gettingstarted/java',
-                    'gettingstarted/python',
-                    'gettingstarted/nodejs',
-                    'gettingstarted/go',
-                    'gettingstarted/php'
+                    '/latest/gettingstarted/java',
+                    '/latest/gettingstarted/python',
+                    '/latest/gettingstarted/nodejs',
+                    '/latest/gettingstarted/go',
+                    '/latest/gettingstarted/php'
                   ]
                 }
               ]
@@ -157,53 +167,24 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'architecture/introduction',
-                'architecture/structure-of-griddb',
-                'architecture/data-model',
-                'architecture/database-function',
-                'architecture/operating-function',
-                'architecture/parameter'
-                //'architecture/architecture-overview',
-                //'architecture/key-container-model',
-                //'architecture/tql',
-                //'architecture/crud-operations',
-                //'architecture/transaction-and-acid',
-                //'architecture/indexes',
-                //'architecture/storage-architecture',
-                //'architecture/replication-distribution',
-                //'architecture/sharding'
+                '/latest/architecture/introduction',
+                '/latest/architecture/structure-of-griddb',
+                '/latest/architecture/data-model',
+                '/latest/architecture/database-function',
+                '/latest/architecture/operating-function',
+                '/latest/architecture/parameter'
               ]
             },
-            //{
-            //  title: 'Data Modeling',
-            //  collapsable: true,
-            //  sidebarDepth: 2,
-            //  children: [
-            //    'datamodeling/data-modeling-basics',
-            //    'datamodeling/data-modeling-using-griddb',
-            //    'datamodeling/modeling-relationships',
-            //    'datamodeling/data-model-variation'
-            //  ]
-            //},
-            //{
-            //  title: 'Query Language',
-            //  collapsable: true,
-            //  sidebarDepth: 2,
-            //  children: [
-            //    'querying/TQL-Reference',
-            //    'querying/SQL-Reference'
-            //  ]
-            //},
             {
               title: 'SQL Reference',
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'sqlreference/introduction',
-                'sqlreference/sql-description-format',
-                'sqlreference/sql-commands-supported',
-                'sqlreference/metatables',
-                'sqlreference/reserved-words'
+                '/latest/sqlreference/introduction',
+                '/latest/sqlreference/sql-description-format',
+                '/latest/sqlreference/sql-commands-supported',
+                '/latest/sqlreference/metatables',
+                '/latest/sqlreference/reserved-words'
               ]
             },
             {
@@ -211,10 +192,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'tqlreference/introduction',
-                'tqlreference/type',
-                'tqlreference/tql-syntax-and-calculation-functions',
-                'tqlreference/annex'
+                '/latest/tqlreference/introduction',
+                '/latest/tqlreference/type',
+                '/latest/tqlreference/tql-syntax-and-calculation-functions',
+                '/latest/tqlreference/annex'
               ]
             },
             {
@@ -222,14 +203,14 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 1,
               children: [
-                'tutorial/wide-narrow',
-                'tutorial/nifi',
-                'tutorial/kafka',
-                'tutorial/jupyter',
-                'tutorial/pyspark',
-                'tutorial/forecasting',
-                'tutorial/timeseries-expiration',
-                `tutorial/jms`
+                '/latest/tutorial/wide-narrow',
+                '/latest/tutorial/nifi',
+                '/latest/tutorial/kafka',
+                '/latest/tutorial/jupyter',
+                '/latest/tutorial/pyspark',
+                '/latest/tutorial/forecasting',
+                '/latest/tutorial/timeseries-expiration',
+                `/latest/tutorial/jms`
               ]
             },
             {
@@ -237,10 +218,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'jdbcdriver/introduction',
-                'jdbcdriver/overview',
-                'jdbcdriver/specifications',
-                'jdbcdriver/sample'
+                '/latest/jdbcdriver/introduction',
+                '/latest/jdbcdriver/overview',
+                '/latest/jdbcdriver/specifications',
+                '/latest/jdbcdriver/sample'
               ]
             },
             {
@@ -248,11 +229,122 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'references/API-References'
+                '/latest/references/API-References'
                 //     'references/JDBC-driver'
               ]
             }
-          ]
+          ],
+          '/v4.6': [
+            {
+              title:'GridDB (v4.6)',
+              collapsable: false,  
+            },
+            {
+              title: 'About GridDB',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/v4.6/about/what-is-griddb',
+                '/v4.6/about/what-is-time-series-database',
+                //'about/benchmark-comparisons',
+                '/v4.6/about/release-notes',
+                '/v4.6/about/faq'
+              ]
+            },
+            {
+              title: 'Getting Started',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/v4.6/gettingstarted/introduction',
+                '/v4.6/gettingstarted/webshell',
+                '/v4.6/gettingstarted/using-source-code',
+                '/v4.6/gettingstarted/using-rpmyum',
+                {
+                  title: 'Build an App',
+                  collapsable: false,
+                  children: [
+                    '/v4.6/gettingstarted/java',
+                    '/v4.6/gettingstarted/python',
+                    '/v4.6/gettingstarted/nodejs',
+                    '/v4.6/gettingstarted/go',
+                    '/v4.6/gettingstarted/php'
+                  ]
+                }
+              ]
+            },
+            {
+              title: 'Architecture',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/v4.6/architecture/introduction',
+                '/v4.6/architecture/structure-of-griddb',
+                '/v4.6/architecture/data-model',
+                '/v4.6/architecture/database-function',
+                '/v4.6/architecture/operating-function',
+                '/v4.6/architecture/parameter'
+              ]
+            },
+            {
+              title: 'SQL Reference',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/v4.6/sqlreference/introduction',
+                '/v4.6/sqlreference/sql-description-format',
+                '/v4.6/sqlreference/sql-commands-supported',
+                '/v4.6/sqlreference/metatables',
+                '/v4.6/sqlreference/reserved-words'
+              ]
+            },
+            {
+              title: 'TQL Reference',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/v4.6/tqlreference/introduction',
+                '/v4.6/tqlreference/type',
+                '/v4.6/tqlreference/tql-syntax-and-calculation-functions',
+                '/v4.6/tqlreference/annex'
+              ]
+            },
+            {
+              title: 'Tutorial',
+              collapsable: true,
+              sidebarDepth: 1,
+              children: [
+                '/v4.6/tutorial/wide-narrow',
+                '/v4.6/tutorial/nifi',
+                '/v4.6/tutorial/kafka',
+                '/v4.6/tutorial/jupyter',
+                '/v4.6/tutorial/pyspark',
+                '/v4.6/tutorial/forecasting',
+                '/v4.6/tutorial/timeseries-expiration',
+                `/v4.6/tutorial/jms`
+              ]
+            },
+            {
+              title: 'JDBC Driver',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/v4.6/jdbcdriver/introduction',
+                '/v4.6/jdbcdriver/overview',
+                '/v4.6/jdbcdriver/specifications',
+                '/v4.6/jdbcdriver/sample'
+              ]
+            },
+            {
+              title: 'References',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/v4.6/references/API-References'
+                //     'references/JDBC-driver'
+              ]
+            }
+          ],
         }
       },
       '/ja/': {
@@ -270,24 +362,35 @@ module.exports = {
           indexName: 'griddb',
         },
         nav: [
-          { text: 'ドキュメント', link: '/ja/about/what-is-griddb', ariaLabel: 'ドキュメント' },
+          { 
+            text: 'ドキュメント', 
+            ariaLabel: 'ドキュメント',
+            items: [
+              { text: 'latest', link: '/ja/latest/about/what-is-griddb' },
+              { text: 'v4.6', link: '/ja/v4.6/about/what-is-griddb' },
+            ]
+          },
           { text: 'ブログ', link: 'https://griddb.net/ja/blog', ariaLabel: 'ブログ' },
           { text: 'コミュニティ', link: 'https://griddb.net/ja/community', ariaLabel: 'コミュニティ' },
           { text: 'リソース', link: 'https://griddb.net/ja/resources', ariaLabel: 'リソース' },
         ],
         // japanese sidebar
         sidebar: {
-          '/ja/': [
+          '/ja/latest': [
+            {
+              title:'GridDB (latest)',
+              collapsable: false,  
+            },
             {
               title: 'GridDBとは',
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'about/what-is-griddb',
-                'about/what-is-time-series-database',
+                '/ja/latest/about/what-is-griddb',
+                '/ja/latest/about/what-is-time-series-database',
                 //'about/benchmark-comparisons',
-                'about/release-notes',
-                'about/faq'
+                '/ja/latest/about/release-notes',
+                '/ja/latest/about/faq'
               ]
             },
             {
@@ -295,19 +398,18 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'gettingstarted/introduction',
-                //'gettingstarted/installation',
-                'gettingstarted/using-source-code',
-                'gettingstarted/using-rpm',
+                '/ja/latest/gettingstarted/introduction',
+                '/ja/latest/gettingstarted/using-source-code',
+                '/ja/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
                   children: [
-                    'gettingstarted/java',
-                    'gettingstarted/python',
-                    'gettingstarted/nodejs',
-                    'gettingstarted/go',
-                    'gettingstarted/php'
+                    '/ja/latest/gettingstarted/java',
+                    '/ja/latest/gettingstarted/python',
+                    '/ja/latest/gettingstarted/nodejs',
+                    '/ja/latest/gettingstarted/go',
+                    '/ja/latest/gettingstarted/php'
                   ]
                 }
               ]
@@ -317,53 +419,24 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'architecture/introduction',
-                'architecture/structure-of-griddb',
-                'architecture/data-model',
-                'architecture/database-function',
-                'architecture/operating-function',
-                'architecture/parameter'
-                //'architecture/architecture-overview',
-                //'architecture/key-container-model',
-                //'architecture/tql',
-                //'architecture/crud-operations',
-                //'architecture/transaction-and-acid',
-                //'architecture/indexes',
-                //'architecture/storage-architecture',
-                //'architecture/replication-distribution',
-                //'architecture/sharding'
+                '/ja/latest/architecture/introduction',
+                '/ja/latest/architecture/structure-of-griddb',
+                '/ja/latest/architecture/data-model',
+                '/ja/latest/architecture/database-function',
+                '/ja/latest/architecture/operating-function',
+                '/ja/latest/architecture/parameter'
               ]
             },
-            //{
-            //  title: 'データモデリング',
-            //  collapsable: true,
-            //  sidebarDepth: 2,
-            //  children: [
-            //    'datamodeling/data-modeling-basics',
-            //    'datamodeling/data-modeling-using-griddb',
-            //    'datamodeling/modeling-relationships',
-            //    'datamodeling/data-model-variation'
-            //  ]
-            //},
-            //{
-            //  title: 'クエリ言語',
-            //  collapsable: true,
-            //  sidebarDepth: 2,
-            //  children: [
-            //    'querying/TQL-Reference',
-            //    'querying/SQL-Reference'
-            //  ]
-            //},
             {
               title: 'SQL リファレンス',
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'sqlreference/introduction',
-                'sqlreference/sql-description-format',
-                'sqlreference/sql-commands-supported',
-                'sqlreference/metatables',
-                'sqlreference/reserved-words'
+                '/ja/latest/sqlreference/introduction',
+                '/ja/latest/sqlreference/sql-description-format',
+                '/ja/latest/sqlreference/sql-commands-supported',
+                '/ja/latest/sqlreference/metatables',
+                '/ja/latest/sqlreference/reserved-words'
               ]
             },
             {
@@ -371,10 +444,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                'tqlreference/introduction',
-                'tqlreference/type',
-                'tqlreference/tql-syntax-and-calculation-functions',
-                'tqlreference/annex'
+                '/ja/latest/tqlreference/introduction',
+                '/ja/latest/tqlreference/type',
+                '/ja/latest/tqlreference/tql-syntax-and-calculation-functions',
+                '/ja/latest/tqlreference/annex'
               ]
             },
             {
@@ -382,7 +455,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'tutorial/ingesting'
+                '/ja/latest/tutorial/ingesting'
               ]
             },
             {
@@ -390,10 +463,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'jdbcdriver/introduction',
-                'jdbcdriver/overview',
-                'jdbcdriver/specifications',
-                'jdbcdriver/sample'
+                '/ja/latest/jdbcdriver/introduction',
+                '/ja/latest/jdbcdriver/overview',
+                '/ja/latest/jdbcdriver/specifications',
+                '/ja/latest/jdbcdriver/sample'
               ]
             },
             {
@@ -401,8 +474,108 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                'references/API-References'
+                '/ja/latest/references/API-References'
                 //    'references/JDBC-driver'
+              ]
+            }
+          ],
+          '/ja/v4.6': [
+            {
+              title: 'GridDBとは',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/v4.6/about/what-is-griddb',
+                '/ja/v4.6/about/what-is-time-series-database',
+                //'about/benchmark-comparisons',
+                '/ja/v4.6/about/release-notes',
+                '/ja/v4.6/about/faq'
+              ]
+            },
+            {
+              title: 'はじめに',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/v4.6/gettingstarted/introduction',
+                '/ja/v4.6/gettingstarted/webshell',
+                '/ja/v4.6/gettingstarted/using-source-code',
+                '/ja/v4.6/gettingstarted/using-rpmyum',
+                {
+                  title: 'アプリ作成',
+                  collapsable: false,
+                  children: [
+                    '/ja/v4.6/gettingstarted/java',
+                    '/ja/v4.6/gettingstarted/python',
+                    '/ja/v4.6/gettingstarted/nodejs',
+                    '/ja/v4.6/gettingstarted/go',
+                    '/ja/v4.6/gettingstarted/php'
+                  ]
+                }
+              ]
+            },
+            {
+              title: 'アーキテクチャ',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/v4.6/architecture/introduction',
+                '/ja/v4.6/architecture/structure-of-griddb',
+                '/ja/v4.6/architecture/data-model',
+                '/ja/v4.6/architecture/database-function',
+                '/ja/v4.6/architecture/operating-function',
+                '/ja/v4.6/architecture/parameter'
+              ]
+            },
+            {
+              title: 'SQL リファレンス',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/v4.6/sqlreference/introduction',
+                '/ja/v4.6/sqlreference/sql-description-format',
+                '/ja/v4.6/sqlreference/sql-commands-supported',
+                '/ja/v4.6/sqlreference/metatables',
+                '/ja/v4.6/sqlreference/reserved-words'
+              ]
+            },
+            {
+              title: 'TQL リファレンス',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/v4.6/tqlreference/introduction',
+                '/ja/v4.6/tqlreference/type',
+                '/ja/v4.6/tqlreference/tql-syntax-and-calculation-functions',
+                '/ja/v4.6/tqlreference/annex'
+              ]
+            },
+            {
+              title: 'チュートリアル',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/v4.6/tutorial/ingesting'
+              ]
+            },
+            {
+              title: 'JDBC ドライバ',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/v4.6/jdbcdriver/introduction',
+                '/ja/v4.6/jdbcdriver/overview',
+                '/ja/v4.6/jdbcdriver/specifications',
+                '/ja/v4.6/jdbcdriver/sample'
+              ]
+            },
+            {
+              title: 'リファレンス',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/v4.6/references/API-References'
+                //     'references/JDBC-driver'
               ]
             }
           ]
