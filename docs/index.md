@@ -1,15 +1,5 @@
 # What is GridDB
 
-<p class="iframe-container">
-<iframe src="https://www.youtube.com/embed/boAZXOSMY58" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-**GridDB is a an open source time series database optimized for IoT and Big Data.**
-
-We live in the era of the Internet of Things (IoT) where billions of devices are interconnected and are generating petabytes of data at an increasing rate. Gaining insights and information from that data and generating value out of it gives a tangible competitive advantage to businesses, organizations, governments, and even individuals.
-
-Organizations should focus more on creating value from data that will enhance their core products, services or even operational processes rather than spend time in dealing with the complexity surrounding Big Data. Big data, in this case, means data in large quantities, high frequencies, and vast varieties.
-
 GridDB is an innovative solution to solve these complex problems. The foundation of GridDB’s principles is based upon offering a versatile data store that is optimized for IoT, provides high scalability, is tuned for high performance, and ensures high reliability.
 
 Four Pillars of GridDB

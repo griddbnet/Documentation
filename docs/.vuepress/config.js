@@ -124,6 +124,116 @@ module.exports = {
         ],
         // english sidebar
         sidebar: {
+          '/': [
+            {
+              title:'GridDB (latest)',
+              collapsable: false,  
+            },
+            {
+              title: 'About GridDB',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/latest/about/what-is-griddb',
+                '/latest/about/what-is-time-series-database',
+                //'about/benchmark-comparisons',
+                '/latest/about/release-notes',
+                '/latest/about/faq'
+              ]
+            },
+            {
+              title: 'Getting Started',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/latest/gettingstarted/introduction',
+                '/latest/gettingstarted/using-source-code',
+                '/latest/gettingstarted/using-rpmyum',
+                {
+                  title: 'Build an App',
+                  collapsable: false,
+                  children: [
+                    '/latest/gettingstarted/java',
+                    '/latest/gettingstarted/python',
+                    '/latest/gettingstarted/nodejs',
+                    '/latest/gettingstarted/go',
+                    '/latest/gettingstarted/php'
+                  ]
+                }
+              ]
+            },
+            {
+              title: 'Architecture',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/latest/architecture/introduction',
+                '/latest/architecture/structure-of-griddb',
+                '/latest/architecture/data-model',
+                '/latest/architecture/database-function',
+                '/latest/architecture/operating-function',
+                '/latest/architecture/parameter'
+              ]
+            },
+            {
+              title: 'SQL Reference',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/latest/sqlreference/introduction',
+                '/latest/sqlreference/sql-description-format',
+                '/latest/sqlreference/sql-commands-supported',
+                '/latest/sqlreference/metatables',
+                '/latest/sqlreference/reserved-words'
+              ]
+            },
+            {
+              title: 'TQL Reference',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/latest/tqlreference/introduction',
+                '/latest/tqlreference/type',
+                '/latest/tqlreference/tql-syntax-and-calculation-functions',
+                '/latest/tqlreference/annex'
+              ]
+            },
+            {
+              title: 'Tutorial',
+              collapsable: true,
+              sidebarDepth: 1,
+              children: [
+                '/latest/tutorial/wide-narrow',
+                '/latest/tutorial/nifi',
+                '/latest/tutorial/kafka',
+                '/latest/tutorial/jupyter',
+                '/latest/tutorial/pyspark',
+                '/latest/tutorial/forecasting',
+                '/latest/tutorial/timeseries-expiration',
+                `/latest/tutorial/jms`
+              ]
+            },
+            {
+              title: 'JDBC Driver',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/latest/jdbcdriver/introduction',
+                '/latest/jdbcdriver/overview',
+                '/latest/jdbcdriver/specifications',
+                '/latest/jdbcdriver/sample'
+              ]
+            },
+            {
+              title: 'References',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/latest/references/API-References'
+                //     'references/JDBC-driver'
+              ]
+            }
+          ],
           '/latest': [
             {
               title:'GridDB (latest)',
