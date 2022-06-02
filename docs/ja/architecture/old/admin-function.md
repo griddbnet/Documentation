@@ -173,7 +173,7 @@ GridDBでは、クラスタを構成する各ノードでデータのレプリ�
 
     エラー・トレース番号名で発生した事象の概要が判ります。
 
-``` example
+``` sh
 
 2014-11-12T10:35:29.746+0900 TSOL1234 8456 ERROR TRANSACTION_SERVICE [10008:TXN_CLUSTER_NOT_SERVICING] (nd={clientId=2, address=127.0.0.1:52719}, pId=0, eventType=CONNECT, stmtId=1) <Z3JpZF9zdG9yZS9zZXJ2ZXIvdHJhbnNhY3Rpb25fc2VydmljZS5jcHAgQ29ubmVjdEhhbmRsZXI6OmhhbmRsZUVycm9yIGxpbmU9MTg2MSA6IGJ5IERlbnlFeGNlcHRpb24gZ3JpZF9zdG9yZS9zZXJ2ZXIvdHJhbnNhY3Rpb25fc2VydmljZS5jcHAgU3RhdGVtZW50SGFuZGxlcjo6Y2hlY2tFeGVjdXRhYmxlIGxpbmU9NjExIGNvZGU9MTAwMDg=>
 
@@ -189,7 +189,7 @@ gs_statコマンドでの出力のうち、performance構造が、性能・統�
 
 出力例を以下に示します。出力される内容はバージョンによって異なります。
 
-``` example
+``` sh
 -bash-4.1$ gs_stat -u admin/admin -s 192.168.0.1:10040
 {
     ：

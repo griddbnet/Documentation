@@ -10,7 +10,7 @@ This chapter consists of a description of the specified format and data types th
 
 Add the JDBC driver file `/usr/share/java/gridstore-jdbc.jar` to the class path. When added, the driver will be registered automatically. In addition, import the driver class as follows if necessary (Normally not required).
 
-``` example
+``` sh
 Class.forName("com.toshiba.mwcloud.gs.sql.Driver");
 ```
 
@@ -22,7 +22,7 @@ The URL has the following forms (A) to (D). If the multicast method is used to c
 
 **(A) If connecting automatically to a suitable node in a GridDB cluster using the multicast method**
 
-``` example
+``` sh
 jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -33,7 +33,7 @@ jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 
 **(B) If connecting directly to a node in a GridDB cluster using the multicast method**
 
-``` example
+``` sh
 jdbc:gs://(nodeAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -46,7 +46,7 @@ jdbc:gs://(nodeAddress):(portNo)/(clusterName)/(databaseName)
 
 If the fixed list method is used to compose a cluster, use this method to connect.
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationMember=(notificationMember)
 ```
 
@@ -61,7 +61,7 @@ jdbc:gs:///(clusterName)/(databaseName)?notificationMember=(notificationMember)
 
 If the provider method is used to compose a cluster, use this method to connect.
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationProvider=(notificationProvider)
 ```
 
@@ -73,7 +73,7 @@ jdbc:gs:///(clusterName)/(databaseName)?notificationProvider=(notificationProvid
 
 If the user name and password are going to be included in the URL in either one of the cases (A) to (D), add them at the end of the URL as shown below.
 
-``` example
+``` sh
 ?user=(user name)&password=(password)
 ```
 
@@ -119,20 +119,20 @@ An error occurs when the name is specified using both methods.
 
 To include the application name in the URL, add it to the end of the URL as follows:
 
-``` example
+``` sh
 ?applicationName=(application name)
 ```
 
 To include the time zone in the URL, add it to the end of the URL as follows:
 
-``` example
+``` sh
 ?timeZone=(time zone)
 ```
 
 To include also the user name and the password in the URL, use the
 following method.
 
-``` example
+``` sh
 ?user=(user name)&password=(password)&applicationName=(application name)&timeZone=(time zone)
 ```
 

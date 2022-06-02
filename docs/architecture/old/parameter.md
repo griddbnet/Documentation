@@ -530,7 +530,7 @@ View name</td>
         case-sensitive. So the names of the following example are
         handled as different names.
         
-        ``` example
+        ``` sh
         Example) trigger, TRIGGER
         ```
 
@@ -545,7 +545,7 @@ View name</td>
     the
     same.
     
-    ``` example
+    ``` sh
     Example) Search on the container "SensorData" and the column "Column1"
         select "Column1" from "SensorData"   Success
         select "COLUMN1" from "SENSORDATA" Fail (Because "SENSORDATA" container does not exist)
@@ -557,6 +557,6 @@ View name</td>
         contain only alphanumeric and '\_'. To use other characters, the
         name is required to be enclosed with '"'.
         
-        ``` example
+        ``` sh
         Example) select "012column", data_15 from "container.2017-09"
         ```

@@ -276,7 +276,7 @@ A STABLE state is a state in which the value of the json parameter shown
 in gs\_stat, /cluster/activeCount, is equal to the value of
 /cluster/designatedCount.
 
-``` example
+``` sh
 $ gs_stat -u admin/admin
 {
     "checkpoint": {
@@ -360,7 +360,7 @@ Partition status can be checked by executing gs\_stat command to a
 master node. (The state is expressed as the value of
 /cluster/partitionStatus)
 
-``` example
+``` sh
 $ gs_stat -u admin/admin
 {
 　　：
@@ -483,7 +483,7 @@ file**
 
 A configuration example of a cluster definition file is shown below.
 
-``` example
+``` sh
 {
                              :
                              :
@@ -539,7 +539,7 @@ file**
 
 A configuration example of a cluster definition file is shown below.
 
-``` example
+``` sh
 {
                              :
                              :
@@ -572,7 +572,7 @@ specifications.
 
 An example of a response sent from the address provider is as follows.
 
-``` example
+``` sh
 $ curl http://example.com/notification/provider
 [
     {
