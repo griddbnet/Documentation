@@ -31,7 +31,7 @@ First create the Yum Repo File:
     sudo cat > /etc/yum.repos.d/griddb.repo << EOF
     [griddb]
     name=GridDB.net
-    baseurl=https://griddb.net/yum/el7/4.6/
+    baseurl=https://griddb.net/yum/el7/5.0/
     enabled=1
     gpgcheck=1
     gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB.txt
