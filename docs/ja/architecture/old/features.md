@@ -163,7 +163,7 @@ GridDBは複数ノードで構成されるクラスタで動作します。ア�
 
 STABLE状態はgs_statの示すjsonのパラメータである、/cluster/activeCountと/cluster/designatedCountの値が等しい状態です。
 
-``` example
+``` sh
 $ gs_stat -u admin/admin
 {
     "checkpoint": {
@@ -219,7 +219,7 @@ $ gs_stat -u admin/admin
 
 パーティションステータスは、マスタノードへのgs_statコマンドの実行で確認できます。（/cluster/partitionStatusの値）
 
-```example
+```sh
 $ gs_stat -u admin/admin
 {
 　　：
@@ -285,7 +285,7 @@ GridDBは、アドレスリストを構成する方法が異なる3つのクラ�
 
 クラスタ定義ファイルの設定例は以下のとおりです。
 
-``` example
+``` sh
 {
                              :
                              :
@@ -338,7 +338,7 @@ GridDBは、アドレスリストを構成する方法が異なる3つのクラ�
 
 クラスタ定義ファイルの設定例は以下のとおりです。
 
-``` example
+``` sh
 {
                              :
                              :
@@ -366,7 +366,7 @@ GridDBは、アドレスリストを構成する方法が異なる3つのクラ�
 
 アドレスプロバイダからのレスポンスの例は以下のとおりです。
 
-``` example
+``` sh
 $ curl http://example.com/notification/provider
 [
     {

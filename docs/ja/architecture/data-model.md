@@ -139,7 +139,7 @@ GEOMETRY型を利用した演算は、APIやTQLで実行できます。
 
 TQLでは2次元、3次元の空間を定義する空間生成関数と空間型データ間での演算の関数を提供します。TQLではコンテナ内のGEOMETRY型のカラムと指定した空間データで演算を行いその結果を以下のようにして得ることができます。
 
-``` example
+``` sh
  SELECT * WHERE ST_MBRIntersects(geom, ST_GeomFromText('POLYGON((0 0,10 0,10 10,0 10,0 0))'))
 ```
 

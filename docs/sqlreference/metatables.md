@@ -92,7 +92,7 @@ Data about partitioned tables can be obtained from this metatable.
 
 - Check the number of data partitions
     
-  ``` example
+  ``` sh
   SELECT COUNT(*) FROM "#table_partitions" WHERE TABLE_NAME='myIntervalPartition';
     
   COUNT(*)
@@ -102,7 +102,7 @@ Data about partitioned tables can be obtained from this metatable.
 
 - Check the lower limit value of each data     partition
     
-  ``` example
+  ``` sh
   SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions" WHERE TABLE_NAME='myIntervalPartition'
   ORDER BY PARTITION_BOUNDARY_VALUE;
     
@@ -115,7 +115,7 @@ Data about partitioned tables can be obtained from this metatable.
 
 - Check the lower limit value of each data partitions on the interval partitioned table "myIntervalPartition2" (partitioning key type:     INTEGER, interval value: 20000)
     
-  ``` example
+  ``` sh
   SELECT CAST(PARTITION_BOUNDARY_VALUE AS INTEGER) V FROM "#table_partitions"
   WHERE TABLE_NAME='myIntervalPartition2' ORDER BY V;
     
@@ -226,7 +226,7 @@ Only in case of TCP connection with a client (socket type: CLIENT), it can be de
 Specifically, if DISPATCHING_EVENT_COUNT is larger than SENDING_EVENT_COUNT, it can be determine that the possibility is relatively high that the time waiting for execution existed.
 
 
-``` example
+``` sh
 SELECT CREATION_TIME, NODE_ADDRESS, NODE_PORT, APPLICATION_NAME FROM "#sockets"
 WHERE SOCKET_TYPE='CLIENT' AND DISPATCHING_EVENT_COUNT > SENDING_EVENT_COUNT;
 

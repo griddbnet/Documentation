@@ -329,7 +329,7 @@ When composing a cluster using the provider method, configure the parameters in 
 
 A configuration example of a cluster definition file is shown below.
 
-``` example
+``` sh
 {
                              :
                              :

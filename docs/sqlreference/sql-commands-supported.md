@@ -106,7 +106,7 @@ Create a table.
 
 - Creating a table
     
-    ``` example
+    ``` sh
     CREATE TABLE myTable (
       key INTEGER PRIMARY KEY,
       value1 DOUBLE NOT NULL,
@@ -116,7 +116,7 @@ Create a table.
 
 - Creating timeseries table using the row expiry release function
     
-    ``` example
+    ``` sh
     CREATE TABLE myTimeseries (
       mycolumn1 TIMESTAMP PRIMARY KEY,
       mycolumn2 STRING
@@ -165,7 +165,7 @@ The options that can be specified are same as [normal table](#label_expiration_p
 
 - Creating a hash partitioned table
     
-    ``` example
+    ``` sh
     CREATE TABLE myHashPartition (
       id INTEGER PRIMARY KEY,
       value STRING
@@ -225,7 +225,7 @@ The options that can be specified are same as those of [regular tables](#label_e
 
 - Creating an interval partitioned table.
     
-    ``` example
+    ``` sh
     CREATE TABLE myIntervalPartition (
       date TIMESTAMP PRIMARY KEY,
       value STRING
@@ -234,7 +234,7 @@ The options that can be specified are same as those of [regular tables](#label_e
 
 - Creating an interval partitioned table (timeseries table) using the partition expiry release function.
     
-    ``` example
+    ``` sh
     CREATE TABLE myIntervalPartition2 (
       date TIMESTAMP PRIMARY KEY,
       value STRING
@@ -295,7 +295,7 @@ The options that can be specified are same as those of [regular tables](#label_e
 
 - Creating an interval-hash partitioned table
     
-    ``` example
+    ``` sh
     CREATE TABLE myIntervalHashPartition (
       date TIMESTAMP,
       value STRING,
@@ -306,7 +306,7 @@ The options that can be specified are same as those of [regular tables](#label_e
 
 - Creating an interval-hash partitioned table (timeseries table) using the partition expiry release function.
     
-    ``` example
+    ``` sh
     CREATE TABLE myIntervalHashPartition2 (
       date TIMESTAMP PRIMARY KEY,
       value STRING
@@ -479,7 +479,7 @@ Add columns to the end of the table.
 
 - Adding multiple columns to the table
     
-    ``` example
+    ``` sh
     ALTER TABLE myTable1
       ADD COLUMN col111 STRING NOT NULL,
       ADD COLUMN col112 INTEGER;
@@ -512,7 +512,7 @@ See [Metatables](#label_metatables) for the details on the metatable.
 
 - Check the lower limit value of the interval partitioned table "myIntervalPartition1" (partitioning key type: TIMESTAMP, interval: 30 DAY)
     
-    ``` example
+    ``` sh
     SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
     WHERE TABLE_NAME='myIntervalPartition1' ORDER BY PARTITION_BOUNDARY_VALUE;
     
@@ -526,7 +526,7 @@ See [Metatables](#label_metatables) for the details on the metatable.
 
 - Delete unnecessary data partitions
     
-    ``` example
+    ``` sh
     ALTER TABLE myIntervalPartition1 DROP PARTITION FOR ('2017-01-10T13:00:00Z');
     ```
 
@@ -534,7 +534,7 @@ See [Metatables](#label_metatables) for the details on the metatable.
 
 - Check the lower limit value of each data partitions on the interval hash partitioned table "myIntervalHashPartition" (partitioning key type: TIMESTAMP, interval value: 90 DAY, division count 3)
     
-    ``` example
+    ``` sh
     SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
     WHERE TABLE_NAME='myIntervalHashPartition' ORDER BY PARTITION_BOUNDARY_VALUE;
     
@@ -552,13 +552,13 @@ See [Metatables](#label_metatables) for the details on the metatable.
 
 - Delete unnecessary data partitions
     
-    ``` example
+    ``` sh
     ALTER TABLE myIntervalHashPartition DROP PARTITION FOR ('2016-09-15T10:00:00Z');
     ```
 
 - Data partitions that have same boundary value will be deleted
     
-    ``` example
+    ``` sh
     SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
     WHERE TABLE_NAME='myIntervalHashPartition' ORDER BY PARTITION_BOUNDARY_VALUE;
     
@@ -650,7 +650,7 @@ Register rows in a table. INSERT only registers rows, while INSERT OR REPLACE an
 
 - If a SELECT statement is specified instead of VALUES, the execution result will be registered.
 
-``` example
+``` sh
 INSERT INTO myTable1 VALUES(1, 100);
 
 REPLACE INTO myTable1 VALUES(1, 200);
@@ -683,7 +683,7 @@ Update the rows existing in a table.
 - The value of the PRIMARY KEY column can not be updated.
 - For a partitioned table, a column , set as a partitioning key, can not be updated to a different value using the UPDATE statement. In such a case, INSERT after DELETE.    
   - Example:      
-    ``` example
+    ``` sh
     CREATE TABLE tab (a INTEGER, b STRING) PARTITION BY HASH a PARTITIONS 5;
         
     -- NG
@@ -696,7 +696,7 @@ Update the rows existing in a table.
 
 - A column name specified with SET cannot be qualified with a table name.    
   - Example:      
-    ``` example
+    ``` sh
     CREATE TABLE myTable1 (key INTEGER, value INTEGER);
         
     -- NG
@@ -708,7 +708,7 @@ Update the rows existing in a table.
 
 - Subqueries cannot be used for update values, while it can be used for conditional statements such as WHERE.    
   - Example:      
-    ``` example
+    ``` sh
     CREATE TABLE myTable1 (key INTEGER, value INTEGER);
         
     -- NG
@@ -739,7 +739,7 @@ Specify the table name, view name, and subquery on which to execute data operati
 - A sub query must be enclosed with () and requires an alias.
 
 Example:
-``` example
+``` sh
 SELECT a.ID, b.ID FROM mytable a, (SELECT ID FROM mytable2) b;
 
 ID     ID
@@ -829,7 +829,7 @@ Join a table.
 Specify join conditions with ON or USING.
 
 Example:
-``` example
+``` sh
 name: employees
 
  id   first_name   department_id
@@ -885,7 +885,7 @@ Natural join (NATURAL JOIN) joins tables that have matching values in the rows u
 | Left outer join | Table 1 NATURAL LEFT [OUTER] JOIN table 2 |
 | Cross join      | Table 1 NATURAL CROSS JOIN table 2          |
 
-``` example
+``` sh
 SELECT * FROM employees NATURAL INNER JOIN departments;
 
  department_id   id    first_name     department
@@ -1030,7 +1030,7 @@ Extract values of the specified range.
 
 - Return true if the following conditions are met
     
-  ``` example
+  ``` sh
   expression_2 &lt;= expression_1 &lt;= expression_3
   ```
 
@@ -1127,7 +1127,7 @@ The following functions are available for SQL statements.
 
 These functions are described using the data in the following table as an example.
 
-``` example
+``` sh
 table: employees
 
  id   first_name   last_name   age     department    enrollment_period
@@ -1188,7 +1188,7 @@ Return the average value of n.
 - The result is of a DOUBLE type.
 
 Example:
-``` example
+``` sh
 SELECT AVG(age) FROM employees;
 Result: 41.0
 
@@ -1219,7 +1219,7 @@ Return the number of rows.
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 SELECT COUNT(*) FROM employees;
 Result: 6
 
@@ -1247,7 +1247,7 @@ Return the maximum.
 - The type of the result is the same as that of the argument x.
 
 Example:
-``` example
+``` sh
 SELECT MAX(age) FROM employees;
 Result: 59
 
@@ -1273,7 +1273,7 @@ Return the minimum.
 
 
 Example:
-``` example
+``` sh
 SELECT MIN(age) FROM employees;
 Result: 29
 
@@ -1301,7 +1301,7 @@ Return a sum of values.
   - When n includes NULL only, SUM returns NULL, while TOTAL returns 0.
 
 Example:
-``` example
+``` sh
 SELECT SUM(age) FROM employees;
 Result: 205
 
@@ -1335,7 +1335,7 @@ Specify the separator to be concatenated as "separator". When not specified, ", 
 - The result is of a STRING type.
 
 Example:
-``` example
+``` sh
 // Concatenate the name last_name with '/'
 SELECT GROUP_CONCAT(last_name, '/') from employees;
 Result:  Smith/Jones/Brown/Taylor/Smith
@@ -1371,7 +1371,7 @@ Returns the sample standard deviation.
 - The result is of a DOUBLE type.
 
 Example:
-``` example
+``` sh
 SELECT department, STDDEV_SAMP(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 Result:
    department    enrollment_period_stddev
@@ -1403,7 +1403,7 @@ Returns the sample standard deviation. STDDEV is an alias of the STDDEV_SAMP fun
   - while STDDEV0 returns 0 when x is 1.
 
 Example:
-``` example
+``` sh
 SELECT department, STDDEV(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 Result:
    department    enrollment_period_stddev
@@ -1452,7 +1452,7 @@ Returns the population standard deviation.
 type.
 
 Example:
-``` example
+``` sh
 SELECT department, STDDEV_POP(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 Result:
    department    enrollment_period_stddev
@@ -1480,7 +1480,7 @@ Returns the sample variance.
 - The result is of a DOUBLE type.
 
 Example:
-``` example
+``` sh
 SELECT department, VAR_SAMP(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 Result:
    department    enrollment_period_variance
@@ -1512,7 +1512,7 @@ Returns the sample variance. VARIANCE is an alias of the VAR_SAMP function.
   - while VARIANCE0 returns 0 if x is 1.
 
 Example:
-``` example
+``` sh
 SELECT department, VARIANCE(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 Result:
    department    enrollment_period_variance
@@ -1559,7 +1559,7 @@ Returns the population variance.
 - The result is of a DOUBLE type.
 
 Example:
-``` example
+``` sh
 SELECT department, VAR_POP(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 Result:
    department    enrollment_period_variance
@@ -1591,7 +1591,7 @@ returns the average value of the two rows near the center.
 
 Example:
 
-``` example
+``` sh
 SELECT MEDIAN(age) FROM employees;
 Result: 43
 
@@ -1624,7 +1624,7 @@ Return the absolute value of n. For a positive number, the value as it is is ret
 - The type of the result is a LONG type when n includes only integers, a DOUBLE type when n includes a floating point number.
 
 Example:
-``` example
+``` sh
 SELECT first_name, ABS(age) abs FROM employees;
 Result：
   first_name    abs
@@ -1653,7 +1653,7 @@ Round off. Returns the value of n rounded to m decimal places.
 - The type of the result is a LONG type when n includes only integers, a DOUBLE type when n includes a floating point number.
 
 Example:
-``` example
+``` sh
 SELECT first_name, ROUND(enrollment_period, 0) round FROM employees;
 Result：
   first_name    round
@@ -1679,7 +1679,7 @@ Return a random number. A random number is an integer of the range from -2<sup>6
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 SELECT first_name, RANDOM() random FROM employees;
 Result：
   first_name    random
@@ -1711,7 +1711,7 @@ Return the smallest value among the values xN.
 
 
 Example:
-``` example
+``` sh
 SELECT first_name, age, enrollment_period, MAX(age, enrollment_period) max FROM employees;
 Result：
   first_name    age    enrollment_period   max
@@ -1740,7 +1740,7 @@ Returns the logarithm of m with base n.
 
 Example:
 
-``` example
+``` sh
 SELECT LOG(2, 8);
 Result: 3.0
 
@@ -1763,7 +1763,7 @@ Returns the positive square root of n.
 
 Example:
 
-``` example
+``` sh
 SELECT SQRT(4);
 Result：2.0
 
@@ -1789,7 +1789,7 @@ In the case of m< 0, return the value of n, rounded down to the nearest -m digit
 
 Example:
 
-``` example
+``` sh
 SELECT TRUNC(123.4567);
 Result: 123.0
 
@@ -1820,7 +1820,7 @@ Converts hexadecimal string str to decimal number type.
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 SELECT HEX_TO_DEC('FF');
 Result: 255
 
@@ -1846,7 +1846,7 @@ Return the length of the character string str.
 - A BLOB type can also be specified for an argument.
 
 Example:
-``` example
+``` sh
 SELECT last_name, LENGTH(last_name) length FROM employees;
 Result：
   last_name     length
@@ -1875,7 +1875,7 @@ Convert all the alphabet of the character string str to lowercases.
 - Unicode characters other than ASCII alphabetic characters are not converted.
 
 Example:
-``` example
+``` sh
 SELECT last_name, LOWER(last_name) lower FROM employees;
 Result：
   last_name     lower
@@ -1904,7 +1904,7 @@ Convert all the alphabet of the character string str to uppercases.
 - Unicode characters, such as Cyrille characters, other than ASCII alphabetic characters are not converted.
 
 Example:
-``` example
+``` sh
 SELECT last_name, UPPER(last_name) upper FROM employees;
 Result：
   last_name     upper
@@ -1935,7 +1935,7 @@ Cut out a part of a character string. from the character on the starting positio
 - A BLOB type can also be specified for an argument.
 
 Example:
-``` example
+``` sh
 SELECT SUBSTR('abcdefg', 3);
 Result：cdefg
 
@@ -1959,7 +1959,7 @@ In the character string str, replace all the parts matching the character string
 - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT REPLACE('abcdefabc', 'abc', '123');
 Result：123def123
 ```
@@ -1983,7 +1983,7 @@ Search for character string search_str in the character string str, and return i
 
 
 Example:
-``` example
+``` sh
 SELECT INSTR('abcdef', 'cd');
 Result：3
 
@@ -2024,7 +2024,7 @@ If a escape character is specified before the wild card character, it will no lo
 - The result is of a BOOL type.
 
 Example:
-``` example
+``` sh
 SELECT last_name, LIKE('%mi%', last_name) like_name FROM employees;
 Result：
   last_name     like_name
@@ -2072,7 +2072,7 @@ The following wild cards are available for a match pattern.
   - The result is of a BOOL type.
 
 Example:
-``` example
+``` sh
 SELECT GLOB('*[BA]AB?D', 'AABCD');
 Result：true
 ```
@@ -2092,7 +2092,7 @@ Delete all the characters of character string trim_str from both ends of the cha
 - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT TRIM(' ABC ');
 Result: ABC (no space at both ends)
 
@@ -2115,7 +2115,7 @@ Delete all the characters of character string trim_str from the left end of the 
 - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT TRIM(' ABC ');
 Result: ABC (no space at the left end)
 
@@ -2138,7 +2138,7 @@ Delete all the characters of character string trim_str from the right end of the
 - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT RTRIM(' ABC ');
 Result: ABC (no space at the right end)
 
@@ -2164,7 +2164,7 @@ Returns a character string containing the value of x enclosed in single quotes.
   - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT QUOTE(last_name) last_name, QUOTE(age) age FROM employees;
 Result:
   last_name     age
@@ -2201,7 +2201,7 @@ Returns the UNICODE code point of the first character of the string str.
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 SELECT last_name, UNICODE(last_name) unicode FROM employees;
 Result:
   last_name     unicode
@@ -2228,7 +2228,7 @@ Returns a concatenated character string of characters with Unicode code point va
 - The result is of a STRING type.
 
 Example:
-``` example
+``` sh
 SELECT CHAR(83, 84, 85);
 Result: STU
 ```
@@ -2251,7 +2251,7 @@ There are two other formats as below.
 | %Q | A single quote in a character string is escaped to two single quotes ''.<br> Enclose both ends of the character string by single quotes.  |
 
 Example:
-``` example
+``` sh
 SELECT enrollment_period, PRINTF('%.2f', enrollment_period) printf FROM employees;
 Result:
   enrollment_period   printf
@@ -2277,7 +2277,7 @@ Replace a character string. Among the character string str, the characters match
 
 Example:
 
-``` example
+``` sh
 SELECT TRANSLATE('abcde', 'ace', '123');
 Result:1b2d3
 
@@ -2312,7 +2312,7 @@ Returns the current time value.
 - The result is of a TIMESTAMP type.
 
 Example:
-``` example
+``` sh
 SELECT NOW();
 Result: 2019-09-17T04:07:31.825Z
 
@@ -2352,7 +2352,7 @@ Convert the string representation of time to TIMESTAMP type.
   - CAST(*timestamp* AS STRING)
 
 Example:
-``` example
+``` sh
 // Search for a row with the value of column date (TIMESTAMP type) newer than time '2018-12-01T10: 30: 00Z'
 SELECT * FROM timeseries WHERE date > TIMESTAMP('2018-12-01T10:30:00Z');
 ```
@@ -2378,7 +2378,7 @@ The value obtained by adding the period "duration" (unit: time_umit) to time per
 - TIMESTAMPADD can also be used as a function alias.
 
 Example:
-``` example
+``` sh
 Add ten days to time period '2018-12-01T11:22:33.444Z'.
 SELECT TIMESTAMP_ADD(DAY, TIMESTAMP('2018-12-01T11:22:33.444Z'), 10);
 Result: 2018-12-11T11:22:33.444Z
@@ -2411,7 +2411,7 @@ Returns the difference of timestamp1 and timestamp2
 - TIMESTAMPDIFF can also be used as a function alias.
 
 Example:
-``` example
+``` sh
 
 // Time unit: Month
 SELECT TIMESTAMPDIFF(MONTH, TIMESTAMP('2018-12-11T10:30:15.555Z'), TIMESTAMP('2018-12-01T10:00:00.000Z'));
@@ -2457,7 +2457,7 @@ This function is an inverse conversion of TO_EPOCH_MS function.
 - The result is of a TIMESTAMP type.
 
 Example:
-``` example
+``` sh
 SELECT TO_TIMESTAMP_MS(1609459199999);
 Result: 2020-12-31T23:59:59.999Z
 ```
@@ -2478,7 +2478,7 @@ This function is an inverse conversion of TO_EPOCH_MS function.
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 SELECT TO_EPOCH_MS(TIMESTAMP('2020-12-31T23:59:59.999Z'));
 Result: 1609459199999
 
@@ -2506,7 +2506,7 @@ Retrieve the value of time field "time_field" from the time "timestamp". The tim
 - The result is of a LONG type.
 
 Example:
-``` example
+``` sh
 // Calculate the value of the year, the day, and the millisecond of time point '2018-12-01T10:30:02.392Z'.
 
 // The value of the year
@@ -2558,7 +2558,7 @@ Return a time converted to a string according to the specified format.
   - The result is of a STRING type.
 
 Example:
-``` example
+``` sh
 
 SELECT STRFTIME('%c', TIMESTAMP('2019-06-19T14:15:01.123Z'));
 Result: 2019-06-19T14:15:01.123Z
@@ -2584,7 +2584,7 @@ Generate and return a TIMESTAMP type value.
 - The result is of a TIMESTAMP type.
 
 Example:
-``` example
+``` sh
 
 SELECT MAKE_TIMESTAMP(2019, 9, 19);
 Result: 2019-09-19T00:00:00.000Z
@@ -2608,7 +2608,7 @@ Truncates the time information.
 - For the timezone argument, specify the time zone (Z|±hh:mm|±hhmm),
 
 Example:
-``` example
+``` sh
 
 SELECT TIMESTAMP_TRUNC(HOUR, MAKE_TIMESTAMP(2019, 9, 19, 10, 30, 15.123));
 Result: 2019-09-19T10:00:00.000Z
@@ -2635,7 +2635,7 @@ details.
 
 Example:
 
-``` example
+``` sh
 SELECT ROW_NUMBER() OVER(PARTITION BY department ORDER BY age) no, first_name, age, department FROM employees;
 Result:
   no   first_name   age      department
@@ -2667,7 +2667,7 @@ Return the value of the first argument that is not NULL in the specified argumen
 
 
 Example:
-``` example
+``` sh
 SELECT last_name, COALESCE(last_name, 'XXX') coalesce FROM employees;
 Result:
   last_name     coalesce
@@ -2705,7 +2705,7 @@ Return the value of the first argument that is not NULL among the specified argu
 - Return NULL, when all argument values are NULL.
 
 Example:
-``` example
+``` sh
 SELECT last_name, IFNULL(last_name, 'XXX') ifnull FROM employees;
 Result：
   last_name     ifnull
@@ -2742,7 +2742,7 @@ Return NULL when two arguments are the same, return the first argument when the 
 - Specify the value of the same type for the arguments x and y. There are some different types that can be specified. Refer to [CASE](#case) for the allowed combination of types.
 
 Example:
-``` example
+``` sh
 // Execute NULLIF with the value of value1 and value2.
 SELECT value1, value2, NULLIF(value1, value2) nullif FROM container_sample;
 Result: 
@@ -2781,7 +2781,7 @@ Return a BLOB type value (random number).
 - The result is of a BLOB type.
 
 Example:　
-``` example
+``` sh
 // Generate a 10-byte blob value (random number)
 SELECT HEX(RANDOMBLOB(10));
 Result: 7C8C893C8087F07883AF
@@ -2801,7 +2801,7 @@ Return a BLOB type value (0x00).
 - The result is of a BLOB type.
 
 Example:　
-``` example
+``` sh
 // Generate a 10-byte blob value (0x00).
 SELECT HEX(ZEROBLOB(10));
 Result: 00000000000000000000
@@ -2823,7 +2823,7 @@ Interpret the argument x as a BLOB type value, and return the character string (
 - The result is of a character string type.
 
 Example:
-``` example
+``` sh
 SELECT HEX(RANDOMBLOB(2));
 Result: E18D
 
@@ -2870,7 +2870,7 @@ Return the character string indicating the data type of the value of x.
 - When a NULL value is specified, 'NULL' is returned.
 
 Example:
-``` example
+``` sh
 SELECT TYPEOF(ABS(-10)) abs, TYPEOF(RANDOMBLOB(10)) randomblob,
     TYPEOF(TIMESTAMP('2018-12-01T10:30:02.392Z')) timestamp;
 Result：
@@ -2941,7 +2941,7 @@ The data types of the value which can be specified for x, and the converted valu
 
 - An error will occur if the converted number exceeds the range of numeric values specified in data_type.
 
-``` example
+``` sh
 // An error occurs if exceeding BYTE type range (-128 to 127) 
 SELECT CAST(128 AS BYTE);
 Result: error
@@ -2953,7 +2953,7 @@ Result: error
 
 - When converted from floating-point type (FLOAT, DOUBLE) to integer type (BYTE, SHORT, INTEGER, LONG), the number of significant digits in the result may be reduced.
 
-``` example
+``` sh
 SELECT CAST(10.5 AS INTEGER);
 Result: 10
 ```
@@ -2964,7 +2964,7 @@ Result: 10
   - "Infinity" (signed data acceptable)
   - "NaN"
 
-``` example
+``` sh
 SELECT CAST('abc' AS INTEGER);
 Result: error
 
@@ -2986,7 +2986,7 @@ The data types of the value which can be specified for x, and the converted valu
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | STRING (character string notation of time 'YYYY-MM-DDThh:mm:ss.SSSZ') | Equivalent to the value converted using the [TIMESTAMP function](#timestamp) |
 
-``` example
+``` sh
 SELECT CAST('2018-12-01T10:30:00Z' AS TIMESTAMP);
 Result: 2018-12-01T10:30:00.000Z
 
@@ -3052,7 +3052,7 @@ Specify the same type value for resultN. There are some different types that can
     
 
 Example:
-``` example
+``` sh
 // Display the employee's age (30's, 40's, 50's, other than these)
 SELECT id, first_name, age,
   CASE
@@ -3117,7 +3117,7 @@ Return whether the specified value is included in the sub query execution result
 - The result of a sub query must be data of one row.
 
 Example:
-``` example
+``` sh
 // Display the information of the employee who belongs to the department of id=1 in the departments table from the employees table.
 SELECT * FROM employees
 WHERE department IN(
@@ -3149,7 +3149,7 @@ Return whether the execution result of the sub query exists.
 - The result is of a BOOL type.
 
 Example:
-``` example
+``` sh
 // Display the information of the employee who belongs to the department of id=1 in the departments table from the employees table.
 SELECT * FROM employees
 WHERE EXISTS(
@@ -3168,7 +3168,7 @@ Result:
 Subquery which returns one result, which can be used for the result of a SELECT statement or for an expression.
 
 Example:
-``` example
+``` sh
 SELECT id, first_name,
        (SELECT department FROM departments WHERE department_id=employees.department_id)
 FROM employees;
@@ -3218,7 +3218,7 @@ ResultSet rs = pstmt.executeQuery();
 Comments can be written in a SQL command. Format: Description at the back of -- (2 hyphens) or enclose with /* */. 
 A new line needs to be returned at the end of the comment.
 
-``` example
+``` sh
 SELECT * -- comment
 FROM employees;
 

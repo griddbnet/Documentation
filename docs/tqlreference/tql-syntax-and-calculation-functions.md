@@ -7,7 +7,7 @@ TQL supports a query corresponding to the SQL SELECT statement which is required
 All queries are expressed by the syntax
 below:
 
-``` example
+``` sh
 [EXPLAIN [ANALYZE]] SELECT (select expression) [FROM (Collection or TimeSeries name)]  [WHERE (conditional expression)] ORDER BY (Column name) [ASC|DESC] [, (Column name) [ASC|DESC]]* [LIMIT (number) [OFFSET (number)]]
 ```
 
@@ -99,7 +99,7 @@ If both operands are TRUE or FALSE, it returns FALSE. If either of the operands 
 
 In addition, a short evaluation (or minimum evaluation) is carried out in an AND or OR operation. That is, if the evaluation can be confirmed with the formula described first, the evaluation of the formula described later will not be conducted. For example,
 
-``` example
+``` sh
 WHERE A=1 AND B=1
 ```
 
@@ -125,7 +125,7 @@ The following wildcards can be used for specifying a pattern.
 
 For example, the expression below returns TRUE for "RDB" and "RDBMS" but FALSE for "ORDB" and "DBMS".
 
-``` example
+``` sh
 column LIKE '_DB%'
 ```
 
@@ -133,7 +133,7 @@ Wildcards can be placed at any arbitrary position(s) within a pattern. FALSE is 
 
 In order to search a wildcard character itself, specify an escape character in the ESCAPE clause. For example, the expression below returns TRUE for "10%" but FALSE for "10$%."
 
-``` example
+``` sh
 column LIKE '10$%' ESCAPE '$'
 ```
 
@@ -179,7 +179,7 @@ If you specify +0, -0, an integer, NaN, INF, or -INF as a parameter, they return
 Returns the current date and time. It returns the constant result during a single query transaction.
 
 Example) Search for data whose time type column date value is before the current time.
-``` example
+``` sh
 SELECT * WHERE date < NOW()
 ```
 
@@ -191,13 +191,13 @@ For example, it can be used when comparing a time type column with a specific ti
 
 Example) Search for data whose time-type column date value is newer than the time "December 30, 2018 10:15:30 (UTC)"
 
-``` example
+``` sh
 SELECT *  WHERE date > TIMESTAMP('2018-12-30T10:15:30.
 ```
 
 The following format based on the Western calendar is only supported as a timestamp expression. Time zone strings (Z|±hh:mm|±hhmm) are interpreted.
 
-``` example
+``` sh
 YYYY-MM-DDThh:mm:ss.SSSZ
 ```
 
@@ -222,7 +222,7 @@ For the first argument time_unit, specify one of the following identifiers.
 
 Example) Search for data whose time-type column date value is one hour before the current time
 
-``` example
+``` sh
 SELECT * WHERE date < TIMESTAMPADD(HOUR, NOW(), -1)
 ```
 
@@ -236,13 +236,13 @@ For the first argument time_unit, specify one of the following identifiers.
 
 Example) Selecting tickets with three or more days of validity period among a list of tickets (tickets).
 
-``` example
+``` sh
 SELECT * FROM tickets WHERE TIMESTAMPDIFF(DAY, expired, issued) >= 3
 ```
 
 Example) Search for data whose time-type column end and start (= end-start) is less than 10 hours
 
-``` example
+``` sh
 SELECT * WHERE TIMESTAMPDIFF(HOUR, end, start) < 10
 ```
 
@@ -250,13 +250,13 @@ SELECT * WHERE TIMESTAMPDIFF(HOUR, end, start) < 10
 
 Convert to a TIMESTAMP corresponding to the num in milliseconds of the time 1970-01-01T00:00:00Z. An error occurs if num is a floating-point number. In addition, an error occurs if the conversion results cannot be expressed as time data e.g. negative values or extremely large values, etc. As a result, if a query using this function on a numerical column is issued, an error occurs if the conversion results contain values that cannot be expressed as time data in the column value. For example, an error occurs if the container contains a row with a num=-1 in the query below.
 
-``` example
+``` sh
 SELECT * WHERE TO_TIMESTAMP_MS(num) > TIMESTAMP('2011-01-01T00:00:00Z')
 ```
 
 In such a situation, avoid such errors by using the TO\_EPOCHMS function as shown below to evaluate only the value in which the converted numerical data serves as the range of the time series data.
 
-``` example
+``` sh
 SELECT * WHERE num < TO_EPOCH_MS(TIMESTAMP('9999-12-31T23:59:59.999Z'))
                AND num >= 0
                AND TO_TIMESTAMP_MS(num) > TIMESTAMP('2011-01-01T00:00:00Z')
@@ -268,7 +268,7 @@ For time series value specified in a timestamp, the time passed in milliseconds 
 
 Example) Compare column value num of elapsed time from 1970-01-01T00: 00: 00Z with the current time
 
-``` example
+``` sh
 SELECT * WHERE num > TO_EPOCH_MS(NOW())
 ```
 
@@ -283,13 +283,13 @@ Returns the length of the specified array.
 
 Extracts an array element at the specified position. An array of length 1 or more must be specified. The parameter "n" is the number indicating the element position, starting from 0. If "n" is Floating point type or a negative value or longer than the length of "array," or if the length of "array" is 0, an error is returned. Accordingly, if different lengths of arrays are contained in a Collection, and if a query specifying an array element as below cannot extract the specified array element, an error can be returned.
 
-``` example
+``` sh
 SELECT * FROM arrays WHERE ELEMENT(1, array) = 1
 ```
 
 Rewrite such a query to prevent the ELEMENT function from being evaluated, as below:
 
-``` example
+``` sh
 SELECT * FROM arrays WHERE ARRAY_LENGTH(array)>= 1 AND ELEMENT(1, array) = 1
 ```
 
@@ -312,19 +312,19 @@ However, it can not include the infinity or non-numeric numbers as a number that
 
 In the case of the rectangle having a diagonal line connecting points (0, 0) and (10, 10) on the two-dimensional space will be expressed as follows.
 
-``` example
+``` sh
 POLYGON((0 0,10 0,10 10,0 10,0 0))
 ```
 
 In addition, it can express the value that does not correspond with a particular spatial range called the empty geometry for each type of spatial structure data type. Express "EMPTY" instead of the coordinate values as the following example.
 
-``` example
+``` sh
 LINESTRING(EMPTY)
 ```
 
 In addition, you can specify the SRID by describing the integer after ";". In the following example, it indicates the rectangle is in the coordinate system of SRID:4326.
 
-``` example
+``` sh
 POLYGON((0 0,10 0,10 10,0 10,0 0);4326)
 ```
 
@@ -382,7 +382,7 @@ Circumscribed rectangular parallelepiped is defined according to the type of str
 
 Example) Selecting a Row such as spatial-type data on the column geom and the specified rectangular range intersect.
 
-``` example
+``` sh
 SELECT * WHERE ST_MBRIntersects(geom, ST_GeomFromText('POLYGON((0 0,10 0,10 10,0 10,0 0))'))
 ```
 
@@ -462,7 +462,7 @@ The weighted average is calculated by dividing the sum of products of sample val
 
 Example) Obtaining the time-weighted average voltage at Point 103, plant1 in July 2011.
 
-``` example
+``` sh
 SELECT TIME_AVG(voltage103) FROM plant1
   WHERE TIMESTAMP('2011-07-01T00:00:00Z') <= timestamp AND timestamp < TIMESTAMP('2011-08-01T00:00:00Z')
 ```
@@ -501,7 +501,7 @@ Selects a time-series Row whose timestamp is identical with or just after the sp
 
 Example) Obtaining the temperature at plant1 at the beginning of July 2011.
 
-``` example
+``` sh
 SELECT TIME_NEXT(*, TIMESTAMP('2011-07-01T00:00:00Z')) FROM plant1
 ```
 
@@ -533,7 +533,7 @@ If there is no Rows to be referenced for interpolation at a specific sampling ti
 
 Example) Obtaining hourly voltage information at Point 103, plant1 on July 1, 2011.
 
-``` example
+``` sh
 SELECT TIME_SAMPLING(
   voltage103, TIMESTAMP('2011-07-01T00:00:00Z'), TIMESTAMP('2011-07-02T00:00:00Z'), 1, HOUR)
 FROM plant1
@@ -541,7 +541,7 @@ FROM plant1
 
 In addition, regarding this sampling result, the ORDER BY section (to be described later) can be described and sorted in column sequence. Example) Determine the hourly voltage at Plant 1, Point 103 on July 1, 2011 and sort the data in voltage sequence.
 
-``` example
+``` sh
 SELECT TIME_SAMPLING(
   voltage103, TIMESTAMP('2011-07-01T00:00:00Z'), TIMESTAMP('2011-07-02T00:00:00Z'), 1, HOUR)
 FROM plant1 ORDER BY voltage103
@@ -565,7 +565,7 @@ Find the row group with the minimum specified column value. Only numerical or ti
 
 The sorting sequence of the search results can be specified by the description in the ORDER BY section. The description in the ORDER BY section is defined as follows.
 
-``` example
+``` sh
 ORDER BY (Column name) [ASC|DESC] [, (Column name) [ASC|DESC]]*
 ```
 
@@ -575,7 +575,7 @@ ASC means to sort in ascending order and DES means to sort in descending order. 
 
 Example) Conduct a search with a in descending order as the first sorting condition, b in ascending order as the second sorting condition, and c in ascending order as the third sorting condition.
 
-``` example
+``` sh
 SELECT * ORDER BY a DESC, b ASC, c
 ```
 
@@ -587,7 +587,7 @@ Unlike SQL, functions and formulas cannot be specified in the sorting conditions
 
 The number of search results found can be limited by the description stated in the LIMIT section. In addition, the start position for locating the search results can be specified by the OFFSET. The syntax of the LIMIT and OFFSET specifications are defined as follows.
 
-``` example
+``` sh
 LIMIT (number) [OFFSET (number)]
 ```
 

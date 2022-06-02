@@ -38,7 +38,7 @@ GridDBのクラスタを構成するリソースには、メモリ上のデー�
 
 初期の配置状態は以下のとおりです。
 
-``` example
+``` sh
 /var/lib/gridstore/        # GridDBホームディレクトリ
      admin/                # 統合運用管理機能ホームディレクトリ
      backup/               # バックアップディレクトリ
@@ -54,7 +54,7 @@ GridDBホームは、OSユーザgsadmの.bash_profileファイルの設定で変
 
 .bash_profileファイルには、環境変数GS_HOMEとGS_LOGの２つの環境変数の設定がされています。
 
-``` example
+``` sh
 vi .bash_profile
 
 # GridStore specific environment variables

@@ -18,7 +18,7 @@ class path. When added, the driver will be registered automatically. In
 addition, import the driver class as follows if necessary (Normally not
 required).
 
-``` example
+``` sh
 Class.forName("com.toshiba.mwcloud.gs.sql.Driver");
 ```
 
@@ -35,7 +35,7 @@ only if multicast communication with the GridDB cluster is not possible.
 **(A) If connecting automatically to a suitable node in a GridDB cluster
 using the multicast method**
 
-``` example
+``` sh
 jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -50,7 +50,7 @@ jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 **(B) If connecting directly to a node in a GridDB cluster using the
 multicast method**
 
-``` example
+``` sh
 jdbc:gs://(nodeAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -66,7 +66,7 @@ If the fixed list method is used to compose a cluster, use this method
 to
 connect.
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationMember=(notificationMember)
 ```
 
@@ -87,7 +87,7 @@ gs\_node.json file.
 If the provider method is used to compose a cluster, use this method to
 connect.
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationProvider=(notificationProvider)
 ```
 
@@ -105,7 +105,7 @@ either one of the cases (A) to (D), add them at the end of the URL as
 shown
 below.
 
-``` example
+``` sh
 ?user=(user name)&password=(password)
 ```
 
@@ -165,14 +165,14 @@ or (B). An error occurs when the name is specified using both methods.
 To include the application name in the URL, add it to the end of the URL
 as follows:
 
-``` example
+``` sh
 ?applicationName=(application name)
 ```
 
 To include the time zone in the URL, add it to the end of the URL as
 follows:
 
-``` example
+``` sh
 ?timeZone=(time zone)
 ```
 
@@ -180,7 +180,7 @@ To include also the user name and the password in the URL, use the
 following
 method.
 
-``` example
+``` sh
 ?user=(user name)&password=(password)&applicationName=(application name)&timeZone=(time zone)
 ```
 
@@ -316,14 +316,14 @@ the exception details.
       - Return an error message containing the error number and error
         description as a set. The format is as follows.
         
-        ``` example
+        ``` sh
         [(Error number):( error name)] (error description)
         ```
     
       - When the error number is not on the list, the following error
         message format will be used instead:
         
-        ``` example
+        ``` sh
         (Error Details)
         ```
 

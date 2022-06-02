@@ -29,7 +29,7 @@ JDBCパラメータのプログラムでの指定形式や使用できるデー�
 
 JDBCドライバファイル `/usr/share/java/gridstore-jdbc.jar` をクラスパスに追加します。これによりドライバが自動的に登録されます。 さらに必要に応じて、以下のようにしてドライバクラスを読み込みます。通常は不要です。
 
-``` example
+``` sh
 Class.forName("com.toshiba.mwcloud.gs.sql.Driver");
 ```
 
@@ -41,7 +41,7 @@ URLは以下の(A)～(D)の形式となります。クラスタ構成方式が�
 
 **(A)マルチキャスト方式のGridDBクラスタの適切なノードへ自動的に接続する場合**
 
-``` example
+``` sh
 jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -52,7 +52,7 @@ jdbc:gs://(multicastAddress):(portNo)/(clusterName)/(databaseName)
 
 **(B)マルチキャスト方式のGridDBクラスタ内のノードに直接接続する場合**
 
-``` example
+``` sh
 jdbc:gs://(nodeAddress):(portNo)/(clusterName)/(databaseName)
 ```
 
@@ -65,7 +65,7 @@ jdbc:gs://(nodeAddress):(portNo)/(clusterName)/(databaseName)
 
 クラスタ構成方式が固定リスト方式の場合、この形式で接続してください。
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationMember=(notificationMember)
 ```
 
@@ -80,7 +80,7 @@ jdbc:gs:///(clusterName)/(databaseName)?notificationMember=(notificationMember)
 
 クラスタ構成方式がプロバイダ方式の場合、この形式で接続してください。
 
-``` example
+``` sh
 jdbc:gs:///(clusterName)/(databaseName)?notificationProvider=(notificationProvider)
 ```
 
@@ -92,7 +92,7 @@ jdbc:gs:///(clusterName)/(databaseName)?notificationProvider=(notificationProvid
 
 なお、(A)～(D)いずれの場合でも、ユーザ名・パスワードをURLに含める場合は、URLの末尾に次のように追加してください。
 
-``` example
+``` sh
 ?user=(ユーザ名)&password=(パスワード)
 ```
 
@@ -138,20 +138,20 @@ secondsの値によって、以下のように設定されます。設定後、D
 
 アプリケーション名をURLに含める場合は、URLの末尾に次のように追加してください。
 
-``` example
+``` sh
 ?applicationName=(アプリケーション名)
 ```
 
 タイムゾーンをURLに含める場合は、URLの末尾に次のように追加してください。
 
-``` example
+``` sh
 ?timeZone=(タイムゾーン)
 ```
 
 
 ユーザ名・パスワードもURLに含める場合は、次のように追加してください。
 
-``` example
+``` sh
 ?user=(ユーザ名)&password=(パスワード)&applicationName=(アプリケーション名)&timeZone=(タイムゾーン)
 ```
 
@@ -234,13 +234,13 @@ APIのメソッド引数として、nullが許容されないにも関わらず�
 - getMessage()
   - エラー番号とエラーの説明を組にした、エラーメッセージを返却します。書式は次のようになります。
 
-    ``` example
+    ``` sh
     [(エラー番号):(エラー名)] (エラーの説明)
     ```
 
   - エラー一覧と対応しない番号のエラーが発生した場合、エラーメッセージは次のようになります。
 
-    ``` example
+    ``` sh
     (エラーの詳細)
     ```
 

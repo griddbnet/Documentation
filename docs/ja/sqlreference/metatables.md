@@ -95,7 +95,7 @@ GridDBの管理用のメタデータを参照することができるテーブ�
 
 - データパーティションの数を確認する
 
-  ``` example
+  ``` sh
   SELECT COUNT(*) FROM "#table_partitions" WHERE TABLE_NAME='myIntervalPartition';
 
   COUNT(*)
@@ -105,7 +105,7 @@ GridDBの管理用のメタデータを参照することができるテーブ�
 
 - データパーティションの下限値を確認する
 
-  ``` example
+  ``` sh
   SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions" WHERE TABLE_NAME='myIntervalPartition'
   ORDER BY PARTITION_BOUNDARY_VALUE;
 
@@ -118,7 +118,7 @@ GridDBの管理用のメタデータを参照することができるテーブ�
 
 - インターバルパーティショニングのテーブル「myIntervalPartition2」(パーティショニングキーの型：INTEGER、分割基準値 20000)のデータパーティションの下限値一覧を確認する
 
-  ``` example
+  ``` sh
   SELECT CAST(PARTITION_BOUNDARY_VALUE AS INTEGER) V FROM "#table_partitions"
   WHERE TABLE_NAME='myIntervalPartition2' ORDER BY V;
 
@@ -229,7 +229,7 @@ GridDBの管理用のメタデータを参照することができるテーブ�
 具体的には、DISPATCHING_EVENT_COUNTの方がSENDING_EVENT_COUNTより大きい場合、
 実行待ち状態のタイミングが存在した可能性が比較的高いと判定できます。
 
-``` example
+``` sh
 SELECT CREATION_TIME, NODE_ADDRESS, NODE_PORT, APPLICATION_NAME FROM "#sockets"
 WHERE SOCKET_TYPE='CLIENT' AND DISPATCHING_EVENT_COUNT > SENDING_EVENT_COUNT;
 
