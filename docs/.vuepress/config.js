@@ -136,7 +136,6 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 'gettingstarted/introduction',
-                'gettingstarted/webshell',
                 'gettingstarted/using-source-code',
                 'gettingstarted/using-rpmyum',
                 {
