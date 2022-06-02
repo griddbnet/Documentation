@@ -257,7 +257,6 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/v4.6/gettingstarted/introduction',
-                '/v4.6/gettingstarted/webshell',
                 '/v4.6/gettingstarted/using-source-code',
                 '/v4.6/gettingstarted/using-rpmyum',
                 {
@@ -510,7 +509,6 @@ module.exports = {
               children: [
                 '/ja/latest/gettingstarted/introduction',
                 '/ja/latest/gettingstarted/using-source-code',
-                '/ja/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
@@ -608,9 +606,7 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/ja/v4.6/gettingstarted/introduction',
-                '/ja/v4.6/gettingstarted/webshell',
                 '/ja/v4.6/gettingstarted/using-source-code',
-                '/ja/v4.6/gettingstarted/using-rpmyum',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
