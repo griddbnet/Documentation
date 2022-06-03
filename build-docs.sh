@@ -11,8 +11,6 @@ mkdir $branch
 mkdir $new
 
 cd $home/docs
-npm install
-
 cp -r $home/docs/* $home/$branch
 
 git checkout $new
@@ -25,6 +23,7 @@ cp -r $home/docs/* $home/$new
 
 #rm -rf $home/$new
 
+npm install
 npm run build
 mv $home/$branch $home/docs/.vuepress/dist
 mv $home/$new $home/docs/.vuepress/dist
