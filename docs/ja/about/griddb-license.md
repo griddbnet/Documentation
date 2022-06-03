@@ -1,1 +1,0 @@
-# GridDB license
