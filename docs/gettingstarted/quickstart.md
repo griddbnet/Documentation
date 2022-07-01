@@ -6,13 +6,17 @@ This manual explains how to get started with GridDB. You will learn how to insta
 In a nutshell, you can install GridDB on one machine and start / stop GridDB node and execute a series of procedures to execute the sample program.
 
 1. [Using source code](#using-source-code)
-1. [Using RPM or DEB](#using-rpm-or-deb)
+1. [Using RPM](#using-rpm)
+---
+# Using source code
 
-## Using source code
+We have confirmed the operation on CentOS 7.9 (gcc 4.8.5).
 
-We have confirmed the operation on CentOS 7.6 (gcc 4.8.5), Ubuntu 18.04 (gcc 4.8.5) and openSUSE Leap 15.1 (gcc 4.8.5).
+Note:
+- Please install Python3 in advance.
+- Please install tcl like "yum install tcl.x86_64" in advance.
 
-### Build a server and client(Java)
+## Build a server and client(Java)
 
 Download the GridDB source code package build to build the nodes and clusters. And set three environment variable.
 
@@ -31,21 +35,16 @@ The following environment variables are defined.
 
 
 | Environment variables | Value | Meaning |
-|---------|----|------|
+|-----------------------|-------|---------|
 | GS_HOME | Directory where source code file is decompressed | GridDB home directory |
 | GS_LOG | $GS_HOME/log | Event log file output directory |
 
-::: tip Notes
-
+#### :warning: Note
 - These environment variables are referenced by the operational commands shown in the following subsections.
-- Default building environment repeals the trigger function. Add the following option in build to enable a trigger function. Add the following option in build to enable the trigger function.
-```
-$ ./configure --enable-activemq
-```
-:::
-### Environmental settings
 
-#### Network settings
+## Environmental settings
+
+### Network settings
 
 GridDB uses multicast communication to constitute a cluster.
 Set the network to enable multicast communication.
@@ -60,7 +59,7 @@ $ hostname -i
 192.168.11.10
 ```
 
-If the following message or the loopback addresses points to 127.0.0.1, additional network configuration is needed.
+If the following message or the loopback addresses points to 127.0.0.1, additional network configuration is needed. .
 
 [Example]
 ```
@@ -106,28 +105,30 @@ Follow the following procedures from 1 to 3.
 
 3. Execute "hostname -i" command to check the settings of an IP address  of the host.  Check that the IP address specified in the procedure 2 is displayed.
 
+
    [Example]
    ```
    $ hostname -i
    192.168.11.10
    ```
 
-#### GridDB Admin user setting
+### GridDB Admin user setting
 
-An admin user is used for authentication purposes in nodes and clusters. Administrator user information is stored in the *User definition file*. The default file is as shown below.
+An admin user is used for authentication purposes in nodes and clusters. 
+Administrator user information is stored in the *User definition file*. The default file is as shown below.
 
 $GS_HOME/conf/password
 
 The following default users exist just after installation.
 
 | User | Password |
-|--------|------------|
+|------|----------|
 | admin | No settings |
 
 Administrator user information including the above-mentioned default users can be changed using the user administration command in the operating commands.
 
 | Command | Function |
-|-------------------|-------------------------------------------|
+|---------|----------|
 | gs_adduser | Add an administrator user |
 | gs_deluser | Delete an administrator user |
 | gs_passwd | Change the password of an administrator user |
@@ -136,9 +137,8 @@ Administrator user information including the above-mentioned default users can b
 Change the password as shown below when using a default user.
 The password is encrypted during registration.
 
-::: tip Notes
+#### :warning: Note
 - Default user password has not been set. Be sure to change the password as the server will not start if the administrator user password is not set.
-:::
    ```
    $ gs_passwd admin
    Password:（Input password）
@@ -150,13 +150,13 @@ The password is encrypted during registration.
 
 - An example on adding a new administrator user is shown below.
 
-```
-$ gs_adduser gs#newuser
-Password:（Input password）
-Retype password:（Input password again）
-```
+   ```
+   $ gs_adduser gs#newuser
+   Password:（Input password）
+   Retype password:（Input password again）
+   ```
 
-#### Setting parameters of a node
+### Setting parameters of a node
 
 To operate GridDB after installation, initial setting of parameters, such as addresses and the cluster name, is required.
 In this manual, only "Cluster name", an essential item, is set and for other items default values are used.
@@ -198,17 +198,16 @@ $ vi $GS_HOME/conf/gs_cluster.json
 }
 ```
 
-::: tip Notes
-
+##### :memo: Note
 - Using a cluster name, which is unique on the sub network is recommended.
 - A cluster name must be composed of one or more ASCII alphanumeric characters or the underscore "\_". A number is not accepted as the first character of the name. The name is also not case-sensitive. The maximum length of the name must be 64 characters.
-:::
-#### Explanation of terms
+
+### Explanation of terms
 
 Except for network settings and the cluster name, GridDB can operate with the default setting values. The main setting items are shown below. Use the values below when executing the tools in the following sections.
 
 | Setting items | Value |
-|---------------------------------|----------|
+|---------------|-------|
 | IP address | The IP address displayed when executing "hostname -i" command |
 | Cluster name | myCluster |
 | Multicast address | 239.0.0.1 (Default value) |
@@ -219,31 +218,30 @@ Except for network settings and the cluster name, GridDB can operate with the de
 | SQL multicast port number | 41999 (Default value) |
 
 　
-### Starting/stopping
+## Starting/stopping
 
 Start/stop a GridDB node and a cluster. Starting/stopping operations using operating commands are introduced from among some operational methods of GridDB. The operation command is executed as a gsadm user.
 
 A list of operating commands
 
 | Command | Function |
-|---------|------|
+|---------|----------|
 | gs_startnode | Starting a node |
-| gs\_joincluster | Add a node to a cluster. |
+| gs_joincluster | Add a node to a cluster. |
 | gs_leavecluster | Detach a node from a cluster |
 | gs_stopcluster | Stopping a cluster |
 | gs_stopnode | Stop a node (shutdown) |
 | gs_stat | Get node internal data |
 
-::: tip Note
+#### :warning: Note
 - If a proxy variable (http_proxy) has been set up, set the node address in no_proxy and exclude it from the proxy target.
    Otherwise, since the operating command uses REST/http communications, it will connect to the proxy server and will fail to operate.
-:::
    Example of setting
    ```
    $ export no_proxy=localhost,127.0.0.1,192.168.11.10
    ```
 
-#### Starting operations
+### Starting operations
 
 After installing and setting up the GridDB node, the flow for starting the GridDB cluster is as follows:
 1. Starting a node
@@ -256,7 +254,8 @@ The example in this manual is "single configuration" using one node. Start up a 
 
 #### Starting a node
 
-Use gs_startnode command to start a node. Use the command. Specify the user name and the password of admin, the management user, along with the user authentication option -u, and specify -w option to wait for the node to start.
+Use gs_startnode command to start a node. 
+Specify the user name and the password of admin, the management user, along with the user authentication option -u, and specify -w option to wait for the node to start.
 
 [Example]
 ```
@@ -285,9 +284,9 @@ $ gs_stat -u admin/admin | grep Status
 
 If the three status displayed by "gs_stat" command are the same as above, the cluster has started normally. The cluster is accessible from an application.
 
-#### Stopping operations
+### Stopping operations
 
-##### Basic flow
+#### Basic flow
 
 The stopping procedures of GridDB is as follows.
 1. Stopping a cluster
@@ -309,7 +308,6 @@ $ gs_stopcluster -u admin/admin -w
 .
 .
 The GridDB cluster has been stopped.
-$
 ```
 
 #### Stopping a node
@@ -328,7 +326,7 @@ The GridDB node is stopped.
 The GridDB node has been stopped.
 ```
 
-### Build/execution method
+## Build/execution method
 
 An example on how to build and execute a program is as shown.
 
@@ -347,13 +345,13 @@ $ javac gsSample/Sample1.java
 $ java gsSample/Sample1 239.0.0.1 31999 setup_cluster_name admin your_password
 ```
 ---
-##  Using RPM or DEB
+# Using RPM
 
-We have confirmed the operation on CentOS 7.6, Ubuntu 18.04 and openSUSE Leap 15.1.
+We have confirmed the operation on CentOS 7.9.
 
-::: tip Notes
-- When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user. 
-:::
+#### :warning: Note
+- Please install Python3 in advance.
+- When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user.   
    Example
    ```
    # su - gsadm
@@ -362,14 +360,18 @@ We have confirmed the operation on CentOS 7.6, Ubuntu 18.04 and openSUSE Leap 15
    ```
 - You do not need to set environment variable GS_HOME and GS_LOG. And the place of operating command is set to environment variable PATH.
 - There is Java client library (gridstore.jar) on /usr/share/java and a sample on /usr/gridb-XXX/docs/sample/programs.
-- The packages for Ubuntu and openSUSE do not include trigger function.
+- If old version has been installed, please uninstall and remove conf/ and data/ on /var/lib/gridstore.
 
-### Install
+## Install
 
 Install the package of your target OS.
-
-    X.X.X means version
-#### User and directory structure after installation
+	
+	(CentOS)
+    $ sudo rpm -ivh griddb-X.X.X-linux.x86_64.rpm
+    
+	X.X.X means version
+	
+### User and directory structure after installation
 
 When the GridDB package is installed, the following users and directory structure will be created.
 
@@ -377,8 +379,8 @@ When the GridDB package is installed, the following users and directory structur
 
 The OS group gridstore and user gsadm are created. Use the user gsadm as the operator of GridDB.
 
-| User | Group | // GridDB home directory path |
-|---------|-------|---------------------|
+| User | Group |  GridDB home directory path |
+|------|-------|-----------------------------|
 | gsadm | gridstore | /var/lib/gridstore |
 
 The following environment variables are defined for user gsadm (in the .bash_profile file):
@@ -394,40 +396,48 @@ The following environment variables are defined for user gsadm (in the .bash_pro
 
 The following two directories are created: GridDB home directory which contains files such as a node definition file and database files, the installation directory which contains the installed files.
 
-#### GridDB home directory
+###### GridDB home directory
 ```
-/var/lib/gridstore/                      #GridDB home directory
+/var/lib/gridstore/                      # GridDB home directory
                    conf/                 # Definition file directory
-                        gs_cluster.json  #Cluster definition file
-                        gs_node.json     #Node definition file
-                        password         #User definition file
-                   data/                 # Database file directory
+                        gs_cluster.json  # Cluster definition file
+                        gs_node.json     # Node definition file
+                        password         # User definition file
+                   data/                 # Data file, checkpoint log directory
+                   txnlog/               # Transaction log file directory
                    log/                  # Log directory
 ```
 
-#### Installation directory
+###### Installation directory
 ```
 Installation directory
             bin/                        # Operation command, module directory
-            conf/                       #Definition file directory
+            conf/                       # Definition file directory
                 gs_cluster.json         # Custer definition file
-                gs_node.json            #Node definition file
-                password                #User definition file
+                gs_node.json            # Node definition file
+                password                # User definition file
+            conf_multicast/             # Definition file directory (for remote connection)
             3rd_party/                  
             docs/
                 manual/
                 sample/
 ```
 
-### Environmental settings
+## Environmental settings
 
-[When using source code](#using-source-code) the "[environmental setting ](#environmental-settings)" is the same。
+[When using source code](#using-source-code)the "[environmental setting ](#environmental-setting)" is the same。
 
-### Starting/stopping
+## Starting/stopping
 
-Operate as the gsadm user. Other than that, it is the same as "Start / Stop" in " When using source code".
+Operate as the gsadm user. 
 
-### Build/execution method
+Default is only for local connection. So, please change the configure files as follows.
+
+    [gsadm]$ cp /usr/griddb-X.X.X/conf_multicast/* conf/.
+
+Other than that, it is the same as "Start / Stop" in "[When using source code]".
+
+## Build/execution method
 
 An example on how to build and execute a program is as shown.
 
@@ -454,16 +464,9 @@ If you no longer need GridDB, uninstall the package. Execute the following proce
 [Example]
 
     (CentOS)
-    $ sudo rpm -e griddb_nosql
-    
-    (Ubuntu)
-    $ sudo dpkg -r griddb_nosql
-    
-    (openSUSE)
-    $ sudo zypper remove griddb_nosql
+    $ sudo rpm -e griddb
 
-::: tip Notes
-
+#### :warning: Note
 - Files under the GridDB home directory such as definition files and data files will not be uninstalled. If you do not need it, delete it manually.
-:::
+
 ---
