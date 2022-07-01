@@ -147,6 +147,7 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/latest/gettingstarted/introduction',
+                '/latest/gettingstarted/webshell',
                 '/latest/gettingstarted/using-source-code',
                 '/latest/gettingstarted/using-rpmyum',
                 '/latest/gettingstarted/using-apt',
