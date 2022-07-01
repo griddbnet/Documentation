@@ -1,6 +1,6 @@
-# Using RPM/YUM
+# Using Apt 
 
-We have confirmed the operation on CentOS 7.6.
+We have confirmed the operation on Ubuntu 18.04.05.
 
 #### :warning: Note
 - When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user.   
@@ -13,37 +13,32 @@ We have confirmed the operation on CentOS 7.6.
 - You do not need to set environment variable GS_HOME and GS_LOG. And the place of operating command is set to environment variable PATH.
 - There is Java client library (gridstore.jar) on /usr/share/java and a sample on /usr/gridb-XXX/docs/sample/programs.
 
-## Install with RPM
+## Install with deb
 
 Install the package of your target OS.
 	
-	(CentOS)
-    $ sudo rpm -ivh griddb_nosql-X.X.X-linux.x86_64.rpm
+	(Ubuntu)
+    $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
     
 	X.X.X means version
 
-## Install with YUM
+## Install with Apt-Get
 
 Alternatively you can install GridDB using YUM. 
 
-First create the Yum Repo File:
+First create the Apt Repo File:
 
-    sudo cat > /etc/yum.repos.d/griddb.repo << EOF
-    [griddb]
-    name=GridDB.net
-    baseurl=https://griddb.net/yum/el7/5.0/
-    enabled=1
-    gpgcheck=1
-    gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB.txt
-    EOF
+    sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.0 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
+
+And then import the key: 
+
+    wget -qO - https://www.griddb.net/apt/griddb.asc | sudo apt-key add -
 
 Then install GridDB:
-    ```
-    $ sudo yum -y install griddb griddb-c-client
-    ```
 
-#### :warning: Note
-If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
+    ```
+    $ sudo apt install griddb 
+    ```
 
 	
 ### User and directory structure after installation
@@ -131,7 +126,7 @@ If you no longer need GridDB, uninstall the package. Execute the following proce
 [Example]
 
     (CentOS)
-    $ sudo rpm -e griddb_nosql
+    $ sudo apt remove griddb
 
 #### :warning: Note
 - Files under the GridDB home directory such as definition files and data files will not be uninstalled. If you do not need it, delete it manually.
