@@ -4,9 +4,11 @@ git fetch --all
 
 home=$(pwd)
 branch=$(git rev-parse --abbrev-ref HEAD)
+echo "branch = $branch"
 #branch="latest"
 new="v5.0"
 
+echo "Making directories latest && $branch"
 mkdir $branch
 mkdir latest
 
