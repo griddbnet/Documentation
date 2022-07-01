@@ -4,7 +4,7 @@ git fetch --all
 
 home=$(pwd)
 #$thisBranch=$(git rev-parse --abbrev-ref HEAD)
-$thisBranch="latest"
+thisBranch="latest"
 echo "thisBranch = $thisBranch"
 #branch="latest"
 oldBranch="v4.6"
@@ -39,9 +39,11 @@ mv $home/$oldBranch $home/docs/
 echo "going to run build"
 npm run build
 
-echo "deleting directories: docs/$thisBranch and docs/latest"
+echo "deleting directories: docs/$thisBranch and docs/$oldBranch and docs/node_modules"
 rm -rf $home/docs/$thisBranch
 rm -rf $home/docs/$oldBranch
+rm -rf $home/docs/node_modules
+
 
 echo "going back to branch $thisBranch"
 git checkout main
