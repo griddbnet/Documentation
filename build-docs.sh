@@ -3,34 +3,45 @@
 git fetch --all
 
 home=$(pwd)
-branch=$(git rev-parse --abbrev-ref HEAD)
-echo "branch = $branch"
+#$thisBranch=$(git rev-parse --abbrev-ref HEAD)
+$thisBranch="latest"
+echo "thisBranch = $thisBranch"
 #branch="latest"
-new="v5.0"
+oldBranch="v4.6"
 
-echo "Making directories latest && $branch"
-mkdir $branch
-mkdir latest
+
+echo "Making directories $thisBranch && $oldBranch"
+mkdir $thisBranch
+mkdir $oldBranch
 
 cd $home/docs
-cp -r $home/docs/* $home/$branch
+echo "Copying contents of this branch to dir name of $thisBranch"
+cp -r $home/docs/* $home/$thisBranch
 
-echo "changing branch"
-git checkout $new
-echo "copying over new branch contents!"
-cp -r $home/docs/* $home/latest
+echo "changing branch to $oldBranch"
+git checkout $oldBranch
+echo "copying over older docs to directory called $oldBranch"
+cp -r $home/docs/* $home/$oldBranch
 
 #mv .vuepress/dist/* .vuepress/$new
 #mv .vuepress/$new .vuepress/dist
-#mv $home/$branch .vuepress/dist
+#mv $home/$thisBranch .vuepress/dist
 #cp .vuepress/dist/$new/* .vuepress/dist
 
 #rm -rf $home/$new
 
 echo "running install"
 npm install
-echo "copying contents to dist"
-mv $home/$branch $home/docs/
-mv $home/latest $home/docs/
+echo "copying contents to docs for building"
+mv $home/$thisBranch $home/docs/
+mv $home/$oldBranch $home/docs/
+
+echo "going to run build"
 npm run build
-git checkout $branch
+
+echo "deleting directories: docs/$thisBranch and docs/latest"
+rm -rf $home/docs/$thisBranch
+rm -rf $home/docs/$oldBranch
+
+echo "going back to branch $thisBranch"
+git checkout main
