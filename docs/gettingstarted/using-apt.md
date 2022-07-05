@@ -24,7 +24,7 @@ Install the package of your target OS.
 
 ## Install with Apt-Get
 
-Alternatively you can install GridDB using YUM. 
+Alternatively you can install GridDB using Apt. 
 
 First create the Apt Repo File:
 
@@ -37,6 +37,7 @@ And then import the key:
 Then install GridDB:
 
     ```
+    $ sudo apt update -y
     $ sudo apt install griddb 
     ```
 
