@@ -16,10 +16,16 @@ yarn add -D vuepress # OR npm install -D vuepress
 cd docs && yarn dev # OR cd docs && npm run dev
 ```
 
-4. To generate static assets
+4a. To generate static assets
 ``` sh
 cd docs && yarn build # OR cd docs && npm run build
 ```
+
+4b. To generate current version + older versions in static assets (usable only from main branch)
+``` sh 
+$ ./build-docs.sh
+```
+All contents will be available in docs/.vuepress/dist
 
 ## Markdown Guide
 
