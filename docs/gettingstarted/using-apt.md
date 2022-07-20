@@ -35,13 +35,17 @@ And then import the key:
     wget -qO - https://www.griddb.net/apt/griddb.asc | sudo apt-key add -
 
 Then install GridDB:
-
-    ```
+    
     $ sudo apt update
     $ sudo apt install griddb-meta
-    ```
+    
 
 With that command, GridDB, the C-client, and the GridDB CLI will be installed onto your machine.
+
+You can drop into the shell like so: 
+
+    $ sudo su gsadm
+    $ gs_sh
 
 	
 ### User and directory structure after installation

@@ -38,12 +38,17 @@ First create the Yum Repo File:
     EOF
 
 Then install GridDB:
-    ```
+    
     $ sudo yum update
     $ sudo yum -y install griddb-meta
-    ```
+    
 
 With that command, GridDB, the C-client, and the GridDB CLI will be installed onto your machine.
+
+You can drop into the shell like so: 
+
+    $ sudo su gsadm
+    $ gs_sh
 
 #### :warning: Note
 If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
