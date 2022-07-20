@@ -260,6 +260,7 @@ module.exports = {
                 '/v4.6/gettingstarted/introduction',
                 '/v4.6/gettingstarted/using-source-code',
                 '/v4.6/gettingstarted/using-rpmyum',
+                '/v4.6/gettingstarted/using-apt',
                 {
                   title: 'Build an App',
                   collapsable: false,
