@@ -24,8 +24,8 @@ cp -r $home/docs/* $home/$oldBranch
 echo "running install"
 npm install
 echo "copying contents to docs for building"
-mv $home/$thisBranch $home/docs/
-mv $home/$oldBranch $home/docs/
+sudo mv $home/$thisBranch $home/docs/
+sudo mv $home/$oldBranch $home/docs/
 
 echo "going to run build"
 npm run build
