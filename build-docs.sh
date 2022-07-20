@@ -3,10 +3,8 @@
 git fetch --all
 
 home=$(pwd)
-#$thisBranch=$(git rev-parse --abbrev-ref HEAD)
 thisBranch="latest"
 echo "thisBranch = $thisBranch"
-#branch="latest"
 oldBranch="v4.6"
 
 
@@ -22,13 +20,6 @@ echo "changing branch to $oldBranch"
 git checkout $oldBranch
 echo "copying over older docs to directory called $oldBranch"
 cp -r $home/docs/* $home/$oldBranch
-
-#mv .vuepress/dist/* .vuepress/$new
-#mv .vuepress/$new .vuepress/dist
-#mv $home/$thisBranch .vuepress/dist
-#cp .vuepress/dist/$new/* .vuepress/dist
-
-#rm -rf $home/$new
 
 echo "running install"
 npm install
