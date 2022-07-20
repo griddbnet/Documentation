@@ -106,8 +106,6 @@ Installation directory
 
 ## Environmental settings
 
-[When using source code ](using-source-code.md)the "[environmental setting](using-source-code/#environmental-settings)" is the same。
-
 ## Starting/stopping
 
 Operate as the gsadm user. Other than that, it is the same as "Start / Stop" in "[When using source code]".

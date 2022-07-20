@@ -100,7 +100,6 @@ Installation directory
 
 ## Environmental settings
 
-[When using source code ](using-source-code.md)the "[environmental setting](using-source-code/#environmental-settings)" is the same。
 
 ## Starting/stopping
 

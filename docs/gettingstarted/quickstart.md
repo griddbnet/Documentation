@@ -5,7 +5,6 @@ This manual explains how to get started with GridDB. You will learn how to insta
 
 In a nutshell, you can install GridDB on one machine and start / stop GridDB node and execute a series of procedures to execute the sample program.
 
-1. [Using source code](#using-source-code)
 1. [Using RPM](#using-rpm)
 ---
 # Using source code
@@ -425,7 +424,6 @@ Installation directory
 
 ## Environmental settings
 
-[When using source code](#using-source-code)the "[environmental setting ](#environmental-setting)" is the same。
 
 ## Starting/stopping
 
