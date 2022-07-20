@@ -59,7 +59,7 @@ the initial data of each resource is placed under this directory.
 
 The directories are placed initially as follows.
 
-``` example
+``` sh
 /var/lib/gridstore/        # GridDB home directory path
      admin/                # gs_admin home directory
      backup/               # Backup directory
@@ -78,7 +78,7 @@ resources in the above directory accordingly.
 The .bash\_profile file contains two environment variables, GS\_HOME and
 GS\_LOG.
 
-``` example
+``` sh
 vi .bash_profile
 
 # GridStore specific environment variables

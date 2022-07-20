@@ -204,7 +204,7 @@ With TQL, management of two or three-dimensional spatial structure is
 possible. Generating and judgement function are also
 provided.
 
-``` example
+``` sh
  SELECT * WHERE ST_MBRIntersects(geom, ST_GeomFromText('POLYGON((0 0,10 0,10 10,0 10,0 0))'))
 ```
 

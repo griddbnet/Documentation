@@ -106,7 +106,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - テーブルの作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myTable (
     key INTEGER PRIMARY KEY,
     value1 DOUBLE NOT NULL,
@@ -116,7 +116,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - ロウ期限解放を使用する時系列テーブルの作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myTimeseries (
     mycolumn1 TIMESTAMP PRIMARY KEY,
     mycolumn2 STRING
@@ -165,7 +165,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - ハッシュパーティショニングテーブルの作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myHashPartition (
     id INTEGER PRIMARY KEY,
     value STRING
@@ -225,7 +225,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - インターバルパーティショニングテーブルの作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myIntervalPartition (
     date TIMESTAMP PRIMARY KEY,
     value STRING
@@ -234,7 +234,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - パーティション期限解放を使用するインターバルパーティショニングテーブル(時系列テーブル)の作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myIntervalPartition2 (
     date TIMESTAMP PRIMARY KEY,
     value STRING
@@ -295,7 +295,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - インターバルハッシュパーティショニングテーブルの作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myIntervalHashPartition (
     date TIMESTAMP,
     value STRING,
@@ -306,7 +306,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - パーティション期限解放を使用するインターバルハッシュパーティショニングテーブル(時系列テーブル)の作成
 
-  ``` example
+  ``` sh
   CREATE TABLE myIntervalHashPartition2 (
     date TIMESTAMP PRIMARY KEY,
     value STRING
@@ -479,7 +479,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - 複数のカラムの追加
 
-  ``` example
+  ``` sh
   ALTER TABLE myTable1
     ADD COLUMN col111 STRING NOT NULL,
     ADD COLUMN col112 INTEGER;
@@ -512,7 +512,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - インターバルパーティショニングのテーブル「myIntervalPartition1」(パーティショニングキーの型：TIMESTAMP、分割幅値30日)のデータパーティションの下限値一覧を確認する
 
-  ``` example
+  ``` sh
   SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
   WHERE TABLE_NAME='myIntervalPartition1' ORDER BY PARTITION_BOUNDARY_VALUE;
 
@@ -526,7 +526,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - 不要なデータパーティションを削除する
 
-  ``` example
+  ``` sh
   ALTER TABLE myIntervalPartition1 DROP PARTITION FOR ('2017-01-10T13:00:00Z');
   ```
 
@@ -534,7 +534,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - インターバル-ハッシュパーティショニングのテーブル「myIntervalHashPartition」(インターバルパーティショニングキーの型：TIMESTAMP、分割幅値90DAY、ハッシュパーティショニングキーの分割数3)のデータパーティションの下限値一覧を確認する
 
-  ``` example
+  ``` sh
   SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
   WHERE TABLE_NAME='myIntervalHashPartition' ORDER BY PARTITION_BOUNDARY_VALUE;
 
@@ -552,13 +552,13 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - 不要なデータパーティションを削除する
 
-  ``` example
+  ``` sh
   ALTER TABLE myIntervalHashPartition DROP PARTITION FOR ('2016-09-15T10:00:00Z');
   ```
 
 - 同じ下限値のデータパーティションが削除される
 
-  ``` example
+  ``` sh
   SELECT PARTITION_BOUNDARY_VALUE FROM "#table_partitions"
   WHERE TABLE_NAME='myIntervalHashPartition' ORDER BY PARTITION_BOUNDARY_VALUE;
 
@@ -650,7 +650,7 @@ GridDBでサポートされるSQL文は、次の通りです。
 
 - VALUESではなくSELECT文を指定した場合は、その実行結果が登録データになります。
 
-``` example
+``` sh
 INSERT INTO myTable1 VALUES(1, 100);
 
 REPLACE INTO myTable1 VALUES(1, 200);
@@ -683,7 +683,7 @@ INSERT INTO myTable1 SELECT * FROM myTable2;
 - PRIMARY KEY制約のあるカラムの値は更新できません。
 - パーティショニングを設定した場合、UPDATE句を使ってパーティショニングキーになっている項目を別の値に更新することはできません。このような場合は、DELETE文を実行後にINSERT文を実行してください。
   - 例)
-    ``` example
+    ``` sh
     CREATE TABLE tab (a INTEGER, b STRING) PARTITION BY HASH a PARTITIONS 5;
 
     -- NG
@@ -696,7 +696,7 @@ INSERT INTO myTable1 SELECT * FROM myTable2;
 
 - SET句で指定する列名は、テーブル名で修飾することはできません。
   - 例)
-    ``` example
+    ``` sh
     CREATE TABLE myTable1 (key INTEGER, value INTEGER);
 
     -- NG
@@ -708,7 +708,7 @@ INSERT INTO myTable1 SELECT * FROM myTable2;
 
 - サブクエリを更新値に利用することはできません。ただし、WHERE句などの条件文には利用可能です。
   - 例)
-    ``` example
+    ``` sh
     CREATE TABLE myTable1 (key INTEGER, value INTEGER);
 
     -- NG
@@ -739,7 +739,7 @@ INSERT INTO myTable1 SELECT * FROM myTable2;
 - サブクエリを指定する場合は、()で括り、別名を指定する必要があります。
 
 例)
-``` example
+``` sh
 SELECT a.ID, b.ID FROM mytable a, (SELECT ID FROM mytable2) b;
 
 ID     ID
@@ -829,7 +829,7 @@ GROUP BY句によりグループ化された情報に対して探索条件で絞
 結合条件は、ON句またはUSING句を用いて指定します。
 
 例)
-```example
+```sh
 名前: employees
 
  id   first_name   department_id
@@ -885,7 +885,7 @@ SELECT * FROM employees e LEFT JOIN departments d  ON e.department_id=d.departme
 | 左外部結合   | *テーブル1* NATURAL LEFT [OUTER] JOIN *テーブル2*   |
 | クロス結合   | *テーブル1* NATURAL CROSS JOIN *テーブル2*          |
 
-``` example
+``` sh
 SELECT * FROM employees NATURAL INNER JOIN departments;
 
  department_id   id    first_name     department
@@ -1027,7 +1027,7 @@ SQL文で使用する演算子を以下に説明します。
 
 - 次の条件を満たす場合はtrueを返します。
 
-  ``` example
+  ``` sh
   式2 ≦ 式1 ≦ 式3
   ```
 
@@ -1124,7 +1124,7 @@ SQL文には以下の関数が用意されています。
 
 関数の説明では、以下のテーブルのデータを実行例として使用します。
 
-```example
+```sh
 テーブル: employees
 
  id   first_name   last_name   age     department    enrollment_period
@@ -1186,7 +1186,7 @@ SQL文には以下の関数が用意されています。
 - 結果の型はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT AVG(age) FROM employees;
 結果：41.0
 
@@ -1217,7 +1217,7 @@ SELECT department, AVG(age) avg FROM employees GROUP BY department;
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 SELECT COUNT(*) FROM employees;
 結果：6
 
@@ -1245,7 +1245,7 @@ SELECT COUNT(DISTINCT department) FROM employees;
 - 結果の型は、引数*x*の型と同じです。
 
 例)
-```example
+```sh
 SELECT MAX(age) FROM employees;
 結果：59
 
@@ -1271,7 +1271,7 @@ SELECT MAX(first_name) FROM employees;
 
 
 例)
-```example
+```sh
 SELECT MIN(age) FROM employees;
 結果：29
 
@@ -1299,7 +1299,7 @@ SELECT MIN(first_name) FROM employees;
   - *n* の値がNULLのみの場合、SUMはNULLを返します。TOTALは0を返します。
 
 例)
-```example
+```sh
 SELECT SUM(age) FROM employees;
 結果：205
 
@@ -1333,7 +1333,7 @@ SELECT department, SUM(age) sum FROM employees GROUP BY department;
 - 結果の型はSTRING型です。
 
 例)
-```example
+```sh
 // 名前last_nameを'/'で連結します
 SELECT GROUP_CONCAT(last_name, '/') from employees;
 結果： Smith/Jones/Brown/Taylor/Smith
@@ -1369,7 +1369,7 @@ SELECT GROUP_CONCAT(age, ' + ') FROM employees;
 - 結果の型はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT department, STDDEV_SAMP(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 結果：
    department    enrollment_period_stddev
@@ -1401,7 +1401,7 @@ SELECT department, STDDEV_SAMP(enrollment_period) enrollment_period_stddev from 
   - STDDEV0は、*x* が1件の場合に、0を返します。
 
 例)
-```example
+```sh
 SELECT department, STDDEV(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 結果：
    department    enrollment_period_stddev
@@ -1449,7 +1449,7 @@ SELECT STDDEV0(enrollment_period) enrollment_period_stddev from employees WHERE 
 - 結果の型はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT department, STDDEV_POP(enrollment_period) enrollment_period_stddev from employees GROUP BY department;
 結果：
    department    enrollment_period_stddev
@@ -1478,7 +1478,7 @@ SELECT department, STDDEV_POP(enrollment_period) enrollment_period_stddev from e
 - 結果の型はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT department, VAR_SAMP(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 結果：
    department    enrollment_period_variance
@@ -1510,7 +1510,7 @@ SELECT department, VAR_SAMP(enrollment_period) enrollment_period_variance from e
   - VARIANCE0は*x*が1件の場合に、0を返します。
 
 例)
-```example
+```sh
 SELECT department, VARIANCE(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 結果：
    department    enrollment_period_variance
@@ -1557,7 +1557,7 @@ SELECT VARIANCE0(enrollment_period) enrollment_period_variance from employees WH
 - 結果の型はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT department, VAR_POP(enrollment_period) enrollment_period_variance from employees GROUP BY department;
 結果：
    department    enrollment_period_variance
@@ -1584,7 +1584,7 @@ SELECT department, VAR_POP(enrollment_period) enrollment_period_variance from em
 - 同一SELECT句内でのWINDOW関数/OVER句の複数利用や、WINDOW関数/OVER句とMEDIAN関数の同時利用はできません。
 
 例)
-```example
+```sh
 SELECT MEDIAN(age) FROM employees;
 結果：43
 
@@ -1617,7 +1617,7 @@ SELECT department, MEDIAN(age) mn FROM employees GROUP BY department ORDER BY mn
 - 結果の型は、*n* が整数のみの場合はLONG型、浮動小数点数の場合はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT first_name, ABS(age) abs FROM employees;
 結果：
   first_name    abs
@@ -1646,7 +1646,7 @@ SELECT first_name, ABS(age) abs FROM employees;
 - 結果の型は、*n*  が整数のみの場合はLONG型、浮動小数点数の場合はDOUBLE型です。
 
 例)
-```example
+```sh
 SELECT first_name, ROUND(enrollment_period, 0) round FROM employees;
 結果：
   first_name    round
@@ -1672,7 +1672,7 @@ SELECT first_name, ROUND(enrollment_period, 0) round FROM employees;
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 SELECT first_name, RANDOM() random FROM employees;
 結果：
   first_name    random
@@ -1704,7 +1704,7 @@ SELECT first_name, RANDOM() random FROM employees;
 
 
 例)
-```example
+```sh
 SELECT first_name, age, enrollment_period, MAX(age, enrollment_period) max FROM employees;
 結果：
   first_name    age    enrollment_period   max
@@ -1733,7 +1733,7 @@ SELECT first_name, age, enrollment_period, MAX(age, enrollment_period) max FROM 
 
 例)
 
-```example
+```sh
 SELECT LOG(2, 8);
 結果：3.0
 
@@ -1756,7 +1756,7 @@ SELECT LOG(0.5, 2.0);
 
 例)
 
-```example
+```sh
 SELECT SQRT(4);
 結果：2.0
 
@@ -1782,7 +1782,7 @@ SELECT SQRT(16.0);
 
 例)
 
-```example
+```sh
 SELECT TRUNC(123.4567);
 結果：123.0
 
@@ -1813,7 +1813,7 @@ SELECT TRUNC(1234567, -2);
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 SELECT HEX_TO_DEC('FF');
 結果：255
 
@@ -1839,7 +1839,7 @@ SELECT HEX_TO_DEC('10');
 - 引数にはBLOB型を指定することも可能です。
 
 例)
-```example
+```sh
 SELECT last_name, LENGTH(last_name) length FROM employees;
 結果：
   last_name     length
@@ -1868,7 +1868,7 @@ SELECT last_name, LENGTH(last_name) length FROM employees;
 - ASCII英字相当以外のUnicode文字は変換対象外です。
 
 例)
-```example
+```sh
 SELECT last_name, LOWER(last_name) lower FROM employees;
 結果：
   last_name     lower
@@ -1897,7 +1897,7 @@ SELECT last_name, LOWER(last_name) lower FROM employees;
 - ASCII英字相当以外のUnicode文字(キリル文字など)は変換対象外です。
 
 例)
-```example
+```sh
 SELECT last_name, UPPER(last_name) upper FROM employees;
 結果：
   last_name     upper
@@ -1928,7 +1928,7 @@ SELECT last_name, UPPER(last_name) upper FROM employees;
 - 引数にはBLOB型を指定することも可能です。
 
 例)
-```example
+```sh
 SELECT SUBSTR('abcdefg', 3);
 結果：cdefg
 
@@ -1952,7 +1952,7 @@ SELECT SUBSTR('abcdefg', 3, 2);
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT REPLACE('abcdefabc', 'abc', '123');
 結果：123def123
 ```
@@ -1976,7 +1976,7 @@ SELECT REPLACE('abcdefabc', 'abc', '123');
 
 
 例)
-```example
+```sh
 SELECT INSTR('abcdef', 'cd');
 結果：3
 
@@ -2017,7 +2017,7 @@ SELECT INSTR('abcabcabcde', 'ab', -1, 2);
 - 結果の型はBOOL型です。
 
 例)
-```example
+```sh
 SELECT last_name, LIKE('%mi%', last_name) like_name FROM employees;
 結果：
   last_name     like_name
@@ -2065,7 +2065,7 @@ SELECT LIKE('%C@%D%', 'ABC%DEF', '@');
 - 結果の型はBOOL型です。
 
 例)
-```example
+```sh
 SELECT GLOB('*[BA]AB?D', 'AABCD');
 結果：true
 ```
@@ -2085,7 +2085,7 @@ SELECT GLOB('*[BA]AB?D', 'AABCD');
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT TRIM(' ABC ');
 結果：ABC  (両端にスペース無し)
 
@@ -2108,7 +2108,7 @@ SELECT TRIM('ABCAA', 'BA');
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT LTRIM(' ABC ');
 結果：ABC  (左端にスペース無し)
 
@@ -2131,7 +2131,7 @@ SELECT LTRIM('ABCAA', 'A');
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT RTRIM(' ABC ');
 結果： ABC  (右端にスペース無し)
 
@@ -2157,7 +2157,7 @@ SELECT RTRIM('ABCAA', 'A');
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT QUOTE(last_name) last_name, QUOTE(age) age FROM employees;
 結果：
   last_name     age
@@ -2194,7 +2194,7 @@ SELECT value, QUOTE(value) FROM testcontainer;
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 SELECT last_name, UNICODE(last_name) unicode FROM employees;
 結果：
   last_name     unicode
@@ -2221,7 +2221,7 @@ Unicodeコードポイントの値*xn*の文字を連結した文字列を返し
 - 結果の型はSTRING型です。
 
 例)
-```example
+```sh
 SELECT CHAR(83, 84, 85);
 結果：STU
 ```
@@ -2244,7 +2244,7 @@ SELECT CHAR(83, 84, 85);
 | %Q | 文字列中にシングルクォートがある場合、2つのシングルクォート''にエスケープします。<br>文字列の両端をシングルクォートで囲みます。   |
 
 例)
-```example
+```sh
 SELECT enrollment_period, PRINTF('%.2f', enrollment_period) printf FROM employees;
 結果：
   enrollment_period   printf
@@ -2270,7 +2270,7 @@ SELECT enrollment_period, PRINTF('%.2f', enrollment_period) printf FROM employee
 
 例)
 
-```example
+```sh
 SELECT TRANSLATE('abcde', 'ace', '123');
 結果：1b2d3
 
@@ -2305,7 +2305,7 @@ SELECT TRANSLATE('abcde', 'abc', '');
 - 結果の型はTIMESTAMP型です。
 
 例)
-```example
+```sh
 SELECT NOW();
 結果：2019-09-17T04:07:31.825Z
 
@@ -2345,7 +2345,7 @@ SELECT NOW();
   - CAST(*timestamp* AS STRING)
 
 例)
-```example
+```sh
 // カラムdate(TIMESTAMP型)の値が、時刻'2018-12-01T10:30:00Z'より新しいロウを検索します
 SELECT * FROM timeseries WHERE date > TIMESTAMP('2018-12-01T10:30:00Z');
 ```
@@ -2371,7 +2371,7 @@ SELECT * FROM timeseries WHERE date > TIMESTAMP('2018-12-01T10:30:00Z');
 - 関数の別名としてTIMESTAMPADDも利用可能です。
 
 例)
-```example
+```sh
 // 時刻'2018-12-01T11:22:33.444Z'に10日間を加算します
 SELECT TIMESTAMP_ADD(DAY, TIMESTAMP('2018-12-01T11:22:33.444Z'), 10);
 結果：2018-12-11T11:22:33.444Z
@@ -2404,7 +2404,7 @@ SELECT TIMESTAMP_ADD(MONTH, TIMESTAMP('2019-05-31T01:23:45.678Z'), 1, '-02:00');
 - 関数の別名としてTIMESTAMPDIFFも利用可能です。
 
 例)
-```example
+```sh
 
 // 時間単位：月
 SELECT TIMESTAMP_DIFF(MONTH, TIMESTAMP('2018-12-11T10:30:15.555Z'), TIMESTAMP('2018-12-01T10:00:00.000Z'));
@@ -2450,7 +2450,7 @@ SELECT TIMESTAMP_DIFF(MONTH, MAKE_TIMESTAMP(2019, 8, 1), MAKE_TIMESTAMP(2019, 6,
 - 結果の型はTIMESTAMP型です。
 
 例)
-```example
+```sh
 SELECT TO_TIMESTAMP_MS(1609459199999);
 結果：2020-12-31T23:59:59.999Z
 ```
@@ -2471,7 +2471,7 @@ SELECT TO_TIMESTAMP_MS(1609459199999);
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 SELECT TO_EPOCH_MS(TIMESTAMP('2020-12-31T23:59:59.999Z'));
 結果：1609459199999
 
@@ -2499,7 +2499,7 @@ SELECT TO_EPOCH_MS(TIMESTAMP('2020-12-31T23:59:59.999+09:00'));
 - 結果の型はLONG型です。
 
 例)
-```example
+```sh
 // 時刻'2018-12-01T10:30:02.392Z'の年、日、ミリ秒の値を求めます
 
 // 年の値
@@ -2551,7 +2551,7 @@ SELECT EXTRACT(HOUR, TIMESTAMP('2018-12-01T10:30:02.392Z'), '+09:00');
 - 結果の型はSTRING型です。
 
 例)
-```example
+```sh
 
 SELECT STRFTIME('%c', TIMESTAMP('2019-06-19T14:15:01.123Z'));
 結果：2019-06-19T14:15:01.123Z
@@ -2577,7 +2577,7 @@ TIMESTAMP型の値を生成して返します。
 - 結果の型はTIMESTAMP型です。
 
 例)
-```example
+```sh
 
 SELECT MAKE_TIMESTAMP(2019, 9, 19);
 結果：2019-09-19T00:00:00.000Z
@@ -2601,7 +2601,7 @@ SELECT MAKE_TIMESTAMP(2019, 9, 19, 10, 30, 15.123, '+09:00');
 - 引数*timezone*には、タイムゾーン(Z|±hh:mm|±hhmm)を指定します。
 
 例)
-```example
+```sh
 
 SELECT TIMESTAMP_TRUNC(HOUR, MAKE_TIMESTAMP(2019, 9, 19, 10, 30, 15.123));
 結果：2019-09-19T10:00:00.000Z
@@ -2625,7 +2625,7 @@ SELECT TIMESTAMP_TRUNC(DAY, MAKE_TIMESTAMP(2019, 5, 15), '-01:00');
 - OVER句と共に利用します。詳細は[OVER句](#over)を参照ください。
 
 例)
-```example
+```sh
 SELECT ROW_NUMBER() OVER(PARTITION BY department ORDER BY age) no, first_name, age, department FROM employees;
 結果：
   no   first_name   age      department
@@ -2657,7 +2657,7 @@ SELECT ROW_NUMBER() OVER(PARTITION BY department ORDER BY age) no, first_name, a
 
 
 例)
-```example
+```sh
 SELECT last_name, COALESCE(last_name, 'XXX') coalesce FROM employees;
 結果：
   last_name     coalesce
@@ -2695,7 +2695,7 @@ SELECT age, COALESCE(age, -1) coalesce FROM employees;
 - 引数の値がすべてNULLの場合は、NULLを返します。
 
 例)
-```example
+```sh
 SELECT last_name, IFNULL(last_name, 'XXX') ifnull FROM employees;
 結果：
   last_name     ifnull
@@ -2732,7 +2732,7 @@ SELECT age, IFNULL(age, -1) ifnull FROM employees;
 - 引数*x*と*y*には、同じ型の値を指定します。ただし、異なる型でも指定できる場合があります。型の組み合わせは[CASE](#case)を参照してください。
 
 例)
-```example
+```sh
 // value1とvalue2の値で、NULLIFを実行します
 SELECT value1, value2, NULLIF(value1, value2) nullif FROM container_sample;
 結果：
@@ -2771,7 +2771,7 @@ BLOB型の値(乱数)を返します。
 - 結果の型はBLOB型です。
 
 例)　
-```example
+```sh
 // 10バイトのBLOB型の値(乱数)を生成します
 SELECT HEX(RANDOMBLOB(10));
 結果：7C8C893C8087F07883AF
@@ -2791,7 +2791,7 @@ BLOB型の値(0x00)を返します。
 - 結果の型はBLOB型です。
 
 例)　
-```example
+```sh
 // 10バイトのBLOB型の値(0x00)を生成します
 SELECT HEX(ZEROBLOB(10));
 結果：00000000000000000000
@@ -2813,7 +2813,7 @@ BLOB型の値を16進表記に変換します。
 - 結果の型は文字列型です。
 
 例)
-```example
+```sh
 SELECT HEX(RANDOMBLOB(2));
 結果：E18D
 
@@ -2860,7 +2860,7 @@ SELECT first_name, HEX(first_name) hex FROM employees;
 - NULL値を指定した場合は、'NULL'が返ります。
 
 例)
-```example
+```sh
 SELECT TYPEOF(ABS(-10)) abs, TYPEOF(RANDOMBLOB(10)) randomblob,
     TYPEOF(TIMESTAMP('2018-12-01T10:30:02.392Z')) timestamp;
 結果：
@@ -2931,7 +2931,7 @@ SELECT TYPEOF(ABS(-10)) abs, TYPEOF(RANDOMBLOB(10)) randomblob,
 
 - 変換後の数値が、*data_type* に指定した数値型の値の範囲を超える場合は、エラーになります。
 
-```example
+```sh
 // BYTE型の範囲(-128～127)を超える場合はエラー
 SELECT CAST(128 AS BYTE);
 結果：エラー
@@ -2943,7 +2943,7 @@ SELECT CAST('2147483648' AS INTEGER);
 
 - 浮動小数点数型(FLOAT型、DOUBLE型)から整数型(BYTE型、SHORT型、INTEGER型、LONG型)への変換では、値が桁落ちする場合があります。
 
-```example
+```sh
 SELECT CAST(10.5 AS INTEGER);
 結果：10
 ```
@@ -2954,7 +2954,7 @@ SELECT CAST(10.5 AS INTEGER);
   - "Infinity" (符号付きも可)
   - "NaN"
 
-```example
+```sh
 SELECT CAST('abc' AS INTEGER);
 結果：エラー
 
@@ -2976,7 +2976,7 @@ SELECT CAST('-1.09E+10' AS DOUBLE);
 |----------------------------------------------------|-----------------------------------------------|
 | STRING型(時刻の文字列表記'YYYY-MM-DDThh:mm:ss.SSS(Z\|±hh:mm)') | [TIMESTAMP関数](#timestamp)で変換した値と同等   |
 
-```example
+```sh
 SELECT CAST('2018-12-01T10:30:00Z' AS TIMESTAMP);
 結果：2018-12-01T10:30:00.000Z
 
@@ -3042,7 +3042,7 @@ SELECT CAST('2018-12-01T10:30:00+09:00' AS TIMESTAMP);
 
 
 例)
-```example
+```sh
 // 従業員の年代(30代、40代、50代、それ以外)を表示する
 SELECT id, first_name, age,
   CASE
@@ -3107,7 +3107,7 @@ FROM employees;
 - サブクエリは1列のみを返すものでなければなりません。
 
 例)
-```example
+```sh
 // departmentsテーブルのid=1の部署に所属する従業員の情報をemployeesテーブルから表示します
 SELECT * FROM employees
 WHERE department IN(
@@ -3139,7 +3139,7 @@ WHERE department IN(
 - 結果の型はBOOL型です。
 
 例)
-```example
+```sh
 // departmentsテーブルのid=1の部署に所属する従業員の情報をemployeesテーブルから表示します
 SELECT * FROM employees
 WHERE EXISTS(
@@ -3158,7 +3158,7 @@ WHERE EXISTS(
 ひとつの結果を返すサブクエリです。SELECT文の結果や、式などに使用できます。
 
 例)
-```example
+```sh
 SELECT id, first_name,
        (SELECT department FROM departments WHERE department_id=employees.department_id)
 FROM employees;
@@ -3208,7 +3208,7 @@ ResultSet rs = pstmt.executeQuery();
 SQL文中にコメントを書くことができます。 書式は、--（ハイフンを2つ）の後ろに記述するか、/\* \*/で囲みます。
 コメントの後ろには改行が必要です。
 
-```example
+```sh
 SELECT * -- comment
 FROM employees;
 

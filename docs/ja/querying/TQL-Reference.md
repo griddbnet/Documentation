@@ -87,7 +87,7 @@ TQLでは、データの取り出し・削除・更新対象の選択のため�
 
 すべてのクエリは、次の構文により表現されます。
 
-``` example
+``` sh
 [EXPLAIN [ANALYZE]] SELECT (選択式) [FROM (コレクション・時系列名)]
 [WHERE (条件式)] [ORDER BY (ソート条件)] [LIMIT (数値) [OFFSET (数値)]]
 ```
@@ -180,7 +180,7 @@ TRUEならばFALSEを、FALSEならTRUEを、NULLならばNULLを返します。
 
 また、AND, ORの演算では短絡評価(または最小評価)を行います。すなわち、先に記述されている式で評価を確定できる場合、後に記述されている式の評価を行いません。 たとえば、
 
-``` example
+``` sh
 WHERE A=1 AND B=1
 ```
 
@@ -206,7 +206,7 @@ WHERE A=1 AND B=1
 
 たとえば、次の式は「山田」「田中」「山田太郎」に対して真を返しますが、「小山田」に対しては偽を返します。
 
-``` example
+``` sh
 column LIKE '_田%'
 ```
 
@@ -214,7 +214,7 @@ column LIKE '_田%'
 
 ワイルドカード文字そのものを検索する場合には、ESCAPE節を使ってエスケープ文字を指定します。 たとえば、以下の式は「10%」に対しては真を返しますが、「10$%」に対しては偽を返します。
 
-``` example
+``` sh
 column LIKE '10$%' ESCAPE '$'
 ```
 
@@ -260,7 +260,7 @@ startには1から始まる文字位置、lengthには取り出す文字列の�
 現在時刻(時刻型)を返します。同一のクエリ実行単位内では、常に同一の結果を返します。
 
 例) 時刻型のカラムdateの値が、現在時刻よりも前のデータを検索する
-``` example
+``` sh
 SELECT * WHERE date < NOW()
 ```
 
@@ -272,13 +272,13 @@ SELECT * WHERE date < NOW()
 
 例) 時刻型のカラムdateの値が、時刻「2018年12月30日 10時15分30秒(UTC)」よりも新しいデータを検索する
 
-``` example
+``` sh
 SELECT *  WHERE date > TIMESTAMP('2018-12-30T10:15:30.000Z')
 ```
 
 時刻の文字列表現としては、西暦での次の形式のみをサポートします。タイムゾーン文字列(Z|±hh:mm|±hhmm)を解釈します。
 
-``` example
+``` sh
 YYYY-MM-DDThh:mm:ss.SSSZ
 ```
 
@@ -303,7 +303,7 @@ YYYY-MM-DDThh:mm:ss.SSSZ
 
 例) 時刻型のカラムdateの値が、現在時刻から1時間前の時刻よりも前のデータを検索する
 
-``` example
+``` sh
 SELECT * WHERE date < TIMESTAMPADD(HOUR, NOW(), -1)
 ```
 
@@ -317,13 +317,13 @@ SELECT * WHERE date < TIMESTAMPADD(HOUR, NOW(), -1)
 
 例) 時刻型のカラムexpiredとissuedの差(=expired-issued)が3日以上のデータを検索する
 
-``` example
+``` sh
 SELECT * WHERE TIMESTAMPDIFF(DAY, expired, issued) >= 3
 ```
 
 例) 時刻型のカラムendとstartの差(=end-start)が10時間未満のデータを検索する
 
-``` example
+``` sh
 SELECT * WHERE TIMESTAMPDIFF(HOUR, end, start) < 10
 ```
 
@@ -331,13 +331,13 @@ SELECT * WHERE TIMESTAMPDIFF(HOUR, end, start) < 10
 
 時刻1970-01-01T00:00:00Zのnumミリ秒後に対応するTIMESTAMPへ変換します。numが浮動小数点数型の値の場合、エラーになります。また、負の値や極端に大きな値など、変換結果が時刻型で表せない場合はエラーになります。そのため、数値型カラムに対して本関数を用いたクエリを発行した場合、カラムの値に変換結果が時刻型で表せない値が含まれているとエラーになります。例えば、以下のクエリはnum=-1となるロウがコンテナ内にある場合エラーになります。
 
-``` example
+``` sh
 SELECT * WHERE TO_TIMESTAMP_MS(num) > TIMESTAMP('2011-01-01T00:00:00Z')
 ```
 
 このような場合はTO\_EPOCH\_MS関数を用いて以下のようにして、数値型の値を変換した結果が時刻型の範囲となる値だけを評価するようにして回避してください。
 
-``` example
+``` sh
 SELECT * WHERE num < TO_EPOCH_MS(TIMESTAMP('9999-12-31T23:59:59.999Z'))
                AND num >= 0
                AND TO_TIMESTAMP_MS(num) > TIMESTAMP('2011-01-01T00:00:00Z')
@@ -349,7 +349,7 @@ timestampで指定した時刻型の値について、時刻1970-01-01T00:00:00Z
 
 例) 1970-01-01T00:00:00Zからの経過時間のカラム値numと現時刻を比較する
 
-``` example
+``` sh
 SELECT * WHERE num > TO_EPOCH_MS(NOW())
 ```
 
@@ -364,13 +364,13 @@ SELECT * WHERE num > TO_EPOCH_MS(NOW())
 
 特定位置の配列要素を取り出します。長さ1以上の配列でなければなりません。 nには0から始まる要素位置を整数で指定します。 nが浮動小数点数や負の値の場合、nがarrayの長さより長い場合、またarrayの長さが0の場合はエラーになります。 そのため、コレクションに長さが異なる配列が格納されている場合、 以下のような配列要素を指定したクエリは配列要素が取得できない場合にエラーになる可能性があります。
 
-``` example
+``` sh
 SELECT * FROM arrays WHERE ELEMENT(1, array) = 1
 ```
 
 このようなクエリは、以下のようにしてELEMENT関数が評価されるのを回避してください。
 
-``` example
+``` sh
 SELECT * FROM arrays WHERE ARRAY_LENGTH(array)>= 1 AND ELEMENT(1, array) = 1
 ```
 
@@ -393,19 +393,19 @@ WKTとは、空間構造を文字列として表現するための規格です�
 
 2次元空間上の点(0, 0)、(10, 10)を対角線とする矩形の場合、次のように表記します。
 
-``` example
+``` sh
 POLYGON((0 0,10 0,10 10,0 10,0 0))
 ```
 
 また、各種別の空間構造データ型について、空ジオメトリと呼ばれる、特定の空間範囲と対応しない値を表現できます。次の例のように、座標値の代わりに「EMPTY」と記述します。
 
-``` example
+``` sh
 LINESTRING(EMPTY)
 ```
 
 また、「;」の後ろに整数を記述することにより、SRIDを指定できます。 次の例では、矩形がSRID:4326の座標系にあることを示します。
 
-``` example
+``` sh
 POLYGON((0 0,10 0,10 10,0 10,0 0);4326)
 ```
 
@@ -463,7 +463,7 @@ g1、g2のいずれについても、2次曲面(QUADRATICSURFACE)は指定でき
 
 例) カラムgeom上の空間型データと指定の矩形範囲とが交差するようなロウを選択する
 
-``` example
+``` sh
 SELECT * WHERE ST_MBRIntersects(geom, ST_GeomFromText('POLYGON((0 0,10 0,10 10,0 10,0 0))'))
 ```
 
@@ -543,7 +543,7 @@ SELECT * WHERE ST_MBRIntersects(geom, ST_GeomFromText('POLYGON((0 0,10 0,10 10,0
 
 例) プラント1、ポイント103における、2011年7月の平均電圧について、時刻による重み付きで求める
 
-``` example
+``` sh
 SELECT TIME_AVG(voltage103) FROM plant1
   WHERE TIMESTAMP('2011-07-01T00:00:00Z') <= timestamp AND timestamp < TIMESTAMP('2011-08-01T00:00:00Z')
 ```
@@ -582,7 +582,7 @@ SELECT TIME_AVG(voltage103) FROM plant1
 
 例) プラント1における、2011年7月初めの時点の温度を求める
 
-``` example
+``` sh
 SELECT TIME_NEXT(*, TIMESTAMP('2011-07-01T00:00:00Z')) FROM plant1
 ```
 
@@ -614,7 +614,7 @@ SELECT TIME_NEXT(*, TIMESTAMP('2011-07-01T00:00:00Z')) FROM plant1
 
 例) プラント1、ポイント103における、2011年7月1日の毎時ごとの電圧を求める
 
-``` example
+``` sh
 SELECT TIME_SAMPLING(
   voltage103, TIMESTAMP('2011-07-01T00:00:00Z'), TIMESTAMP('2011-07-02T00:00:00Z'), 1, HOUR)
 FROM plant1
@@ -622,7 +622,7 @@ FROM plant1
 
 また、このサンプリング結果についてORDER BY節(後述)を記述してカラム順に並べ替えることができます。 例) プラント1、ポイント103における、2011年7月1日の毎時ごとの電圧を求め、電圧順に並び替える
 
-``` example
+``` sh
 SELECT TIME_SAMPLING(
   voltage103, TIMESTAMP('2011-07-01T00:00:00Z'), TIMESTAMP('2011-07-02T00:00:00Z'), 1, HOUR)
 FROM plant1 ORDER BY voltage103
@@ -646,7 +646,7 @@ FROM plant1 ORDER BY voltage103
 
 ORDER BY節を記述することで、検索結果の並び替えの順序を指定することができます。 ORDER BY節の記述は以下のように定義されます。
 
-``` example
+``` sh
 ORDER BY (カラム名) [ASC|DESC] [, (カラム名) [ASC|DESC]]*
 ```
 
@@ -656,7 +656,7 @@ ASCは昇順指定を表しており、DESCは降順指定を表します。指�
 
 例) aの降順を第一ソート条件、bの昇順を第二ソート条件, cの昇順を第三ソート条件として検索する
 
-``` example
+``` sh
 SELECT * ORDER BY a DESC, b ASC, c
 ```
 
@@ -668,7 +668,7 @@ SQLとは異なり、ソート条件に計算式や関数を指定すること�
 
 LIMIT節を記述することで、検索結果の取得個数を制限できます。 また、OFFSETを指定することで、検索結果の取得の開始位置を指定できます。 LIMIT, OFFSET指定の文法は以下の通り定義されます。
 
-``` example
+``` sh
 LIMIT (数値) [OFFSET (数値)]
 ```
 
