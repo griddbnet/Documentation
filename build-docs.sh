@@ -5,7 +5,7 @@ git fetch --all
 home=$(pwd)
 thisBranch="latest"
 echo "thisBranch = $thisBranch"
-oldBranch="v4.6"
+oldBranch="v4.5"
 
 
 echo "Making directories $thisBranch && $oldBranch"
