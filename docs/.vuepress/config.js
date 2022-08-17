@@ -368,7 +368,6 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/latest/gettingstarted/introduction',
-                '/latest/gettingstarted/using-source-code',
                 '/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
