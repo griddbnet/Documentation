@@ -115,7 +115,7 @@ module.exports = {
             ariaLabel: 'docs',
             items: [
               { text: 'latest', link: '/latest/about/what-is-griddb' },
-              { text: 'v4.6', link: '/v4.6/about/what-is-griddb' },
+              { text: 'v4.5', link: '/v4.5/about/what-is-griddb' },
             ]
           },
           { text: 'Blogs', link: 'https://griddb.net/en/blog', ariaLabel: 'blogs' },
@@ -148,7 +148,6 @@ module.exports = {
               children: [
                 '/latest/gettingstarted/introduction',
                 '/latest/gettingstarted/webshell',
-                '/latest/gettingstarted/using-source-code',
                 '/latest/gettingstarted/using-rpmyum',
                 '/latest/gettingstarted/using-apt',
                 {
@@ -236,9 +235,9 @@ module.exports = {
               ]
             }
           ],
-          '/v4.6': [
+          '/v4.5': [
             {
-              title: 'GridDB (v4.6)',
+              title: 'GridDB (v4.5)',
               collapsable: false,
             },
             {
@@ -246,11 +245,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/v4.6/about/what-is-griddb',
-                '/v4.6/about/what-is-time-series-database',
+                '/v4.5/about/what-is-griddb',
+                '/v4.5/about/what-is-time-series-database',
                 //'about/benchmark-comparisons',
-                '/v4.6/about/release-notes',
-                '/v4.6/about/faq'
+                '/v4.5/about/release-notes',
+                '/v4.5/about/faq'
               ]
             },
             {
@@ -258,18 +257,18 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/v4.6/gettingstarted/introduction',
-                '/v4.6/gettingstarted/using-source-code',
-                '/v4.6/gettingstarted/using-rpmyum',
+                '/v4.5/gettingstarted/introduction',
+                '/v4.5/gettingstarted/using-source-code',
+                '/v4.5/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
                   collapsable: false,
                   children: [
-                    '/v4.6/gettingstarted/java',
-                    '/v4.6/gettingstarted/python',
-                    '/v4.6/gettingstarted/nodejs',
-                    '/v4.6/gettingstarted/go',
-                    '/v4.6/gettingstarted/php'
+                    '/v4.5/gettingstarted/java',
+                    '/v4.5/gettingstarted/python',
+                    '/v4.5/gettingstarted/nodejs',
+                    '/v4.5/gettingstarted/go',
+                    '/v4.5/gettingstarted/php'
                   ]
                 }
               ]
@@ -279,12 +278,12 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/v4.6/architecture/introduction',
-                '/v4.6/architecture/structure-of-griddb',
-                '/v4.6/architecture/data-model',
-                '/v4.6/architecture/database-function',
-                '/v4.6/architecture/operating-function',
-                '/v4.6/architecture/parameter'
+                '/v4.5/architecture/introduction',
+                '/v4.5/architecture/structure-of-griddb',
+                '/v4.5/architecture/data-model',
+                '/v4.5/architecture/database-function',
+                '/v4.5/architecture/operating-function',
+                '/v4.5/architecture/parameter'
               ]
             },
             {
@@ -292,11 +291,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/v4.6/sqlreference/introduction',
-                '/v4.6/sqlreference/sql-description-format',
-                '/v4.6/sqlreference/sql-commands-supported',
-                '/v4.6/sqlreference/metatables',
-                '/v4.6/sqlreference/reserved-words'
+                '/v4.5/sqlreference/introduction',
+                '/v4.5/sqlreference/sql-description-format',
+                '/v4.5/sqlreference/sql-commands-supported',
+                '/v4.5/sqlreference/metatables',
+                '/v4.5/sqlreference/reserved-words'
               ]
             },
             {
@@ -304,10 +303,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/v4.6/tqlreference/introduction',
-                '/v4.6/tqlreference/type',
-                '/v4.6/tqlreference/tql-syntax-and-calculation-functions',
-                '/v4.6/tqlreference/annex'
+                '/v4.5/tqlreference/introduction',
+                '/v4.5/tqlreference/type',
+                '/v4.5/tqlreference/tql-syntax-and-calculation-functions',
+                '/v4.5/tqlreference/annex'
               ]
             },
             {
@@ -315,14 +314,14 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 1,
               children: [
-                '/v4.6/tutorial/wide-narrow',
-                '/v4.6/tutorial/nifi',
-                '/v4.6/tutorial/kafka',
-                '/v4.6/tutorial/jupyter',
-                '/v4.6/tutorial/pyspark',
-                '/v4.6/tutorial/forecasting',
-                '/v4.6/tutorial/timeseries-expiration',
-                `/v4.6/tutorial/jms`
+                '/v4.5/tutorial/wide-narrow',
+                '/v4.5/tutorial/nifi',
+                '/v4.5/tutorial/kafka',
+                '/v4.5/tutorial/jupyter',
+                '/v4.5/tutorial/pyspark',
+                '/v4.5/tutorial/forecasting',
+                '/v4.5/tutorial/timeseries-expiration',
+                `/v4.5/tutorial/jms`
               ]
             },
             {
@@ -330,10 +329,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/v4.6/jdbcdriver/introduction',
-                '/v4.6/jdbcdriver/overview',
-                '/v4.6/jdbcdriver/specifications',
-                '/v4.6/jdbcdriver/sample'
+                '/v4.5/jdbcdriver/introduction',
+                '/v4.5/jdbcdriver/overview',
+                '/v4.5/jdbcdriver/specifications',
+                '/v4.5/jdbcdriver/sample'
               ]
             },
             {
@@ -341,7 +340,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/v4.6/references/API-References'
+                '/v4.5/references/API-References'
                 //     'references/JDBC-driver'
               ]
             }
@@ -478,7 +477,7 @@ module.exports = {
             ariaLabel: 'ドキュメント',
             items: [
               { text: 'latest', link: '/ja/latest/about/what-is-griddb' },
-              { text: 'v4.6', link: '/ja/v4.6/about/what-is-griddb' },
+              { text: 'v4.5', link: '/ja/v4.5/about/what-is-griddb' },
             ]
           },
           { text: 'ブログ', link: 'https://griddb.net/ja/blog', ariaLabel: 'ブログ' },
@@ -589,17 +588,17 @@ module.exports = {
               ]
             }
           ],
-          '/ja/v4.6': [
+          '/ja/v4.5': [
             {
               title: 'GridDBとは',
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/v4.6/about/what-is-griddb',
-                '/ja/v4.6/about/what-is-time-series-database',
+                '/ja/v4.5/about/what-is-griddb',
+                '/ja/v4.5/about/what-is-time-series-database',
                 //'about/benchmark-comparisons',
-                '/ja/v4.6/about/release-notes',
-                '/ja/v4.6/about/faq'
+                '/ja/v4.5/about/release-notes',
+                '/ja/v4.5/about/faq'
               ]
             },
             {
@@ -607,17 +606,17 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/v4.6/gettingstarted/introduction',
-                '/ja/v4.6/gettingstarted/using-source-code',
+                '/ja/v4.5/gettingstarted/introduction',
+                '/ja/v4.5/gettingstarted/using-source-code',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
                   children: [
-                    '/ja/v4.6/gettingstarted/java',
-                    '/ja/v4.6/gettingstarted/python',
-                    '/ja/v4.6/gettingstarted/nodejs',
-                    '/ja/v4.6/gettingstarted/go',
-                    '/ja/v4.6/gettingstarted/php'
+                    '/ja/v4.5/gettingstarted/java',
+                    '/ja/v4.5/gettingstarted/python',
+                    '/ja/v4.5/gettingstarted/nodejs',
+                    '/ja/v4.5/gettingstarted/go',
+                    '/ja/v4.5/gettingstarted/php'
                   ]
                 }
               ]
@@ -627,12 +626,12 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/v4.6/architecture/introduction',
-                '/ja/v4.6/architecture/structure-of-griddb',
-                '/ja/v4.6/architecture/data-model',
-                '/ja/v4.6/architecture/database-function',
-                '/ja/v4.6/architecture/operating-function',
-                '/ja/v4.6/architecture/parameter'
+                '/ja/v4.5/architecture/introduction',
+                '/ja/v4.5/architecture/structure-of-griddb',
+                '/ja/v4.5/architecture/data-model',
+                '/ja/v4.5/architecture/database-function',
+                '/ja/v4.5/architecture/operating-function',
+                '/ja/v4.5/architecture/parameter'
               ]
             },
             {
@@ -640,11 +639,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/v4.6/sqlreference/introduction',
-                '/ja/v4.6/sqlreference/sql-description-format',
-                '/ja/v4.6/sqlreference/sql-commands-supported',
-                '/ja/v4.6/sqlreference/metatables',
-                '/ja/v4.6/sqlreference/reserved-words'
+                '/ja/v4.5/sqlreference/introduction',
+                '/ja/v4.5/sqlreference/sql-description-format',
+                '/ja/v4.5/sqlreference/sql-commands-supported',
+                '/ja/v4.5/sqlreference/metatables',
+                '/ja/v4.5/sqlreference/reserved-words'
               ]
             },
             {
@@ -652,10 +651,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/v4.6/tqlreference/introduction',
-                '/ja/v4.6/tqlreference/type',
-                '/ja/v4.6/tqlreference/tql-syntax-and-calculation-functions',
-                '/ja/v4.6/tqlreference/annex'
+                '/ja/v4.5/tqlreference/introduction',
+                '/ja/v4.5/tqlreference/type',
+                '/ja/v4.5/tqlreference/tql-syntax-and-calculation-functions',
+                '/ja/v4.5/tqlreference/annex'
               ]
             },
             {
@@ -663,7 +662,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/v4.6/tutorial/ingesting'
+                '/ja/v4.5/tutorial/ingesting'
               ]
             },
             {
@@ -671,10 +670,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/v4.6/jdbcdriver/introduction',
-                '/ja/v4.6/jdbcdriver/overview',
-                '/ja/v4.6/jdbcdriver/specifications',
-                '/ja/v4.6/jdbcdriver/sample'
+                '/ja/v4.5/jdbcdriver/introduction',
+                '/ja/v4.5/jdbcdriver/overview',
+                '/ja/v4.5/jdbcdriver/specifications',
+                '/ja/v4.5/jdbcdriver/sample'
               ]
             },
             {
@@ -682,7 +681,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/v4.6/references/API-References'
+                '/ja/v4.5/references/API-References'
                 //     'references/JDBC-driver'
               ]
             }
@@ -707,7 +706,7 @@ module.exports = {
                 ariaLabel: 'ドキュメント',
                 items: [
                   { text: 'latest', link: '/ja/about/what-is-griddb' },
-                  { text: 'v4.6', link: '/ja/v4.6/about/what-is-griddb' },
+                  { text: 'v4.5', link: '/ja/v4.5/about/what-is-griddb' },
                 ]
               },
               { text: 'ブログ', link: 'https://griddb.net/ja/blog', ariaLabel: 'ブログ' },
