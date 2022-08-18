@@ -148,8 +148,9 @@ module.exports = {
               children: [
                 '/latest/gettingstarted/introduction',
                 '/latest/gettingstarted/webshell',
-                '/latest/gettingstarted/using-rpmyum',
+                '/latest/gettingstarted/query-lang',
                 '/latest/gettingstarted/using-apt',
+                '/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
                   collapsable: false,
