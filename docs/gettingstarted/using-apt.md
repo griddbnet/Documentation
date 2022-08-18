@@ -1,28 +1,19 @@
-# Using Apt 
+# Installation - Ubuntu
 
 We have confirmed the operation on Ubuntu 20.04.4.
 
-#### :warning: Note
-- When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user.   
-   Example
-   ```
-   # su - gsadm
-   $ pwd
-   /var/lib/gridstore
-   ```
-- You do not need to set environment variable GS_HOME and GS_LOG. And the place of operating command is set to environment variable PATH.
-- There is Java client library (gridstore.jar) on /usr/share/java and a sample on /usr/gridb-XXX/docs/sample/programs.
-
 ## Install with deb
 
-Install the package of your target OS.
+Please download the appropriate package files from the GridDB Github page.
+
+Then, install the package of your target OS.
 	
 	(Ubuntu)
     $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
     
 	X.X.X means version
 
-## Install with Apt-Get
+## Install with apt-get
 
 Alternatively you can install GridDB using apt. 
 
@@ -40,15 +31,51 @@ Then install GridDB:
     $ sudo apt install griddb-meta
     
 
+#### :warning: Note
+If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
+
+
 With that command, GridDB, the C-client, and the GridDB CLI will be installed onto your machine.
 
-You can drop into the shell like so: 
+Next, install the GridDB JDBC connector 
+
+    $ sudo wget https://repo1.maven.org/maven2/com/github/griddb/gridstore-jdbc/5.0.0/gridstore-jdbc-5.0.0.jar -O /usr/share/java/gridstore-jdbc.jar
+
+And now, you can start your GridDB server
+
+    $ sudo systemctl start gridstore
+
+To stop your server: 
+
+    $ sudo systemctl stop gridstore
+
+Once your server is running, you can drop into the shell like so: 
 
     $ sudo su gsadm
     $ gs_sh
 
+If you want to run SQL queries within your shell, you will need to connect to your cluster
+
+    gs> setuser <username> <password>
+    gs> sync 127.0.0.1 10040 <clusterName> node0
+    gs> connect $<clusterName>
+
 	
 ### User and directory structure after installation
+
+
+
+#### :warning: Note
+- When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user.   
+   Example
+   ```
+   # su - gsadm
+   $ pwd
+   /var/lib/gridstore
+   ```
+- You do not need to set environment variable GS_HOME and GS_LOG. And the place of operating command is set to environment variable PATH.
+- There is Java client library (gridstore.jar) on /usr/share/java and a sample on /usr/gridb-XXX/docs/sample/programs.
+
 
 When the GridDB package is installed, the following users and directory structure will be created.
 

@@ -1,4 +1,5 @@
-# Interactive Webshell
+# Try GridDB Without Installing
+
 To use the GridDB Shell, please click on the box below. You can get a quick rundown of using the GriDB Web Shell from the [GitHub](https://github.com/griddb/cli/blob/main/Specification_en.md) and from this [blog](https://griddb.net/en/blog/griddb-community-edition-v4-6-new-features/). 
 
 We have pre-loaded some containers for easy access. These containers are called: `Cereal`, `c001`, `t001`, `WeatherStation`, and `InstrumentLog`. Of these containers, `t001`, and `InstrumentLog` are the [Time Series Containers](/architecture/data-model/#type).
