@@ -146,7 +146,6 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/latest/gettingstarted/introduction',
                 '/latest/gettingstarted/webshell',
                 '/latest/gettingstarted/query-lang',
                 '/latest/gettingstarted/using-apt',
@@ -369,6 +368,9 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/latest/gettingstarted/introduction',
+                '/latest/gettingstarted/webshell',
+                '/latest/gettingstarted/query-lang',
+                '/latest/gettingstarted/using-apt',
                 '/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
