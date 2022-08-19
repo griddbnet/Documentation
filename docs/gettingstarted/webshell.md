@@ -1,10 +1,10 @@
 # Quick Start
 
-To get started with GridDB, we have provided a sandbox of the GridDB server. You can get a quick rundown of the GridDB CLI from [GitHub](https://github.com/griddb/cli/blob/main/Specification_en.md) and from this [blog](https://griddb.net/en/blog/griddb-community-edition-v4-6-new-features/). 
+To get started with GridDB, we have prepared a sandbox of the GridDB server. You can get a quick rundown of the GridDB CLI from [GitHub](https://github.com/griddb/cli/blob/main/Specification_en.md) and from this [blog](https://griddb.net/en/blog/griddb-community-edition-v4-6-new-features/). 
 
 We have pre-loaded some containers for easy access. These containers are called: `Cereal`, `c001`, `t001`, `WeatherStation`, and `InstrumentLog`. Of these containers, `t001`, and `InstrumentLog` are the [Time Series Containers](/architecture/data-model/#type).
 
-To query these containers, you can use either SQL or TQL. If you are unfamiliar with TQL, it is the query language used by GridDB. It very similar to SQL but has some key differences; you can read more about TQL in this [blog](https://griddb.net/en/blog/griddb-query-language/) and [technical document](https://www.toshiba-sol.co.jp/en/pro/griddb/docs-en/v4_6/GridDB_TQL_Reference.html). 
+To query these containers, you can use either SQL or TQL. If you are unfamiliar with TQL, it is the query language used by GridDB. It very similar to SQL but has some key differences; you can read more about TQL in this [blog](https://griddb.net/en/blog/griddb-query-language/) and [technical document](/tqlreference/tql-syntax-and-calculation-functions/). 
 
 As a rapid fire, here are some examples of commands you can run now to get your feet wet with the shell:
 
@@ -15,7 +15,7 @@ As a rapid fire, here are some examples of commands you can run now to get your 
 
 ## About the Web CLI
 
-Below this is a live GridDB Web CLI which you can use to interact with the GridDB Web Shell. When it is done loading, you will be assigned into your very own database. You can play around int his sandbox all you want -- you can delete or create containers to your heart's content. 
+Below this is a live GridDB Web CLI which you can use to interact with the GridDB Web server. When it is done loading, you will be assigned into your very own database. You can play around with this sandbox all you want -- you can delete or create containers to your heart's content. 
 
 If you prefer a terminal-style separate window, you can open up a fully interactive GridDB Web CLI using this <a 
 onclick="window.open(this.href, 'mywin',

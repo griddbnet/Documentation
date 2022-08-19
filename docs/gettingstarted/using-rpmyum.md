@@ -1,6 +1,6 @@
 # Installation - CentOS
 
-We have confirmed the operation on CentOS 8.
+We have confirmed the operation on CentOS 7.9.
 
 
 ## Install with RPM
@@ -118,13 +118,6 @@ Installation directory
                 manual/
                 sample/
 ```
-
-## Environmental settings
-
-## Starting/stopping
-
-Operate as the gsadm user. Other than that, it is the same as "Start / Stop" in "[When using source code]".
-
 ## Build/execution method
 
 An example on how to build and execute a program is as shown.

@@ -1,6 +1,6 @@
 # Installation - Ubuntu
 
-We have confirmed the operation on Ubuntu 20.04.4.
+We have confirmed the operation on Ubuntu 18.04.
 
 ## Install with deb
 
@@ -113,13 +113,6 @@ Installation directory
                 manual/
                 sample/
 ```
-
-## Environmental settings
-
-
-## Starting/stopping
-
-Operate as the gsadm user. Other than that, it is the same as "Start / Stop" in "[When using source code]".
 
 ## Build/execution method
 
