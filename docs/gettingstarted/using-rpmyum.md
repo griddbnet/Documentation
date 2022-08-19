@@ -56,12 +56,6 @@ Once your server is running, you can drop into the shell like so:
 
     $ sudo su gsadm
     $ gs_sh
-
-If you want to run SQL queries within your shell, you will need to connect to your cluster
-
-    gs> setuser <username> <password>
-    gs> sync 127.0.0.1 10040 <clusterName> node0
-    gs> connect $<clusterName>
 	
 ### User and directory structure after installation
 

@@ -29,10 +29,6 @@ Then install GridDB:
     
     $ sudo apt update
     $ sudo apt install griddb-meta
-    
-
-#### :warning: Note
-If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
 
 
 With that command, GridDB, the C-client, and the GridDB CLI will be installed onto your machine.
@@ -53,13 +49,6 @@ Once your server is running, you can drop into the shell like so:
 
     $ sudo su gsadm
     $ gs_sh
-
-If you want to run SQL queries within your shell, you will need to connect to your cluster
-
-    gs> setuser <username> <password>
-    gs> sync 127.0.0.1 10040 <clusterName> node0
-    gs> connect $<clusterName>
-
 	
 ### User and directory structure after installation
 
