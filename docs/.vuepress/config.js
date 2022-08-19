@@ -147,7 +147,6 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/latest/gettingstarted/webshell',
-                '/latest/gettingstarted/query-lang',
                 '/latest/gettingstarted/using-apt',
                 '/latest/gettingstarted/using-rpmyum',
                 {
@@ -368,7 +367,6 @@ module.exports = {
               sidebarDepth: 2,
               children: [
                 '/latest/gettingstarted/webshell',
-                '/latest/gettingstarted/query-lang',
                 '/latest/gettingstarted/using-apt',
                 '/latest/gettingstarted/using-rpmyum',
                 {
