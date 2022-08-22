@@ -685,6 +685,108 @@ module.exports = {
               ]
             }
           ],
+          '/ja/': [
+            {
+              title: 'GridDB (latest)',
+              collapsable: false,
+            },
+            {
+              title: 'GridDBとは',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/latest/about/what-is-griddb',
+                '/ja/latest/about/what-is-time-series-database',
+                //'about/benchmark-comparisons',
+                '/ja/latest/about/release-notes',
+                '/ja/latest/about/faq'
+              ]
+            },
+            {
+              title: 'はじめに',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/latest/gettingstarted/introduction',
+                '/ja/latest/gettingstarted/using-source-code',
+                {
+                  title: 'アプリ作成',
+                  collapsable: false,
+                  children: [
+                    '/ja/latest/gettingstarted/java',
+                    '/ja/latest/gettingstarted/python',
+                    '/ja/latest/gettingstarted/nodejs',
+                    '/ja/latest/gettingstarted/go',
+                    '/ja/latest/gettingstarted/php'
+                  ]
+                }
+              ]
+            },
+            {
+              title: 'アーキテクチャ',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/latest/architecture/introduction',
+                '/ja/latest/architecture/structure-of-griddb',
+                '/ja/latest/architecture/data-model',
+                '/ja/latest/architecture/database-function',
+                '/ja/latest/architecture/operating-function',
+                '/ja/latest/architecture/parameter'
+              ]
+            },
+            {
+              title: 'SQL リファレンス',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/latest/sqlreference/introduction',
+                '/ja/latest/sqlreference/sql-description-format',
+                '/ja/latest/sqlreference/sql-commands-supported',
+                '/ja/latest/sqlreference/metatables',
+                '/ja/latest/sqlreference/reserved-words'
+              ]
+            },
+            {
+              title: 'TQL リファレンス',
+              collapsable: true,
+              sidebarDepth: 3,
+              children: [
+                '/ja/latest/tqlreference/introduction',
+                '/ja/latest/tqlreference/type',
+                '/ja/latest/tqlreference/tql-syntax-and-calculation-functions',
+                '/ja/latest/tqlreference/annex'
+              ]
+            },
+            {
+              title: 'チュートリアル',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/latest/tutorial/ingesting'
+              ]
+            },
+            {
+              title: 'JDBC ドライバ',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/latest/jdbcdriver/introduction',
+                '/ja/latest/jdbcdriver/overview',
+                '/ja/latest/jdbcdriver/specifications',
+                '/ja/latest/jdbcdriver/sample'
+              ]
+            },
+            {
+              title: 'リファレンス',
+              collapsable: true,
+              sidebarDepth: 2,
+              children: [
+                '/ja/latest/references/API-References'
+                //    'references/JDBC-driver'
+              ]
+            }
+          ],
         }
       }
     }
