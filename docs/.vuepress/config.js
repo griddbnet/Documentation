@@ -712,6 +712,7 @@ module.exports = {
               { text: 'コミュニティ', link: 'https://griddb.net/ja/community', ariaLabel: 'コミュニティ' },
               { text: 'リソース', link: 'https://griddb.net/ja/resources', ariaLabel: 'リソース' },
             ],
+          }
         }
       }
     }
