@@ -685,34 +685,6 @@ module.exports = {
               ]
             }
           ],
-          '/ja/': {
-            selectText: '言語',
-            label: '日本語',
-            editLinkText: 'github飛ぶ',
-            serviceWorker: {
-              updatePopup: {
-                message: "メッセージ",
-                buttonText: "ボタン"
-              }
-            },
-            algolia: {
-              apiKey: '68e1c311f84b9842d01c3b0aa738fde6',
-              indexName: 'griddb',
-            },
-            nav: [
-              {
-                text: 'ドキュメント',
-                ariaLabel: 'ドキュメント',
-                items: [
-                  { text: 'latest', link: '/ja/about/what-is-griddb' },
-                  { text: 'v4.5', link: '/ja/v4.5/about/what-is-griddb' },
-                ]
-              },
-              { text: 'ブログ', link: 'https://griddb.net/ja/blog', ariaLabel: 'ブログ' },
-              { text: 'コミュニティ', link: 'https://griddb.net/ja/community', ariaLabel: 'コミュニティ' },
-              { text: 'リソース', link: 'https://griddb.net/ja/resources', ariaLabel: 'リソース' },
-            ],
-          }
         }
       }
     }
