@@ -40,10 +40,6 @@ GridDBの旧バージョンを使用したい場合は、baseurlをそのバー�
 
 このコマンドにより、GridDB、C-client、GridDB CLI がマシンにインストールされます。
 
-次に、GridDB JDBC コネクタをインストールします。
-
-    $ sudo wget https://repo1.maven.org/maven2/com/github/griddb/gridstore-jdbc/5.0.0/gridstore-jdbc-5.0.0.jar -O /usr/share/java/gridstore-jdbc.jar
-
 そして、GridDBサーバを起動することができます。
 
     $ sudo systemctl start gridstore

@@ -2,7 +2,7 @@
 
 GridDBを始めるにあたり、GridDBサーバーのサンドボックスを用意しました。GridDBのCLIについては、[GitHub](https://github.com/griddb/cli/blob/main/Specification_ja.md)やこちらの[ブログ](https://griddb.net/ja/blog/griddb-community-edition-v4-6-new-features//)で簡単に紹介されています。
 
-簡単にアクセスできるようにいくつかのコンテナをあらかじめ用意しています。Cereal`, `c001`, `t001`, `WeatherStation`, と`InstrumentLog` のコンテナが登録されています。これらのコンテナのうち、`t001` と `InstrumentLog` は [Time Series Containers] (/architecture/data-model/#type) と呼ばれるコンテナです。
+簡単にアクセスできるようにいくつかのコンテナをあらかじめ用意しています。`Cereal`, `c001`, `t001`, `WeatherStation`, と`InstrumentLog` のコンテナが登録されています。これらのコンテナのうち、`t001` と `InstrumentLog` は [Time Series Containers] (/architecture/data-model/#種別) と呼ばれるコンテナです。
 
 コンテナのクエリはSQLまたはTQLを使用します。TQLは、GridDBで使用されるクエリ言語です。TQLについては、こちらの[ブログ](https://griddb.net/ja/blog/griddb-query-language/)や[技術資料](/tqlreference/tql-syntax and-calculation-functions/) で詳しく説明されています。
 
