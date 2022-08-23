@@ -507,8 +507,9 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/latest/gettingstarted/introduction',
-                '/ja/latest/gettingstarted/using-source-code',
+                '/ja/latest/gettingstarted/webshell',
+                '/ja/latest/gettingstarted/using-apt',
+                '/ja/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
