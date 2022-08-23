@@ -38,11 +38,7 @@ Then install GridDB:
 If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
 
 
-With that command, GridDB, the C-client, and the GridDB CLI will be installed onto your machine.
-
-Next, install the GridDB JDBC connector 
-
-    $ sudo wget https://repo1.maven.org/maven2/com/github/griddb/gridstore-jdbc/5.0.0/gridstore-jdbc-5.0.0.jar -O /usr/share/java/gridstore-jdbc.jar
+With that command, GridDB, the c-client, the JDBC connector, and the GridDB CLI will be installed onto your machine.
 
 And now, you can start your GridDB server
 
