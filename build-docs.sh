@@ -19,7 +19,7 @@ echo "changing branch to $oldBranch"
 git checkout $oldBranch
 echo "copying over older docs to directory called $oldBranch"
 rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
-rsync -av $home/docs/ja/ $home/ja/$oldBranch
+rsync -av $home/docs/$oldBranch/ja/ $home/ja/$oldBranch
 
 #cp -r $home/docs/* $home/$oldBranch
 #cp -r $home/docs/ja/* $home/$oldBranch-ja
