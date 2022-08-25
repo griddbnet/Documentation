@@ -9,15 +9,13 @@ oldBranch="v4.5"
 
 
 echo "Making directories $thisBranch && $oldBranch"
-mkdir $thisBranch
-mkdir $thisBranch-ja
 mkdir $oldBranch
 mkdir $oldBranch-ja
 
 cd $home/docs
-echo "Copying contents of this branch to dir name of $thisBranch"
-cp -r $home/docs/* $home/$thisBranch
-cp -r $home/docs/ja/* $home/$thisBranch-ja
+echo "Copying contents of LATEST docs to home root"
+cp -r $home/docs/latest $home/
+cp -r $home/docs/ja $home/
 
 
 echo "changing branch to $oldBranch"
@@ -29,14 +27,16 @@ cp -r $home/docs/ja/* $home/$oldBranch-ja
 echo "running install"
 npm install
 echo "copying contents to docs for building"
-chmod 777 $home/$thisBranch
-chmod 777 $home/$oldBranch
-mv $home/$thisBranch $home/docs/
+
+mv $home/latest $home/docs/
+echo "renaming ja content to $thisBranch and moving to docs/ja"
+mv $home/ja $home/latest
+mv $home/latest $home/ja
+echo "moving $oldBranch from root to docs/"
 mv $home/$oldBranch $home/docs/
 
-mv $home/$thisBranch-ja $home/docs/ja
+echo "renaming $oldBranch-ja within docs/ja directory"
 mv $home/$oldBranch-ja $home/docs/ja
-mv $home/docs/ja/$thisBranch-ja $home/docs/ja/$thisBranch
 mv $home/docs/ja/$oldBranch-ja $home/docs/ja/$oldBranch
 
 echo "going to run build"
