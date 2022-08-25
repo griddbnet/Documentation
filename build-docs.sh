@@ -34,7 +34,7 @@ echo "copying contents to docs for building"
 
 mv $home/latest $home/docs/
 mv $home/ja $home/docs/
-mv $home/$oldBranch $home/docs/
+#mv $home/$oldBranch $home/docs/
 
 echo "going to run build"
 npm run build
