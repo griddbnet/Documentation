@@ -30,6 +30,7 @@ npm install
 echo "copying contents to docs for building"
 
 mv $home/latest $home/docs/
+rm -rf $home/docs/ja
 mv $home/ja $home/docs/
 mv $home/$oldBranch $home/docs/
 
