@@ -8,8 +8,8 @@ echo "thisBranch = $thisBranch"
 oldBranch="v4.5"
 
 echo "Copying contents of LATEST docs to home root"
-rsync -avzh $home/docs/latest/ $home/latest --exclude $home/docs/ja
-rsync -avzh $home/docs/ja/ $home/ja
+rsync -av $home/docs/latest/ $home/latest --exclude $home/docs/ja
+rsync -av $home/docs/ja/ $home/ja
 
 #cp -r $home/docs/latest $home/
 #cp -r $home/docs/ja $home/
@@ -18,8 +18,8 @@ rsync -avzh $home/docs/ja/ $home/ja
 echo "changing branch to $oldBranch"
 git checkout $oldBranch
 echo "copying over older docs to directory called $oldBranch"
-rsync -avzh $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
-rsync -avzh $home/docs/ja/ $home/ja/$oldBranch
+rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
+rsync -av $home/docs/ja/ $home/ja/$oldBranch
 
 #cp -r $home/docs/* $home/$oldBranch
 #cp -r $home/docs/ja/* $home/$oldBranch-ja
