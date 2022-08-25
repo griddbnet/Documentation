@@ -7,9 +7,8 @@ thisBranch="latest"
 echo "thisBranch = $thisBranch"
 oldBranch="v4.5"
 
-cd $home/docs
 echo "Copying contents of LATEST docs to home root"
-rsync -avzh $home/docs/latest/ $home/latest
+rsync -avzh $home/docs/latest/ $home/latest --exclude $home/docs/ja
 rsync -avzh $home/docs/ja/ $home/ja
 
 #cp -r $home/docs/latest $home/
@@ -19,18 +18,18 @@ rsync -avzh $home/docs/ja/ $home/ja
 echo "changing branch to $oldBranch"
 git checkout $oldBranch
 echo "copying over older docs to directory called $oldBranch"
-rsync -avzh $home/docs/ $home/$oldBranch --exclude $home/docs/ja
-rsync -avzh $home/docs/ja/ $home/ja/v4.5
+rsync -avzh $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
+rsync -avzh $home/docs/ja/ $home/ja/$oldBranch
 
 #cp -r $home/docs/* $home/$oldBranch
 #cp -r $home/docs/ja/* $home/$oldBranch-ja
 
 echo "running install"
+cd $home/docs
 npm install
 echo "copying contents to docs for building"
 
 mv $home/latest $home/docs/
-rm -rf $home/docs/ja
 mv $home/ja $home/docs/
 mv $home/$oldBranch $home/docs/
 
