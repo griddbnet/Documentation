@@ -19,8 +19,7 @@ echo "changing branch to $oldBranch"
 git checkout $oldBranch
 # echo "copying over older docs to directory called $oldBranch"
 # rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
-# rsync -av $home/docs/$oldBranch/ja/ $home/ja/$oldBranch
-
+mv $home/docs/$oldBranch/ja/ $home/ja/$oldBranch
 
 
 #cp -r $home/docs/* $home/$oldBranch
@@ -32,7 +31,6 @@ npm install
 echo "copying contents to docs for building"
 
 mv $home/latest $home/docs/
-mv $home/ja/v4.5 $home/ja
 mv $home/ja $home/docs/
 #mv $home/$oldBranch $home/docs/
 
