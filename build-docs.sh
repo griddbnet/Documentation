@@ -20,6 +20,9 @@ git checkout $oldBranch
 echo "copying over older docs to directory called $oldBranch"
 rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
 rsync -av $home/docs/$oldBranch/ja/ $home/ja/$oldBranch
+echo "PRINTING JA DOCS DIR"
+ls $home/docs/ja
+
 
 #cp -r $home/docs/* $home/$oldBranch
 #cp -r $home/docs/ja/* $home/$oldBranch-ja
