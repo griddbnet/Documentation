@@ -36,6 +36,16 @@ mv $home/latest $home/docs/
 mv $home/ja $home/docs/
 #mv $home/$oldBranch $home/docs/
 
+
+echo "PRINT ALL CONTENTS"
+echo "ls home"
+ls $home
+echo "ls home/docs"
+ls $home/docs/
+echo "ls home/docs/ja"
+ls $home/docs/ja
+
+SLEEP 3
 echo "going to run build"
 npm run build
 
