@@ -19,6 +19,9 @@ echo "changing branch to $oldBranch"
 git checkout $oldBranch
 # echo "copying over older docs to directory called $oldBranch"
 # rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
+echo "printout of $home/ja"
+ls $home/ja/
+
 mv $home/docs/ja/$oldBranch $home/ja/
 
 
