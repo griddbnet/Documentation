@@ -38,10 +38,6 @@ rm -rf $home/docs/ja
 mv $home/ja $home/docs/
 #mv $home/$oldBranch $home/docs/
 
-echo "PRINTING JA DOCS DIR"
-ls $home/ja
-
-
 echo "PRINT ALL CONTENTS"
 echo "ls home"
 ls $home
