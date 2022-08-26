@@ -1,6 +1,6 @@
 module.exports = {
   title: 'GridDB Documentation',
-  base: '/',
+  base: '/latest',
   description: 'GridDB Documentation',
   plugins: [
     ['@vuepress/back-to-top'],
