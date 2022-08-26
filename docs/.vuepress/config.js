@@ -168,6 +168,7 @@ module.exports = {
               sidebarDepth: 3,
               children: [
                 '/latest/architecture/introduction',
+				        '/latest/architecture/what-is-griddb',
                 '/latest/architecture/structure-of-griddb',
                 '/latest/architecture/data-model',
                 '/latest/architecture/database-function',
@@ -529,6 +530,7 @@ module.exports = {
               sidebarDepth: 3,
               children: [
                 '/ja/latest/architecture/introduction',
+				'/ja/latest/architecture/what-is-griddb',
                 '/ja/latest/architecture/structure-of-griddb',
                 '/ja/latest/architecture/data-model',
                 '/ja/latest/architecture/database-function',
