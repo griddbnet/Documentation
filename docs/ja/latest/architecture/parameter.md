@@ -18,14 +18,14 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 
 クラスタ定義ファイルの各設定項目の意味を以下に説明します。
 
-初期状態で含まれていない項目も項目名を追加することでシステムに認識させることができます。 変更の欄ではパラメータの変更可否と変更タイミングを示します
+初期状態で含まれていない項目も項目名を追加することでシステムに認識させることができます。 変更の欄ではパラメータの値の変更可否と変更タイミングを示します。
 -   変更不可　：ノードを一度起動したのちは変更はできません。変更したい場合データベースを初期化する必要があります。
 -   起動　　　：クラスタを構成する全ノードを再起動することで、変更できます。
 -   オンライン：オンライン稼働中にパラメータを変更できます。ただし、変更内容は永続化されないため、定義ファイルの内容を手動で変更する必要があります。
 
 　
 
-| GridDBの構成                                 | 初期値    | パラメータの意味と制限値                          | 変更     |
+| GridDBの構成                                 | 初期値    | パラメータの意味と制限値                          | <span style="white-space: nowrap;">変更</span>     |
 |----------------------------------------------|-----------|--------------------------------------------------|----------|
 | /notificationAddress                         | 239.0.0.1 | マルチキャストアドレスの標準設定です。cluster,transactionの同じ名前のパラメータが省略された場合、本設定が有効になります。異なる値が設定されている場合、個別設定のアドレスが有効です。 | 起動     |
 | /dataStore/partitionNum                      | 128       | パーティション数を構成するクラスタ台数で分割配置できる公倍数で指定します。 整数: 1以上、10000以下で指定します。  | 変更不可 |
@@ -47,45 +47,52 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 | /transaction/replicationMode                 | 0         | トランザクションでデータ更新をする時のデータの同期（レプリケーション）方法を指定します。文字列または整数で、 "ASYNC"または0(非同期)、"SEMISYNC"または1(準同期)を指定します。            | 起動     |
 | /transaction/replicationTimeoutInterval      | 10秒      | トランザクションが準同期レプリケーションでデータを同期する際のノード間通信のタイムアウト時間を指定します。1s以上、2<sup>31</sup>s未満の値を指定します。                             | 起動     |
 | /transaction/authenticationTimeoutInterval   | 5秒       | 認証タイムアウト時間を指定します。                            | 起動       |
-| /sql/notificationAddress                     | 239.0.0.1 | JDBCクライアントが初期に接続するマルチキャストアドレスです。クライアントにはマスタノードが通知されます。 | 起動     |
-| /sql/notificationPort                        | 41999     | JDBCクライアントが初期に接続するマルチキャストポートです。ポート番号として指定可能な範囲の値を指定します。| 起動     |
-| /sql/notificationInterval                    | 5秒       |JDBCクライアントへのマスタ通知用マルチキャスト周期です。1s以上、2<sup>31</sup>s未満の値を指定します。     | 起動     |
+| /sql/notificationAddress                     | 239.0.0.1 | JDBC/ODBCクライアントが初期に接続するマルチキャストアドレスです。クライアントにはマスタノードが通知されます。 | 起動     |
+| /sql/notificationPort                        | 41999     | JDBC/ODBCクライアントが初期に接続するマルチキャストポートです。ポート番号として指定可能な範囲の値を指定します。| 起動     |
+| /sql/notificationInterval                    | 5秒       |JDBC/ODBCクライアントへのマスタ通知用マルチキャスト周期です。1s以上、2<sup>31</sup>s未満の値を指定します。     | 起動     |
+| /security/authentication | INTERNAL       | 認証方式として、INTERNAL(内部認証) / LDAP(LDAP認証)のいずれかを指定。| 起動     |
+| /security/ldapRoleManagement | USER      | GridDBのロールとマッピングする対象として、USER(LDAPユーザ名でマッピング) / GROUP(LDAPグループ名でマッピング)のいずれかを指定。| 起動     |
+| /security/ldapUrl           |       | LDAPサーバを次の形式で指定。ldaps://host[:port] | 起動     |
+| /security/ldapUserDNPrefix |         | ユーザのDN（識別子）を生成するために、ユーザ名の前に連結する文字列を指定。| 起動     |
+| /security/ldapUserDNSuffix |        | ユーザのDN(識別子)を生成するために、ユーザ名の後に連結する文字列を指定。| 起動     |
+| /security/ldapBindDn |         | LDAP管理ユーザのDNを指定。| 起動     |
+| /security/ldapBindPassword |        | LDAP管理ユーザのパスワードを指定。| 起動     |
+| /security/ldapBaseDn |        | 検索を開始するルートDNを指定。| 起動     |
+| /security/ldapSearchAttribute |  uid     | 検索対象となる属性を指定。| 起動     |
+| /security/ldapMemberOfAttribute | memberof | ユーザが所属するグループDNが設定された属性を指定。(ldapRoleManagement=GROUPの場合に有効)| 起動     |
+| /system/serverSslMode | DISABLED        | SSL接続設定として、DISABLED(SSL無効)、PREFERRED(SSL有効、ただし非SSL接続も許容)、REQUIRED(SSL有効、非SSL接続は不可)のいずれかを指定。| 起動     |
+| /system/sslProtocolMaxVersion | TLSv1.2 | TLSプロトコルバージョンとして、TLSv1.2, TLSv1.3のいずれかを指定。| 起動     |　
 
-　
 
 ## ノード定義ファイル(gs_node.json)
 
-ノード定義ファイルでは、クラスタを構成するノードのリソースを初期設定します。オンライン運用では、配置されているリソース、アクセス頻度などから、オンラインで値を変更できるパラメータもあります。逆に一度設定すると変更できない値(concurrency)もありますので注意してください。
+ノード定義ファイルでは、クラスタを構成するノードのリソースを初期設定します。オンライン運用では、配置されているリソース、アクセス頻度などから、オンラインで値を変更できるパラメータもあります。
 
 ノード定義ファイルの各設定項目の意味を以下に説明します。
 
-初期状態で含まれていない項目も項目名を追加することでシステムに認識させることができます。 変更の欄ではパラメータの変更可否と変更タイミングを示します
+初期状態で含まれていない項目も項目名を追加することでシステムに認識させることができます。 変更の欄ではパラメータの値の変更可否と変更タイミングを示します。
 -   変更不可　：ノードを一度起動したのちは変更はできません。変更したい場合データベースを初期化する必要があります。
--   起動　　　：クラスタを構成する全ノードを再起動することで、変更できます。
+-   起動　　　：対象ノードを再起動することで、変更できます。
 -   オンライン：オンライン稼働中にパラメータを変更できます。ただし、変更内容は永続化されないため、定義ファイルの内容を手動で変更する必要があります。
 
 ディレクトリの指定は、フルパスもしくは、GS_HOME環境変数からの相対パスで指定します。相対パスは、GS_HOMEの初期ディレクトリが基点となります。GS_HOMEの初期設定ディレクトリは、/var/lib/gridstoreです。
 
-| GridDBの構成                         | 初期値                     | パラメータの意味と制限値     | 変更       |
+| GridDBの構成                         | 初期値                     | パラメータの意味と制限値     | <span style="white-space: nowrap;">変更</span>       |
 |--------------------------------------|----------------------------|---------------------------------|-----|
 | /serviceAddress                      | なし                       | cluster,transaction,syncの各サービスアドレスの初期値を設定。3項目のアドレスを設定せずに本アドレスの設定のみで各サービスアドレスの初期値を設定できる。  | 起動       |
-| /dataStore/dbPath                    | data                       | データベースファイルの配置ディレクトリをフルパスもしくは、相対パスで指定する。   | 起動       |
-| /dataStore/dbFileSplitCount          | 0 (分割無し)               | チェックポイントファイルの分割数。   | 不可       |
-| /dataStore/dbFilePathList            | 空リスト                   | チェックポイントファイル分割時の分割チェックポイントファイルの配置ディレクトリリスト。<br>dbFileSplitCountに1以上を指定した場合は必須。複数設定可能(例：["/stg01","/stg02"])。ただし、dbFileSplitCount以上のディレクトリ数は指定不可。   | 起動   |
+| /dataStore/dbPath                    | data                       | データファイル、チェックポイントログファイルの配置ディレクトリをフルパスもしくは、相対パスで指定する。   | 起動       |
+| /dataStore/transactionLogPath        | txnlog                     | トランザクションログファイルの配置ディレクトリをフルパスもしくは、相対パスで指定する。   | 起動       |
+| /dataStore/dbFileSplitCount          | 0 (分割無し)               | データファイルの分割数。   | 不可       |
 | /dataStore/backupPath                | backup                     | バックアップファイルの配置ディレクトリのパスを指定。                                  | 起動       |
 | /dataStore/syncTempPath              | sync                       | データ同期用一時ファイルの配置ディレクトリのパスを指定。                                  | 起動       |
 | /dataStore/storeMemoryLimit          | 1024MB                     | データ管理用メモリの上限。                                                       | オンライン |
-| /dataStore/concurrency               | 4                          | 処理の並列度を指定。                                                                        | 不可       |
+| /dataStore/concurrency               | 4                          | 処理の並列度を指定。                                                                        | 起動       |
 | /dataStore/logWriteMode              | 1                          | ログ書き出しモード・周期を指定。 -1または0の場合トランザクション終了時にログ書き込み、1以上2<sup>31</sup>未満の場合、秒単位の周期でログ書き込み  | 起動       |
-| /dataStore/persistencyMode           | 1(NORMAL)                  | 永続化モードでは、データ更新時の更新ログファイルの保持期間を指定する。1(NORMAL)、2(RETAINING_ALL_LOGS)　のいずれかを指定。"NORMAL" は、チェックポイントにより、不要になったトランザクションログファイルは削除されます。"RETAINING_ALL_LOGS"は、全てのトランザクションログファイルを残します。 | 起動       |
-| /dataStore/storeWarmStart            | false(無効)                | 再起動時にチャンクメモリ上限までインメモリ化するかを指定。                        | 起動       |
+| /dataStore/persistencyMode           | 1(NORMAL)                  | 永続化モードでは、データ更新時の更新ログファイルの保持期間を指定する。1(NORMAL)、2(KEEP_ALL_LOG)　のいずれかを指定。"NORMAL" は、チェックポイントにより、不要になったトランザクションログファイルは削除されます。"KEEP_ALL_LOG"は、全てのトランザクションログファイルを残します。 | 起動       |
 | /dataStore/affinityGroupSize         | 4                          | アフィニティグループ数                                                        | 起動       |
 | /dataStore/storeCompressionMode      | NO_COMPRESSION   | データブロック圧縮モード                                                                | 起動       |
-| /dataStore/autoExpire                | false                      | 期限解放が設定されたコンテナのロウを、コールドデータになった後に自動削除するかを指定。false:自動削除しない(長期アーカイブ実行による削除が必要) true:自動削除する                                                                                                            | オンライン |
 | /checkpoint/checkpointInterval       | 60秒                       | メモリ上のデータ更新ブロックを永続化するチェックポイント処理の実行周期         | 起動       |
-| /checkpoint/checkpointMemoryLimit    | 1024MB                     | チェックポイント専用書き出しメモリの上限 ※チェックポイント中に更新トランザクションがある場合に必要となるメモリ領域を上限値までプール。                                                                                                                                    | オンライン |
-| /checkpoint/useParallelMode          | false(無効)                | チェックポイントを並列実行するかどうかを指定。※並列スレッド数は並列度(concurrency)と同じ数になります。| 起動       |
-| /checkpoint/checkpointCopyInterval   | 100ms                      | データの更新や追加が行われたブロックをチェックポイント処理でディスクに出力する際の出力処理間隔        | 起動       |
+| /checkpoint/partialCheckpointInterval  | 10                       | チェックポイント実行時に、チェックポイントログファイルへブロック管理情報を書き込む処理の分割数          | 起動       |
 | /cluster/serviceAddress              | 上位のserviceAddressに従う | クラスタ構成用待ち受けアドレス                                            | 起動       |
 | /cluster/servicePort                 | 10010                      | クラスタ構成用待ち受けポート                                             | 起動       |
 | /cluster/notificationInterfaceAddress  | ""                       | マルチキャストパケットを送信するインターフェースのアドレスを指定 | 起動       |
@@ -94,10 +101,13 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 | /system/serviceAddress               | 上位のserviceAddressに従う | 運用コマンド用待ち受けアドレス                                           | 起動       |
 | /system/servicePort                  | 10040                      | 運用コマンド用待ち受けポート                                            | 起動       |
 | /system/eventLogPath                 | log                        | イベントログファイルの配置ディレクトリのパス                            | 起動       |
+| /system/securityPath | security        | サーバ証明書、秘密鍵の配置ディレクトリをフルパスもしくは、相対パスで指定。 | 起動     |
+| /system/serviceSslPort | 10045 | 運用コマンド用待ち受けSSLポート | 起動     |
 | /transaction/serviceAddress          | 上位のserviceAddressに従う | クライアント通信向けトランザクション処理用待ち受けアドレス(/transaction/localserviceAddressの指定がない場合、クラスタ内部通信向けも兼ねる)  | 起動       |
 | /transaction/localServiceAddress     | 上位のserviceAddressに従う | クラスタ内部通信向けトランザクション処理用待ち受けアドレス  | 起動       |
 | /transaction/servicePort             | 10001                      | トランザクション処理用待ち受けポート                                    | 起動       |
 | /transaction/connectionLimit         | 5000                       | トランザクション処理接続数の上限                                       | 起動       |
+| /transaction/totalMemoryLimit        | 1024MB | トランザクション処理用メモリエリアのサイズ上限値 | 起動 |
 | /transaction/transactionTimeoutLimit | 300秒                      | トランザクションタイムアウト時間の上限値                             | 起動       |
 | /transaction/reauthenticationInterval  | 0s(無効)                 | 再認証間隔。(指定時間を超えると再認証が行われ、既に接続中の一般ユーザに対する権限等の変更が反映される。) デフォルト(0s)の場合、再認証は無効。| オンライン       |
 | /transaction/workMemoryLimit         | 128MB                      | トランザクション処理でのデータ参照(get、TQL)時のメモリの上限サイズ(並列度ごと)       | オンライン       |
@@ -116,15 +126,14 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 | /sql/traceLimitQuerySize             | 1000                       | スロークエリに残るクエリ文字列のサイズ上限(バイト)                         | オンライン |
 | /sql/notificationInterfaceAddress    | ""                         | マルチキャストパケットを送信するインターフェースのアドレスを指定                       | 起動       |
 | /trace/fileCount                     | 30                         | イベントログファイルの上限数                                                 | 起動       |
+| /security/userCacheSize |  1000       | キャッシュする一般ユーザ/LDAPユーザエントリ数を指定。 | 起動     |
+| /security/userCacheUpdateInterval |  60      | キャッシュの更新間隔（秒）を指定。| 起動     |
 
 
 
+## --- システムの制限値 ---
 
-システムの制限値
-================
-
-数値に関する制限
-----------------
+## 数値に関する制限
 
 | ブロックサイズ                             | 64KB        | 1MB～32MB          |
 |--------------------------------------------|-------------|-------------------|
@@ -133,10 +142,8 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 | 配列長                                     | 4000        | 65000             |
 | カラム数                                   | 1024個      | 約7K～32000個(※1) |
 | 索引数(コンテナ1個あたり)                  | 1024個      | 16000個           |
-| 線形補完圧縮の対象カラム数                 | 100個       | 100個             |
 | ユーザ数                                   | 128         | 128               |
 | データベース数                             | 128個       | 128個             |
-| トリガのURL                                | 4KB         | 4KB               |
 | アフィニティグループ数                     | 10000       | 10000             |
 | 解放期限付き時系列コンテナの分割数         | 160         | 160               |
 | GridDBノードが管理する通信バッファのサイズ | 約2GB       | 約2GB             |
@@ -145,7 +152,7 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 |----------------------------|-------------|-------------|-------------|-------------|-------------|-------------|
 | パーティションサイズ       | 約4TB       | 約64TB      | 約256TB     | 約512TB     | 約1PB       | 約2PB       |
 
-- 文字列型、トリガのURL
+- 文字列型
   - 制限値はUTF-8エンコード相当
 - 空間型
   - 制限値は内部格納形式相当
@@ -155,35 +162,34 @@ GridDBの動作を制御するパラメータについて説明します。GridD
     - 例) BYTE型カラムのみのコンテナの場合：カラム上限数は32000 ( 固定長カラムの合計サイズ 1B \* 32000 = 約30KB → 固定長カラムのサイズ制約には当てはまらないので、上限の32000個のカラムを作成できる)
     - 例) STRING型カラムのみのコンテナの場合：カラム上限数は32000 ( 固定長カラムのサイズ制約には当てはまらないので、上限の32000個のカラムを作成できる)
 
-ネーミングに関する制限
-----------------------
+## ネーミングに関する制限
 
 | 名前                   | 使用可能な文字                                     | 長さの上限                    |
 |------------------------|----------------------------------------------------|-------------------------------|
 | 管理ユーザ             | 先頭が"gs\#"で始まる。それ以外の文字は英数字、'\_' | 64文字                        |
 | 一般ユーザ             | 英数字、'\_'、'-'、'.'、'/'、'='                   | 64文字                        |
+| ロール            | 英数字、'\_'、'-'、'.'、'/'、'='                   | 64文字                        |
 | パスワード             | Unicodeコードポイントを文字とする<br>任意個数の文字の列(NULL文字(U+0000)は不可) | 64バイト(UTF-8エンコード換算) |
 | クラスタ名             | 英数字、'\_'、'-'、'.'、'/'、'='                   | 64文字                        |
 | データベース名         | 英数字、'\_'、'-'、'.'、'/'、'='                   | 64文字                        |
 | コンテナ名<br>テーブル名<br>ビュー名 | 英数字、'\_'、'-'、'.'、'/'、'='<br>(ノードアフィニティを指定する場合のみ'@') | 16384文字(ブロックサイズ64KB)<br>131072文字(ブロックサイズ1MB～32MB) |
 | カラム名               | 英数字、'\_'、'-'、'.'、'/'、'='                   | 256文字                       |
 | 索引名                 | 英数字、'\_'、'-'、'.'、'/'、'='                   | 16384文字(ブロックサイズ64KB)<br>131072文字(ブロックサイズ1MB～32MB) |
-| トリガ名               | 英数字、'\_'、'-'、'.'、'/'、'='                   | 256文字                       |
 | バックアップ名         | 英数字、'\_'                                       | 12文字                        |
 | データアフィニティ     | 英数字、'\_'、'-'、'.'、'/'、'='                   | 8文字                         |
 
 - 大文字小文字の区別
-  - クラスタ名・トリガ名・バックアップ名、パスワードは、大文字小文字の区別があります。したがって、例に示すような大文字小文字のみ異なる表記は、異なるものとして扱います。
+  - クラスタ名・バックアップ名、パスワードは、大文字小文字の区別があります。したがって、例に示すような大文字小文字のみ異なる表記は、異なるものとして扱います。
 
-    ``` sh
-    例) trigger, TRIGGER
+    ```
+    例) mycluster, MYCLUSTER
     ```
 
 - それ以外の名前は、大文字小文字の区別がありません。大文字小文字表記は同一視します。
 - 作成時に指定された大文字小文字の表記は、データとして保持します。
 - TQL/SQL構文で名前を引用符"で囲う場合は、大文字小文字の表記を区別した検索を行います。
 
-  ``` sh
+  ```
   例) コンテナ名 SensorData の Column1 を検索する場合
       select "Column1" from "SensorData"   検索可能
       select "COLUMN1" from "SENSORDATA"  "SENSORDATA"というコンテナは存在しないので検索不可
@@ -191,6 +197,114 @@ GridDBの動作を制御するパラメータについて説明します。GridD
 
 - TQL/SQL構文での名前指定
   - 引用符"で囲わない場合は、英数字、'\_'(数字は先頭不可)の名前しか記述できません。それ以外の名前を記述する場合には引用符で囲んでください。
-    ``` sh
+    ```
     例) select "012column", data_15 from "container.2017-09"
     ```
+
+## --- 付録 ---
+
+
+## ディレクトリ構成<a href="https://www.global.toshiba/jp/products-solutions/ai-iot/griddb/product/griddb-ee.html?utm_source=griddb.net&utm_medium=referral&utm_campaign=commercial_badge"><badge text="商用版のみ" type="warning"/></a>
+
+GridDBのサーバやクライアントをインストールした時のディレクトリ構成を以下に示します。X.x.xはGridDBのバージョンを表します。
+
+```
+(サーバ／クライアントをインストールしたマシン)
+/usr/griddb-ee-X.X.X/                                    GridDBインストールディレクトリ
+                     Readme.txt
+                     bin/
+                         gs_xxx                          各種コマンド
+                         gsserver                        サーバモジュール
+                         gssvc                           サーバモジュール
+                     conf/
+                     etc/
+                     lib/
+                         gridstore-tools-X.X.X.jar
+                         XXX.jar                         フリーソフトウェア
+                     license/
+                     misc/
+                     prop/
+                     sample/
+
+/usr/share/java/gridstore-tools.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-tools-X.X.X.jar
+
+/usr/griddb-ee-webui-X.X.X/                              統合運用管理GUIディレクトリ
+                           conf/
+                           etc/
+                           griddb-webui-ee-X.X.X.jar
+
+/usr/griddb-ee-webui/griddb-webui.jar -> /usr/griddb-ee-webui-X.X.X/griddb-webui-ee-X.X.X.jar
+
+/var/lib/gridstore/                                      GridDBホームディレクトリ(作業ディレクトリ)
+                   admin/                                統合運用管理GUIホームディレクトリ(adminHome)
+                   backup/                               バックアップファイル格納ディレクトリ
+                   conf/                                 定義ファイルの格納ディレクトリ
+                        gs_cluster.json                  クラスタ定義ファイル
+                        gs_node.json                     ノード定義ファイル
+                        password                         ユーザ定義ファイル
+                   data/                                 データベースファイル格納ディレクトリ
+                   txnlog/                               トランザクションログ格納ディレクトリ
+                   expimp/                               Export/Importツールディレクトリ
+                   log/                                  イベントログ格納ディレクトリ
+                   webapi/                               Web APIディレクトリ
+
+/usr/bin/
+         gs_xxx -> /usr/griddb-ee-X.X.X/bin/gs_xxx                       各種コマンドへのリンク
+         gsserver -> /usr/griddb-ee-X.X.X/bin/gsserver                   サーバモジュールへのリンク
+         gssvc -> /usr/griddb-ee-X.X.X/bin/gssvc                         サーバモジュールへのリンク
+
+/usr/lib/systemd/system
+            gridstore.service                            systemd ユニットファイル
+
+/usr/griddb-ee-X.X.X/bin
+            gridstore                                    サービススクリプト
+
+(ライブラリをインストールしたマシン)
+/usr/griddb-ee-X.X.X/                                    インストールディレクトリ
+                     lib/
+                         gridstore-X.X.X.jar
+                         gridstore-advanced-X.X.X.jar
+                         gridstore-call-logging-X.X.X.jar
+                         gridstore-conf-X.X.X.jar
+                         gridstore-jdbc-X.X.X.jar
+                         gridstore-jdbc-call-logging-X.X.X.jar
+                         gridstore.h
+                         libgridstore.so.0.0.0
+                         libgridstore_advanced.so.0.0.0
+                         python/                         Pythonライブラリディレクトリ
+                         nodejs/                         Node.jsライブラリディレクトリ
+                             sample/
+                             griddb_client.node
+                             griddb_node.js
+                         go/                             Goライブラリディレクトリ
+                             sample/
+                             pkg/linux_amd64/griddb/go_client.a
+                             src/griddb/go_client/       Goライブラリのソースディレクトリ
+                         conf/                           
+                         javadoc/                           
+
+/usr/griddb-ee-webapi-X.X.X/                             Web APIディレクトリ
+                     conf/
+                     etc/
+                     griddb-webapi-ee-X.X.X.jar
+
+/usr/girddb-webapi/griddb-webapi.jar -> /usr/griddb-ee-webapi-X.X.X/griddb-webapi-ee-X.X.X.jar
+
+/usr/share/java/gridstore.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-X.X.X.jar
+/usr/share/java/gridstore-advanced.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-advanced-X.X.X.jar
+/usr/share/java/gridstore-call-logging.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-call-logging-X.X.X.jar
+/usr/share/java/gridstore-conf.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-conf-X.X.X.jar
+/usr/share/java/gridstore-jdbc.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-jdbc-X.X.X.jar
+/usr/share/java/gridstore-jdbc-call-logging.jar -> /usr/griddb-ee-X.X.X/lib/gridstore-jdbc-call-logging-X.X.X.jar
+
+
+/usr/include/gridstore.h -> /usr/griddb-ee-X.X.X/lib/gridstore.h
+
+/usr/lib64/                                             ※CentOSの場合は/usr/lib64、Ubuntu Serverの場合は/usr/lib/x86_64-linux-gnu
+           libgridstore.so -> libgridstore.so.0
+           libgridstore.so.0 -> libgridstore.so.0.0.0
+           libgridstore.so.0.0.0 -> /usr/griddb-ee-X.X.X/lib/libgridstore.so.0.0.0
+           libgridstore_advanced.so -> libgridstore_advanced.so.0
+           libgridstore_advanced.so.0 -> libgridstore_advanced.so.0.0.0
+           libgridstore_advanced.so.0.0.0 -> /usr/griddb-ee-X.X.X/lib/libgridstore_advanced.so.0.0.0
+```
