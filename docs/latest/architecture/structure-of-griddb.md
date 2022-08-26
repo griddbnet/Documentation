@@ -253,7 +253,7 @@ showing whether the partitions in an operating cluster are accessible, or the pa
 
 Partition status can be checked by executing gs_stat command to a master node. (The state is expressed as the value of /cluster/partitionStatus)
 
-```example
+```
 $ gs_stat -u admin/admin
 {
     :
