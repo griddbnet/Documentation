@@ -11,28 +11,20 @@ echo "Copying contents of LATEST docs to home root"
 rsync -av $home/docs/latest/ $home/latest --exclude $home/docs/ja
 rsync -av $home/docs/ja/ $home/ja
 
-#cp -r $home/docs/latest $home/
-#cp -r $home/docs/ja $home/
-
 
 echo "changing branch to $oldBranch"
 git checkout $oldBranch
-# echo "copying over older docs to directory called $oldBranch"
-# rsync -av $home/docs/$oldBranch/ $home/$oldBranch --exclude $home/docs/ja
 echo "printout of $home/ja"
 ls $home/ja/
 
 mv $home/docs/ja/$oldBranch $home/ja/
-
-
-#cp -r $home/docs/* $home/$oldBranch
-#cp -r $home/docs/ja/* $home/$oldBranch-ja
 
 echo "running install"
 cd $home/docs
 npm install
 echo "copying contents to docs for building"
 
+cp -r $home/latest/* $home/docs/
 mv $home/latest $home/docs/
 rm -rf $home/docs/ja
 mv $home/ja $home/docs/
