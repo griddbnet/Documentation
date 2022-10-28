@@ -14,7 +14,7 @@ module.exports = {
     [
       'vuepress-plugin-clean-urls',
       {
-        normalSuffix: '/latest',
+        normalSuffix: '/',
         notFoundPath: '/404.html',
       },
     ],
