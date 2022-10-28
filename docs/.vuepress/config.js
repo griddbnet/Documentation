@@ -78,7 +78,7 @@ module.exports = {
     ]
   ],
   locales: {
-    '/': {
+    '/latest': {
       lang: 'en-US',
       title: 'GridDB | Docs',
       description: 'GridDB Documentation'
@@ -92,7 +92,7 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     locales: {
-      '/': {
+      '/latest': {
         selectText: 'Languages',
         label: 'English',
         ariaLabel: 'Languages',
