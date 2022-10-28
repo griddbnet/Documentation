@@ -92,7 +92,7 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     locales: {
-      '/latest': {
+      '/': {
         selectText: 'Languages',
         label: 'English',
         ariaLabel: 'Languages',
