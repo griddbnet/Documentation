@@ -43,6 +43,8 @@ echo "ls home"
 ls $home
 echo "ls home/docs"
 ls $home/docs/
+echo "ls home/docs/latest"
+ls $home/docs/latest
 echo "ls home/docs/ja"
 ls $home/docs/ja
 
