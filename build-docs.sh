@@ -53,12 +53,12 @@ echo "going to run build"
 npm run build
 
 echo "deleting directories: docs/$thisBranch and docs/$oldBranch and docs/node_modules"
-rm -rf $home/docs/$oldBranch
-rm -rf $home/docs/ja/$oldBranch
-rm -rf $home/docs/$thisBranch
-rm -rf $home/docs/ja/$thisBranch
-rm -rf $home/docs/node_modules
-rm $home/docs/package-lock.json
+# rm -rf $home/docs/$oldBranch
+# rm -rf $home/docs/ja/$oldBranch
+# rm -rf $home/docs/$thisBranch
+# rm -rf $home/docs/ja/$thisBranch
+# rm -rf $home/docs/node_modules
+# rm $home/docs/package-lock.json
 
-echo "going back to branch $thisBranch"
-git checkout main
+# echo "going back to branch $thisBranch"
+# git checkout main
