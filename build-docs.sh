@@ -24,7 +24,7 @@ cd $home/docs
 npm install
 echo "copying contents to docs for building"
 
-cp -r $home/latest/* $home/docs/
+#cp -r $home/latest/* $home/docs/
 mv $home/latest $home/docs/
 rm -rf $home/docs/ja
 mv $home/ja $home/docs/
