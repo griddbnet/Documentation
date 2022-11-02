@@ -18,3 +18,10 @@ steps:
 - script: |
     ./build-docs.sh
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Microsoft Partner Network (c2e6da56-1250-47b6-9856-22113a1cb768)'
+    appType: 'webApp'
+    WebAppName: 'griddb-devops'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/docs/.vuepress/dist'
