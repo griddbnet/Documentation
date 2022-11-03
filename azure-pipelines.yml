@@ -48,6 +48,10 @@ steps:
       ls -la
       echo 'Checking contents of specific dir'
       ls -la /home/vsts/work/1/
+      echo 'Checking contents of specific latest'
+      ls -la /home/vsts/work/1/latest
+      echo 'Checking contents of specific v4.5'
+      ls -la /home/vsts/work/1/v4.5
     #workingDirectory: '/home/vsts/work/1/'
       
       
