@@ -46,6 +46,8 @@ steps:
       echo $PWD
       echo 'Checking contents of home'
       ls -la
+      echo 'Checking contents of specific dir'
+      ls -la /home/vsts/work/1/
     #workingDirectory: '/home/vsts/work/1/'
       
       
