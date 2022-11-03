@@ -6,13 +6,6 @@
 trigger:
 - main
 
-resources:
-  repositories:
-  - repository: Documentation
-    type: github
-    name: griddbnet/Documentation
-    ref: v4.5
-
 pool:
   vmImage: ubuntu-latest
 
@@ -22,7 +15,7 @@ steps:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
 
-- checkout: Documentation
+- checkout: git@github.com:griddbnet/Documentation.git/v4.5
   displayName: 'Checkout v4.5'
 
 - task: Bash@3
