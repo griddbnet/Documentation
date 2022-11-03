@@ -8,7 +8,7 @@ trigger:
 
 resources:
   repositories:
-  - repository: self
+  - repository: Documentation
     type: github
     name: griddbnet/Documentation
     ref: v4.5
@@ -22,7 +22,7 @@ steps:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
 
-- checkout: self
+- checkout: Documentation
   displayName: 'Checkout v4.5'
 
 - task: Bash@3
