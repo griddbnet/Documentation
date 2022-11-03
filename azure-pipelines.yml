@@ -13,19 +13,15 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '16.x'
+
   displayName: 'Install Node.js'
 
 - script: |
     ./build-docs.sh
   displayName: 'npm install and build'
-- task: PublishPipelineArtifact@1
+- task: CopyFiles@2
   inputs:
-    targetPath: '$(Pipeline.Workspace)/docs/.vuepress/dist'
-    artifactType: 'filepath'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Microsoft Partner Network (c2e6da56-1250-47b6-9856-22113a1cb768)'
-    appType: 'webApp'
-    WebAppName: 'griddb-devops'
-    packageForLinux: '$(System.DefaultWorkingDirectory)'
+    SourceFolder: '/docs/.vuepress/dist'
+    Contents: '**'
+    TargetFolder: '/site/wwwroot'
+    OverWrite: true
