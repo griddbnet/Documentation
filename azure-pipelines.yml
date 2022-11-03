@@ -24,7 +24,7 @@ steps:
   displayName: 'Install Node.js'
 
 - checkout: Documentation
-  path: "/v4.5"
+  path: "v4.5"
   displayName: 'Checkout v4.5'
 
 - task: Bash@3
