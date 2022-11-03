@@ -6,6 +6,14 @@
 trigger:
 - main
 
+resources:
+  repositories:
+  - repository: self
+    type: github
+    name: griddbnet/Documentation
+    ref: v4.5
+
+appendCommitMessageToRunName:
 pool:
   vmImage: ubuntu-latest
 
@@ -13,6 +21,8 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '16.x'
+
+- checkout: v4.5
 
   displayName: 'Install Node.js'
 
