@@ -36,7 +36,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      home=$(pwd)
+      home=/home/vsts/work/1/
       thisBranch="latest"
       oldBranch="v4.5"
       echo $home
@@ -45,15 +45,15 @@ steps:
       rsync -av $home/latest/docs/ja/ $home/ja
       echo $PWD
       echo 'Checking contents of home'
-      ls -la
+      ls -la $home
       echo 'Checking contents of specific dir'
-      ls -la /home/vsts/work/1/
+      ls -la $home/
       echo 'Checking contents of specific latest'
-      ls -la /home/vsts/work/1/latest
+      ls -la $home/latest
       echo 'Checking contents of specific v4.5'
-      ls -la /home/vsts/work/1/v4.5
+      ls -la $home/v4.5
       echo 'Checking contents of specific latest/docs/latest'
-      ls -la /home/vsts/work/1/latest/docs/latest
+      ls -la $home/latest/docs/latest
     #workingDirectory: '/home/vsts/work/1/Documentation'
       
       
