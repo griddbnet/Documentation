@@ -1,6 +1,6 @@
 module.exports = {
   title: 'GridDB Documentation',
-  base: '/latest',
+  base: '/',
   description: 'GridDB Documentation',
   plugins: [
     ['@vuepress/back-to-top'],
@@ -78,7 +78,7 @@ module.exports = {
     ]
   ],
   locales: {
-    '/latest': {
+    '/': {
       lang: 'en-US',
       title: 'GridDB | Docs',
       description: 'GridDB Documentation'
@@ -92,7 +92,7 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     locales: {
-      '/latest': {
+      '/': {
         selectText: 'Languages',
         label: 'English',
         ariaLabel: 'Languages',
@@ -124,7 +124,7 @@ module.exports = {
         ],
         // english sidebar
         sidebar: {
-          '/latest': [
+          '/latest/': [
             {
               title: 'GridDB (latest)',
               collapsable: false,
@@ -168,7 +168,6 @@ module.exports = {
               sidebarDepth: 3,
               children: [
                 '/latest/architecture/introduction',
-				'/latest/architecture/what-is-griddb',
                 '/latest/architecture/structure-of-griddb',
                 '/latest/architecture/data-model',
                 '/latest/architecture/database-function',
@@ -355,11 +354,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/latest/about/what-is-griddb',
-                '/latest/about/what-is-time-series-database',
+                '/about/what-is-griddb',
+                '/about/what-is-time-series-database',
                 //'about/benchmark-comparisons',
-                '/latest/about/release-notes',
-                '/latest/about/faq'
+                '/about/release-notes',
+                '/about/faq'
               ]
             },
             {
@@ -367,18 +366,18 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/latest/gettingstarted/webshell',
-                '/latest/gettingstarted/using-apt',
-                '/latest/gettingstarted/using-rpmyum',
+                '/gettingstarted/webshell',
+                '/gettingstarted/using-apt',
+                '/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
                   collapsable: false,
                   children: [
-                    '/latest/gettingstarted/java',
-                    '/latest/gettingstarted/python',
-                    '/latest/gettingstarted/nodejs',
-                    '/latest/gettingstarted/go',
-                    '/latest/gettingstarted/php'
+                    '/gettingstarted/java',
+                    '/gettingstarted/python',
+                    '/gettingstarted/nodejs',
+                    '/gettingstarted/go',
+                    '/gettingstarted/php'
                   ]
                 }
               ]
@@ -388,12 +387,12 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/latest/architecture/introduction',
-                '/latest/architecture/structure-of-griddb',
-                '/latest/architecture/data-model',
-                '/latest/architecture/database-function',
-                '/latest/architecture/operating-function',
-                '/latest/architecture/parameter'
+                '/architecture/introduction',
+                '/architecture/structure-of-griddb',
+                '/architecture/data-model',
+                '/architecture/database-function',
+                '/architecture/operating-function',
+                '/architecture/parameter'
               ]
             },
             {
@@ -401,11 +400,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/latest/sqlreference/introduction',
-                '/latest/sqlreference/sql-description-format',
-                '/latest/sqlreference/sql-commands-supported',
-                '/latest/sqlreference/metatables',
-                '/latest/sqlreference/reserved-words'
+                '/sqlreference/introduction',
+                '/sqlreference/sql-description-format',
+                '/sqlreference/sql-commands-supported',
+                '/sqlreference/metatables',
+                '/sqlreference/reserved-words'
               ]
             },
             {
@@ -413,10 +412,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/latest/tqlreference/introduction',
-                '/latest/tqlreference/type',
-                '/latest/tqlreference/tql-syntax-and-calculation-functions',
-                '/latest/tqlreference/annex'
+                '/tqlreference/introduction',
+                '/tqlreference/type',
+                '/tqlreference/tql-syntax-and-calculation-functions',
+                '/tqlreference/annex'
               ]
             },
             {
@@ -424,13 +423,13 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 1,
               children: [
-                '/latest/tutorial/wide-narrow',
-                '/latest/tutorial/nifi',
-                '/latest/tutorial/kafka',
-                '/latest/tutorial/jupyter',
-                '/latest/tutorial/pyspark',
-                '/latest/tutorial/forecasting',
-                '/latest/tutorial/timeseries-expiration',
+                '/tutorial/wide-narrow',
+                '/tutorial/nifi',
+                '/tutorial/kafka',
+                '/tutorial/jupyter',
+                '/tutorial/pyspark',
+                '/tutorial/forecasting',
+                '/tutorial/timeseries-expiration',
                 `/latest/tutorial/jms`
               ]
             },
@@ -439,10 +438,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/latest/jdbcdriver/introduction',
-                '/latest/jdbcdriver/overview',
-                '/latest/jdbcdriver/specifications',
-                '/latest/jdbcdriver/sample'
+                '/jdbcdriver/introduction',
+                '/jdbcdriver/overview',
+                '/jdbcdriver/specifications',
+                '/jdbcdriver/sample'
               ]
             },
             {
@@ -450,7 +449,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/latest/references/API-References'
+                '/references/API-References'
                 //     'references/JDBC-driver'
               ]
             }
