@@ -13,7 +13,6 @@ resources:
     name: griddbnet/Documentation
     ref: v4.5
 
-appendCommitMessageToRunName:
 pool:
   vmImage: ubuntu-latest
 
