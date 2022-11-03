@@ -33,3 +33,6 @@ steps:
       # Write your commands here
       
       echo 'Hello world'
+      echo 'Checking contents of home'
+      ls -la
+      
