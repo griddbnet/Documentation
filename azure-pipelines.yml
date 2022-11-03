@@ -41,8 +41,8 @@ steps:
       oldBranch="v4.5"
       echo $home
 
-      rsync -av $home/docs/latest/ $home/latest --exclude $home/docs/ja
-      rsync -av $home/docs/ja/ $home/ja
+      rsync -av $home/latest/docs/latest/ $home/latest --exclude $home/docs/ja
+      rsync -av $home/latest/docs/ja/ $home/ja
       echo $PWD
       echo 'Checking contents of home'
       ls -la
@@ -52,6 +52,8 @@ steps:
       ls -la /home/vsts/work/1/latest
       echo 'Checking contents of specific v4.5'
       ls -la /home/vsts/work/1/v4.5
-    workingDirectory: '/home/vsts/work/1/Documentation'
+      echo 'Checking contents of specific latest/docs/latest'
+      ls -la /home/vsts/work/1/latest/docs/latest
+    #workingDirectory: '/home/vsts/work/1/Documentation'
       
       
