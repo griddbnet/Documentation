@@ -32,11 +32,15 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
+      home=$(pwd)
+      thisBranch="latest"
+      oldBranch="v4.5"
       
-      echo 'Hello world'
+      rsync -av $home/docs/latest/ $home/latest --exclude $home/docs/ja
+      rsync -av $home/docs/ja/ $home/ja
       echo $PWD
       echo 'Checking contents of home'
       ls -la
-      echo 'Checking contents of specific dir'
-      ls -la /home/vsts/work/1/v4.5
+    workingDirectory: '/home/vsts/work/1/'
+      
       
