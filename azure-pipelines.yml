@@ -21,7 +21,7 @@ steps:
   inputs:
     versionSpec: '16.x'
 
-- checkout: v4.5
+- checkout: self
 
   displayName: 'Install Node.js'
 
