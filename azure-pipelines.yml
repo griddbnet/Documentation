@@ -52,6 +52,6 @@ steps:
       ls -la /home/vsts/work/1/latest
       echo 'Checking contents of specific v4.5'
       ls -la /home/vsts/work/1/v4.5
-    #workingDirectory: '/home/vsts/work/1/'
+    workingDirectory: '/home/vsts/work/1/Documentation'
       
       
