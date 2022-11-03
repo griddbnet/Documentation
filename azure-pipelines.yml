@@ -34,6 +34,9 @@ steps:
       # Write your commands here
       
       echo 'Hello world'
+      echo $PWD
       echo 'Checking contents of home'
       ls -la
+      echo 'Checking contents of specific dir'
+      ls -la /home/vsts/work/1/v4.5
       
