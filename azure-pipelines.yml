@@ -23,6 +23,9 @@ steps:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
 
+- checkout: self
+  path: "latest"
+
 - checkout: Documentation
   path: "v4.5"
   displayName: 'Checkout v4.5'
