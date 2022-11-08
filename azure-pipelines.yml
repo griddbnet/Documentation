@@ -6,6 +6,9 @@
 trigger:
 - main
 
+variables:
+- group: Docs Creds
+
 resources:
   repositories:
   - repository: Documentation
@@ -56,18 +59,17 @@ steps:
       cd $home/oldBranch/docs
       npm install
       npm run build
-- task: AzureRmWebAppDeployment@4
+
+- task: FtpUpload@2
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Microsoft Partner Network (c2e6da56-1250-47b6-9856-22113a1cb768)'
-    appType: 'webApp'
-    WebAppName: 'griddb-devops'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'devops_test'
-    SlotName: 'production'
-    packageForLinux: '/home/vsts/work/1/oldBranch/docs/.vuepress/dist/'
-    enableCustomDeployment: true
-    DeploymentType: 'webDeploy'
-    TakeAppOfflineFlag: false
-      
-      
+    credentialsOption: 'inputs'
+    serverUrl: $(ftp_url)
+    username: $(ftp_username)
+    password: $(ftp_password)
+    rootDirectory: '/home/vsts/work/1/oldBranch/docs/.vuepress/dist/'
+    filePatterns: '**'
+    remoteDirectory: '/site/wwwroot/'
+    clean: false
+    cleanContents: true
+    preservePaths: true
+    trustSSL: false
