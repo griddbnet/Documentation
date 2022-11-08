@@ -65,7 +65,7 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'devops_test'
     SlotName: 'production'
-    packageForLinux: '/home/vsts/work/1/oldBranch/docs/.vuepress/dist/**'
+    packageForLinux: '/home/vsts/work/1/oldBranch/docs/.vuepress/dist/'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
     TakeAppOfflineFlag: false
