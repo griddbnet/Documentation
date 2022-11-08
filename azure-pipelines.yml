@@ -53,7 +53,7 @@ steps:
       ls -la $home/main/docs
       echo 'Checking contents of specific $home/oldBranch/docs'
       ls -la $home/oldBranch/docs
-      cd $home/oldBranch
+      cd $home/oldBranch/docs
       npm install
       npm run build
     #workingDirectory: '/home/vsts/work/1/Documentation'
