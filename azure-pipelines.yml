@@ -43,8 +43,9 @@ steps:
 
       rsync -av $home/main/docs/latest/ $home/latest --exclude $home/main/docs/ja
       rsync -av $home/main/docs/ja/ $home/ja
-      mv $home/latest $home/oldBranch/docs
-      mv $home/ja $home/oldBranch/docs
+      cd $home
+      mv latest $home/oldBranch/docs
+      mv ja $home/oldBranch/docs
       echo $PWD
       echo 'Checking contents of home'
       ls -la $home
