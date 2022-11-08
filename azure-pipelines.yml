@@ -24,11 +24,11 @@ steps:
   displayName: 'Install Node.js'
 
 - checkout: self
-  path: "latest"
+  path: "main"
   displayName: 'checkout self'
 
 - checkout: Documentation
-  path: "v4.5"
+  path: "oldBranch"
   displayName: 'Checkout v4.5'
 
 - task: Bash@3
@@ -37,23 +37,24 @@ steps:
     script: |
       # Write your commands here
       home=/home/vsts/work/1/
-      thisBranch="latest"
+      thisBranch="main"
       oldBranch="v4.5"
       echo $home
 
-      rsync -av $home/latest/docs/latest/ $home/latest --exclude $home/docs/ja
-      rsync -av $home/latest/docs/ja/ $home/ja
+      rsync -av $home/main/docs/latest/ $home/latest --exclude $home/main/docs/ja
+      rsync -av $home/main/docs/ja/ $home/ja
+      mv $home/latest $home/oldBranch/docs
+      mv $home/ja $home/oldBranch/docs
       echo $PWD
       echo 'Checking contents of home'
       ls -la $home
-      echo 'Checking contents of specific dir'
-      ls -la $home/
-      echo 'Checking contents of specific latest'
-      ls -la $home/latest
-      echo 'Checking contents of specific v4.5'
-      ls -la $home/v4.5
-      echo 'Checking contents of specific latest/docs/latest'
-      ls -la $home/latest/docs/latest
+      echo 'Checking contents of specific $home/main/docs'
+      ls -la $home/main/docs
+      echo 'Checking contents of specific $home/oldBranch/docs'
+      ls -la $home/oldBranch/docs
+      cd $home/oldBranch
+      npm install
+      npm run build
     #workingDirectory: '/home/vsts/work/1/Documentation'
       
       
