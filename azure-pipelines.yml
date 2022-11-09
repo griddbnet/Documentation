@@ -14,7 +14,7 @@ resources:
   - repository: Documentation
     type: github
     name: griddbnet/Documentation
-    endpoint: MyGitHubServiceConnection
+    endpoint: GitHub
     ref: v4.5
 
 pool:
@@ -40,22 +40,14 @@ steps:
     script: |
       # Write your commands here
       home=/home/vsts/work/1/
-      thisBranch="main"
-      oldBranch="v4.5"
-      echo $home
 
       rsync -av $home/main/docs/latest/ $home/latest --exclude $home/main/docs/ja
       rsync -av $home/main/docs/ja/ $home/ja
+
       cd $home
       mv latest $home/oldBranch/docs
       mv ja/latest $home/oldBranch/docs/ja
-      echo $PWD
-      echo 'Checking contents of home'
-      ls -la $home
-      echo 'Checking contents of specific $home/main/docs'
-      ls -la $home/main/docs
-      echo 'Checking contents of specific $home/oldBranch/docs'
-      ls -la $home/oldBranch/docs
+
       cd $home/oldBranch/docs
       npm install
       npm run build
