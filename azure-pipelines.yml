@@ -38,17 +38,18 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Write your commands here
       home=/home/vsts/work/1/
 
-      rsync -av $home/main/docs/latest/ $home/latest --exclude $home/main/docs/ja
-      rsync -av $home/main/docs/ja/ $home/ja
+      rsync -av $home/oldBranch/docs/v4.5 $home/main/docs
 
-      cd $home
-      mv latest $home/oldBranch/docs
-      mv ja/latest $home/oldBranch/docs/ja
+      # rsync -av $home/main/docs/ $home/oldBranch/docs --exclude $home/main/docs/ja
+      # rsync -av $home/main/docs/ja/ $home/ja
 
-      cd $home/oldBranch/docs
+      # cd $home
+      # mv latest $home/oldBranch/docs
+      # mv ja/latest $home/oldBranch/docs/ja
+
+      cd $home/main/docs
       npm install
       npm run build
 
