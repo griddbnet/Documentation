@@ -59,7 +59,7 @@ steps:
     serverUrl: $(ftp_url)
     username: $(ftp_username)
     password: $(ftp_password)
-    rootDirectory: '/home/vsts/work/1/oldBranch/docs/.vuepress/dist/'
+    rootDirectory: '/home/vsts/work/1/main/docs/.vuepress/dist/'
     filePatterns: '**'
     remoteDirectory: '/site/wwwroot/'
     clean: false
