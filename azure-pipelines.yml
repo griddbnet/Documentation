@@ -40,7 +40,8 @@ steps:
     script: |
       home=/home/vsts/work/1/
 
-      rsync -av $home/oldBranch/docs/v4.5 $home/main/docs
+      rsync -av $home/oldBranch/docs/v4.5 $home/main/docs --exclude $home/main/docs/v4.5/ja
+      rsync -av $home/oldBranch/docs/v4.5/ja/v4.5 $home/main/docs/ja
 
       # rsync -av $home/main/docs/ $home/oldBranch/docs --exclude $home/main/docs/ja
       # rsync -av $home/main/docs/ja/ $home/ja
