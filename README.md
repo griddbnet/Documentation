@@ -1,24 +1,23 @@
 ## Local (dev) build
 
 1. Clone repository
-
-* GitHub Desktop: (x-github-client://openRepo/https://github.com/griddbnet/Documentation)
-* HTTPS: https://github.com/griddbnet/Documentation.git
-* SSH : git@github.com:griddbnet/Documentation.git
+```
+git clone https://github.com/griddbnet/Documentation.git
+```
 
 2. Install local dependency
 ``` sh
-yarn add -D vuepress # OR npm install -D vuepress
+cd docs && npm install -D vuepress
 ```
 
 3. Run in dev mode
 ``` sh
-cd docs && yarn dev # OR cd docs && npm run dev
+npm run dev
 ```
 
 4a. To generate static assets
 ``` sh
-cd docs && yarn build # OR cd docs && npm run build
+npm run build
 ```
 
 4b. To generate current version + older versions in static assets (usable only from main branch)
