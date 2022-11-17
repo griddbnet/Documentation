@@ -1,26 +1,26 @@
 ## Local (dev) build
 
-1. Clone repository
+- Clone repository
 ```
 git clone https://github.com/griddbnet/Documentation.git
 ```
 
-2. Install local dependency
+- Install local dependency
 ``` sh
 cd docs && npm install -D vuepress
 ```
 
-3. Run in dev mode
+- Run in dev mode
 ``` sh
 npm run dev
 ```
 
-4a. To generate static assets
+- To generate static assets
 ``` sh
 npm run build
 ```
 
-4b. To generate current version + older versions in static assets (usable only from main branch)
+- To generate current version + older versions in static assets (usable only from main branch)
 ``` sh 
 $ ./build-docs.sh
 ```
