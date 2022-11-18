@@ -41,7 +41,10 @@ steps:
       home=/home/vsts/work/1/
 
       mkdir $home/latest
+      mkdir $home/latest-ja
+
       rsync -av $home/main/docs/ $home/latest
+      rsync -av $home/main/docs/ja/ $home/ja/latest-ja
 
       rsync -av $home/oldBranch/docs/v4.5 $home/main/docs --exclude $home/main/docs/v4.5/ja
       rsync -av $home/oldBranch/docs/v4.5/ja/v4.5 $home/main/docs/ja
@@ -51,7 +54,8 @@ steps:
 
       cd $home
       mv latest $home/main/docs
-      # mv ja/latest $home/oldBranch/docs/ja
+      mv latest-ja $home/main/docs/ja/
+      mv $home/main/docs/ja/latest-ja $home/main/docs/ja/latest
 
       cd $home/main/docs
       npm install
