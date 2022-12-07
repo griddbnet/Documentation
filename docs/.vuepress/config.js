@@ -485,7 +485,7 @@ module.exports = {
         ],
         // japanese sidebar
         sidebar: {
-          '/ja/': [
+          '/ja/latest': [
             {
               title: 'GridDB (latest)',
               collapsable: false,
@@ -495,11 +495,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/about/what-is-griddb',
-                '/ja/about/what-is-time-series-database',
-                //'about/benchmark-comparisons',
-                '/ja/about/release-notes',
-                '/ja/about/faq'
+                '/ja/latest/about/what-is-griddb',
+                '/ja/latest/about/what-is-time-series-database',
+                //'about/benchmark-comparisons',	
+                '/ja/latest/about/release-notes',
+                '/ja/latest/about/faq'
               ]
             },
             {
@@ -507,18 +507,18 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/gettingstarted/webshell',
-                '/ja/gettingstarted/using-apt',
-                '/ja/gettingstarted/using-rpmyum',
+                '/ja/latest/gettingstarted/webshell',
+                '/ja/latest/gettingstarted/using-apt',
+                '/ja/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'アプリ作成',
                   collapsable: false,
                   children: [
-                    '/ja/gettingstarted/java',
-                    '/ja/gettingstarted/python',
-                    '/ja/gettingstarted/nodejs',
-                    '/ja/gettingstarted/go',
-                    '/ja/gettingstarted/php'
+                    '/ja/latest/gettingstarted/java',
+                    '/ja/latest/gettingstarted/python',
+                    '/ja/latest/gettingstarted/nodejs',
+                    '/ja/latest/gettingstarted/go',
+                    '/ja/latest/gettingstarted/php'
                   ]
                 }
               ]
@@ -528,13 +528,13 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/architecture/introduction',
-                '/ja/architecture/what-is-griddb',
-                '/ja/architecture/structure-of-griddb',
-                '/ja/architecture/data-model',
-                '/ja/architecture/database-function',
-                '/ja/architecture/operating-function',
-                '/ja/architecture/parameter'
+                '/ja/latest/architecture/introduction',
+                '/ja/latest/architecture/what-is-griddb',
+                '/ja/latest/architecture/structure-of-griddb',
+                '/ja/latest/architecture/data-model',
+                '/ja/latest/architecture/database-function',
+                '/ja/latest/architecture/operating-function',
+                '/ja/latest/architecture/parameter'
               ]
             },
             {
@@ -542,11 +542,11 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/sqlreference/introduction',
-                '/ja/sqlreference/sql-description-format',
-                '/ja/sqlreference/sql-commands-supported',
-                '/ja/sqlreference/metatables',
-                '/ja/sqlreference/reserved-words'
+                '/ja/latest/sqlreference/introduction',
+                '/ja/latest/sqlreference/sql-description-format',
+                '/ja/latest/sqlreference/sql-commands-supported',
+                '/ja/latest/sqlreference/metatables',
+                '/ja/latest/sqlreference/reserved-words'
               ]
             },
             {
@@ -554,10 +554,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 3,
               children: [
-                '/ja/tqlreference/introduction',
-                '/ja/tqlreference/type',
-                '/ja/tqlreference/tql-syntax-and-calculation-functions',
-                '/ja/tqlreference/annex'
+                '/ja/latest/tqlreference/introduction',
+                '/ja/latest/tqlreference/type',
+                '/ja/latest/tqlreference/tql-syntax-and-calculation-functions',
+                '/ja/latest/tqlreference/annex'
               ]
             },
             {
@@ -565,7 +565,7 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/tutorial/ingesting'
+                '/ja/latest/tutorial/ingesting'
               ]
             },
             {
@@ -573,10 +573,10 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/jdbcdriver/introduction',
-                '/ja/jdbcdriver/overview',
-                '/ja/jdbcdriver/specifications',
-                '/ja/jdbcdriver/sample'
+                '/ja/latest/jdbcdriver/introduction',
+                '/ja/latest/jdbcdriver/overview',
+                '/ja/latest/jdbcdriver/specifications',
+                '/ja/latest/jdbcdriver/sample'
               ]
             },
             {
@@ -584,8 +584,8 @@ module.exports = {
               collapsable: true,
               sidebarDepth: 2,
               children: [
-                '/ja/references/API-References'
-                //    'references/JDBC-driver'
+                '/ja/latest/references/API-References'
+                //    'references/JDBC-driver'	
               ]
             }
           ],
