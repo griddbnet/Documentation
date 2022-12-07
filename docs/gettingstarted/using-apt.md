@@ -19,7 +19,7 @@ Alternatively you can install GridDB using apt.
 
 First create the Apt Repo File:
 
-    sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.0 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
+    sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.1 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
 
 And then import the key: 
 
