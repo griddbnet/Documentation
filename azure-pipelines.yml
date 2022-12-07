@@ -48,7 +48,8 @@ steps:
 
       rsync -av $home/oldBranch/docs/v4.5 $home/main/docs --exclude $home/main/docs/v4.5/ja
       rsync -av $home/oldBranch/docs/v4.5/ja/v4.5 $home/main/docs/ja
-      rsync -av $home/ja/latest-ja $home/main/docs/ja/latest
+      mkdir $home/main/docs/ja/latest
+      rsync -av $home/ja/latest-ja/ $home/main/docs/ja/latest
 
       cd $home
       mv latest $home/main/docs
