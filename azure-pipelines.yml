@@ -44,7 +44,7 @@ steps:
       mkdir $home/latest-ja
 
       rsync -av $home/main/docs/ $home/latest
-      rsync -av $home/main/docs/ja/ $home/ja/latest-ja
+      rsync -av $home/main/docs/ja/ $home/latest-ja
 
       rsync -av $home/oldBranch/docs/v4.5 $home/main/docs --exclude $home/main/docs/v4.5/ja
       rsync -av $home/oldBranch/docs/v4.5/ja/v4.5 $home/main/docs/ja
