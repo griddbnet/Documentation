@@ -1,4 +1,9 @@
-## Local (dev) build
+# GridDBnet OSS Documentation
+Welcome to GridDBnet OSS Documentation. GridDB is an open source time-series database optimized for IoT and Big Data System. You can find the latest documentation at [docs.griddb.net](https://docs.griddb.net). To contribute, please fork the repository and make a pull request.
+
+## Getting Started
+This documentation is generated using [vuepress](https://github.com/vuejs/vuepress). Please check their repository for more detail.
+To get started, run this docs locally by following the steps below:
 
 - Clone repository
 ```
@@ -20,11 +25,7 @@ npm run dev
 npm run build
 ```
 
-- To generate current version + older versions in static assets (usable only from main branch)
-``` sh 
-$ ./build-docs.sh
-```
-All contents will be available in docs/.vuepress/dist
+To build the previous versions, e.g. GridDB v4.5, look for the specific version from the branch and build the doc directly on that branch.
 
 ## Markdown Guide
 
