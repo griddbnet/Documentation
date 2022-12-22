@@ -92,9 +92,6 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     repo: 'griddbnet/Documentation',
-    // Customising the header label
-    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
-    repoLabel: 'Contribute!',
 
     // Optional options for generating "Edit this page" link
 
