@@ -114,19 +114,6 @@ Create a table.
     );
     ```
 
-- Creating timeseries table using the row expiry release function
-    
-    ``` sh
-    CREATE TABLE myTimeseries (
-      mycolumn1 TIMESTAMP PRIMARY KEY,
-      mycolumn2 STRING
-    ) USING TIMESERIES WITH (
-      expiration_type='ROW',
-      expiration_time=10,
-      expiration_time_unit='DAY'
-    );
-    ```
-
 #### Creating a partitioned table
 
 Creating a partitioned table
