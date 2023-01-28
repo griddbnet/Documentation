@@ -103,12 +103,6 @@ module.exports = {
             buttonText: "Refresh"
           }
         },
-        // algolia docsearch options for current locale
-        // algolia docsearch options for current locale
-        algolia: {
-          apiKey: '68e1c311f84b9842d01c3b0aa738fde6',
-          indexName: 'griddb',
-        },
         nav: [
           {
             text: 'Docs',
@@ -467,7 +461,7 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: '68e1c311f84b9842d01c3b0aa738fde6',
+          apiKey: '7003e5397e55a091b161e2870e7b4760',
           indexName: 'griddb',
         },
         nav: [
