@@ -114,19 +114,6 @@ GridDBでサポートされるSQL文は、次の通りです。
   );
   ```
 
-- ロウ期限解放を使用する時系列テーブルの作成
-
-  ``` sh
-  CREATE TABLE myTimeseries (
-    mycolumn1 TIMESTAMP PRIMARY KEY,
-    mycolumn2 STRING
-  ) USING TIMESERIES WITH (
-    expiration_type='ROW',
-    expiration_time=10,
-    expiration_time_unit='DAY'
-  );
-  ```
-
 #### パーティショニングテーブルの作成
 
 パーティショニングテーブルを作成します。
