@@ -2,18 +2,6 @@
 
 We have confirmed the operation on CentOS 7.9.
 
-
-## Install with RPM
-
-Please download the appropriate package files from the GridDB Github page.
-
-Then, install the package of your target OS.
-	
-	(CentOS)
-    $ sudo rpm -ivh griddb_nosql-X.X.X-linux.x86_64.rpm
-    
-	X.X.X means version
-
 ## Install with yum
 
 Alternatively you can install GridDB using YUM. 
@@ -114,6 +102,19 @@ Installation directory
                 manual/
                 sample/
 ```
+
+## Install with RPM
+
+Please download the appropriate package files from the GridDB Github page.
+
+Then, install the package of your target OS.
+	
+	(CentOS)
+    $ sudo rpm -ivh griddb_nosql-X.X.X-linux.x86_64.rpm
+    
+	X.X.X means version
+
+
 ## Build/execution method
 
 An example on how to build and execute a program is as shown.
