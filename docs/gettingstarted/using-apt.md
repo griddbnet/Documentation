@@ -2,17 +2,6 @@
 
 We have confirmed the operation on Ubuntu 18.04.
 
-## Install with deb
-
-Please download the appropriate package files from the GridDB Github page.
-
-Then, install the package of your target OS.
-	
-	(Ubuntu)
-    $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
-    
-	X.X.X means version
-
 ## Install with apt-get
 
 Alternatively you can install GridDB using apt. 
@@ -108,6 +97,17 @@ Installation directory
                 manual/
                 sample/
 ```
+
+## Install with deb
+
+Please download the appropriate package files from the GridDB Github page.
+
+Then, install the package of your target OS.
+	
+	(Ubuntu)
+    $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
+    
+	X.X.X means version
 
 ## Build/execution method
 
