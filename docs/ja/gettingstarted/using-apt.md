@@ -2,24 +2,13 @@
 
 Ubuntu 18.04で動作を確認しました。
 
-## debでインストール
-
-GridDBのGithubページから、適切なパッケージファイルをダウンロードしてください。
-
-その後、ターゲットOSのパッケージをインストールしてください。
-	
-	(Ubuntu)
-    $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
-    
-	X.X.X はバージョン
-
 ## apt-getでインストール
 
 または、aptを使用してGridDBをインストールすることも可能です。
 
 まず、Apt Repo Fileを作成します。
 
-    sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.0 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
+    sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.1 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
 
 そして、キーをインポートします。
 
@@ -110,6 +99,17 @@ Installation directory
                 manual/
                 sample/
 ```
+
+## debでインストール
+
+GridDBのGithubページから、適切なパッケージファイルをダウンロードしてください。
+
+その後、ターゲットOSのパッケージをインストールしてください。
+	
+	(Ubuntu)
+    $ sudo dpkg -i griddb_-X.X.X-linux.amd64.deb
+    
+	X.X.X はバージョン
 
 ## ビルド/実行方法
 
