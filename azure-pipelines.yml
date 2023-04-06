@@ -55,7 +55,7 @@ steps:
       mv $home/main/docs/ja/latest-ja $home/main/docs/ja/latest
 
       cd $home/main/docs
-      npm install
+      yarn
       npm run build
 
 - task: FtpUpload@2
