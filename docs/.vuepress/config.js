@@ -27,6 +27,7 @@ module.exports = {
   ],
   head: [
     ['link', { rel: "shortcut icon", href: "/favicon.ico" }],
+    ['link', { rel: "gtag", href: "https://www.googletagmanager.com/gtag/js?id=G-TW3T98KWKM" }],
     [
       "script",
       {},
@@ -74,6 +75,13 @@ module.exports = {
 
     localStorage.setItem('visited', 'true');
     localStorage.setItem('lang', 'en')
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-TW3T98KWKM');
+    
   `
     ]
   ],
