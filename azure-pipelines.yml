@@ -38,7 +38,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      home=/home/vsts/work/1
+      home=$pwd
 
       mkdir $home/latest
       mkdir $home/latest-ja
