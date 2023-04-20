@@ -38,7 +38,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      home=/home/vsts/work/1
+      home=$(Pipeline.Workspace)
 
       mkdir $home/latest
       mkdir $home/latest-ja
