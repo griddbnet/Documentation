@@ -38,7 +38,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      home=$pwd
+      home=$PWD
 
       mkdir $home/latest
       mkdir $home/latest-ja
