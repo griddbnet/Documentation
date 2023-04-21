@@ -6,12 +6,6 @@ module.exports = {
     ['@vuepress/back-to-top'],
     ['vuepress-plugin-code-copy', true],
     [
-      '@vuepress/google-analytics',
-      {
-        'ga': 'G-TW3T98KWKM'
-      }
-    ],
-    [
       'vuepress-plugin-clean-urls',
       {
         normalSuffix: '/',
@@ -27,6 +21,14 @@ module.exports = {
   ],
   head: [
     ['link', { rel: "shortcut icon", href: "/favicon.ico" }],
+    [
+      'script',
+      {
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-TW3T98KWKM',
+      },
+  ],
+
     [
       "script",
       {},
@@ -74,6 +76,7 @@ module.exports = {
 
     localStorage.setItem('visited', 'true');
     localStorage.setItem('lang', 'en')
+    window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-TW3T98KWKM');
   `
     ]
   ],
