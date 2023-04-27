@@ -15,6 +15,12 @@ In this tutorial, we will cover three different transformations that most GridDB
 
 ## Setup Nifi/GridDB
 
+If you prefer a video: 
+
+<p class="iframe-container">
+<iframe src="https://www.youtube.com/embed/5EU3jbNE9ow" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
 Nifi's installation is simple; [download](https://www.apache.org/dyn/closer.lua?path=/nifi/1.12.1/nifi-1.12.1-bin.tar.gz) and untar the tarball before starting the server:
 
 ```

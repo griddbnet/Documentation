@@ -6,6 +6,13 @@ We have confirmed the operation on Ubuntu 18.04.
 
 Alternatively you can install GridDB using apt. 
 
+
+If you prefer a video: 
+
+<p class="iframe-container">
+<iframe src="https://www.youtube.com/embed/U1WAezk59pY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
 First create the Apt Repo File:
 
     sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.1 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
