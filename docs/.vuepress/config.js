@@ -145,7 +145,8 @@ module.exports = {
               children: [
                 '/latest/gettingstarted/webshell',
                 '/latest/gettingstarted/using-apt',
-                '/latest/gettingstarted/wsl',
+             //   '/latest/gettingstarted/wsl',
+               // '/latest/gettingstarted/docker',
                 '/latest/gettingstarted/using-rpmyum',
                 {
                   title: 'Build an App',
