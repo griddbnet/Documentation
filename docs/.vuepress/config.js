@@ -146,6 +146,9 @@ module.exports = {
                 '/latest/gettingstarted/webshell',
                 '/latest/gettingstarted/using-apt',
                 '/latest/gettingstarted/using-rpmyum',
+                '/latest/gettingstarted/wsl',
+                '/latest/gettingstarted/docker',
+               '/gettingstarted/chromeos',
                 {
                   title: 'Build an App',
                   collapsable: false,
@@ -207,7 +210,6 @@ module.exports = {
                 '/latest/tutorial/pyspark',
                 '/latest/tutorial/forecasting',
                 '/latest/tutorial/timeseries-expiration',
-                `/latest/tutorial/jms`
               ]
             },
             {
@@ -366,6 +368,9 @@ module.exports = {
                 '/gettingstarted/webshell',
                 '/gettingstarted/using-apt',
                 '/gettingstarted/using-rpmyum',
+                '/gettingstarted/wsl',
+                '/gettingstarted/docker',
+                '/gettingstarted/chromeos',
                 {
                   title: 'Build an App',
                   collapsable: false,
@@ -427,7 +432,6 @@ module.exports = {
                 '/tutorial/pyspark',
                 '/tutorial/forecasting',
                 '/tutorial/timeseries-expiration',
-                `/latest/tutorial/jms`
               ]
             },
             {
