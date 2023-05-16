@@ -145,9 +145,10 @@ module.exports = {
               children: [
                 '/latest/gettingstarted/webshell',
                 '/latest/gettingstarted/using-apt',
-             //   '/latest/gettingstarted/wsl',
-               // '/latest/gettingstarted/docker',
                 '/latest/gettingstarted/using-rpmyum',
+                '/latest/gettingstarted/wsl',
+                '/latest/gettingstarted/docker',
+               '/gettingstarted/chromeos',
                 {
                   title: 'Build an App',
                   collapsable: false,
@@ -366,9 +367,10 @@ module.exports = {
               children: [
                 '/gettingstarted/webshell',
                 '/gettingstarted/using-apt',
+                '/gettingstarted/using-rpmyum',
                 '/gettingstarted/wsl',
                 '/gettingstarted/docker',
-                '/gettingstarted/using-rpmyum',
+                '/gettingstarted/chromeos',
                 {
                   title: 'Build an App',
                   collapsable: false,
