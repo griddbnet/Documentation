@@ -40,13 +40,19 @@ Full information regarding this nodejs application can be found here: [CRUD Oper
 Once you have GridDB running on your machine you can verify by running `docker ps`. To dig further, you can run a gs_stat on your running GridDB Server container: 
 
 ```bash
-$ docker exec -it griddb_server gs_stat -u admin/admin
+$ docker exec -it griddb-server gs_stat -u admin/admin
 ```
 
 Using the format above, you can run any commands against your GridDB container. If you want to drop into the bash shell of your GridDB container: 
 
 ```bash
-$ docker exec -it griddb_server /bin/bash
+$ docker exec -it griddb-server /bin/bash
+```
+
+You can also drop directly into the GridDB CLI (GridDB Shell) like so: 
+
+```bash
+$ docker exec -it griddb-server gs_sh
 ```
 
 ## Video Instructions
