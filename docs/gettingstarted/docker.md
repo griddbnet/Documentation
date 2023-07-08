@@ -19,7 +19,7 @@ $  docker run --network griddb-net --name griddb-server -d -t griddbnet/griddb
 
 ## Nodejs Application Container
 
-As an example of using GridDB with an apoplication in a docker container, we have prepared here a node.js application container which communicates directly with the griddb-server container.
+As an example of using GridDB with an application in a docker container, we have prepared here a node.js application container which communicates directly with the griddb-server container.
 
 You can build the image and then run pretty easily: 
 
@@ -54,11 +54,3 @@ You can also drop directly into the GridDB CLI (GridDB Shell) like so:
 ```bash
 $ docker exec -it griddb-server gs_sh
 ```
-
-## Video Instructions
-
-If you prefer to watch via video:
-
-<p class="iframe-container">
-<iframe src="https://www.youtube.com/embed/P52o9iuXOVo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p> 
