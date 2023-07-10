@@ -1,27 +1,56 @@
 # Installation - Docker
 
-## Dockerhub
+## GridDB Server Container
 
-You can pull the latest ready-made images of the GridDB Server directly from [dockerhub](https://hub.docker.com/r/griddb/griddb)
-
-To do so: 
+To run GridDB server, you can simply pull from Dockerhub
 
 ```bash
-$ docker pull griddb/griddb
+$ docker network create griddb-net
+$ docker pull griddbnet/griddb
 ```
 
-Once you have pulled the image, you can run GridDB on your machine using Docker. An example command: 
+We first create a Docker network to allow our application container to easily communicate with our GridDB container.
+
+Now run your GridDB server: 
 
 ```bash
-$ docker run --name griddb_server --network="host" -e GRIDDB_CLUSTER_NAME=myCluster -e GRIDDB_PASSWORD=admin -e NOTIFICATION_MEMBER=1 griddb/griddb -d
+$  docker run --network griddb-net --name griddb-server -d -t griddbnet/griddb
 ```
 
-This will run the latest GridDB from the official dockerhub repoistory, using the host machine's network, with cluster and password specified. The notification member flag will make GridDB run in Fixed-list (similar to running GridDB using systemd), you can read more on Dockerhub.
+## Nodejs Application Container
 
-## Video Instructions
+As an example of using GridDB with an application in a docker container, we have prepared here a node.js application container which communicates directly with the griddb-server container.
 
-If you prefer to watch via video:
+You can build the image and then run pretty easily: 
 
-<p class="iframe-container">
-<iframe src="https://www.youtube.com/embed/P52o9iuXOVo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p> 
+```bash
+$ docker pull griddbnet/griddb-react-crud
+$ docker run --network griddb-net --name griddbnet/griddb-react-crud -p 2828:2828 -d -t griddbnet/griddb-react-crud
+```
+
+And now if you navigate to `http://localhost:2828` you will the see full app running.
+
+If you're curious as to how these containers work, you can read this [blog] (https://griddb.net/en/blog/improve-your-devops-with-griddb-server-and-client-docker-containers/).
+
+Full information regarding this nodejs application can be found here: [CRUD Operations with the GERN Stack](https://griddb.net/en/blog/crud-gern-stack/)
+
+
+### Next Steps
+
+Once you have GridDB running on your machine you can verify by running `docker ps`. To dig further, you can run a gs_stat on your running GridDB Server container: 
+
+```bash
+$ docker exec -it griddb-server gs_stat -u admin/admin
+```
+
+Using the format above, you can run any commands against your GridDB container. If you want to drop into the bash shell of your GridDB container: 
+
+```bash
+$ docker exec -it griddb-server /bin/bash
+```
+
+You can also drop directly into the GridDB CLI (GridDB Shell) like so: 
+
+```bash
+$ docker exec -it griddb-server gs_sh
+```

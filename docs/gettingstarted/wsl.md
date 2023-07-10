@@ -23,7 +23,7 @@ Once you install WSL, you will have [Ubuntu](https://en.wikipedia.org/wiki/Ubunt
 You can read about installing GridDB on Ubuntu in the docs: [https://docs.griddb.net/gettingstarted/using-apt/](https://docs.griddb.net/gettingstarted/using-apt/), but here are the basic instructions. What we will do is add the GridDB apt repository into our apt-get sources list so that it knows where to download GridDB. Once it's added, we can simply run an apt install and it will fetch and install everything you need to get started.
 
 ```bash
-$ sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.1 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
+$ sudo sh -c 'echo "deb https://www.griddb.net/apt griddb/5.3 multiverse" >>  /etc/apt/sources.list.d/griddb.list'
 $ wget -qO - https://www.griddb.net/apt/griddb.asc | sudo apt-key add -
 ```
 
@@ -63,13 +63,31 @@ Now we can start GridDB:
 $ sudo systemctl start gridstore
 ```
 
-To verify that it's running you can run `sudo systemctl status gridstore`. With GridDB running on your WSL, you can now access it via the [GridDB CLI]() or through the NoSQL interface using the following credentials:  
+To verify that it's running you can run `sudo systemctl status gridstore`. With GridDB running on your WSL, you can now access it via the [GridDB CLI](https://github.com/griddb/cli) or through the NoSQL interface using the following credentials:  
 
     notificationMember: 127.0.0.0.1:10001
     user: admin
     password: admin
     cluster: myCluster
     database: public
+
+#### Next Steps
+
+Once you have GridDB running and have installed the GridDB Command Line Interface, you can drop into GridDB shell.
+
+To do so, first swap into the `gsadm` user and then run the `gs_sh` command.
+
+```bash
+$ sudo su gsadm
+$ gs_sh
+gs> help
+```
+
+You are of course also free to begin connecting directly to your server using the NoSQL interface (Java, Python, Nodejs, etc). The following video will showcase basic CRUD using GridDB via the CLI; the latter half of the video will show hands-on examples. 
+
+<p class="iframe-container">
+<iframe src="https://www.youtube.com/watch?v=5bdc2UNLnj8&list=PLZiizI6Euect9q64akYBkiqLMS78UTwjO&index=15" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
 #### Using GridDB on WSL Without Systemd
 
