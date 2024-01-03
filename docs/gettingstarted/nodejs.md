@@ -1,67 +1,47 @@
 # Node.JS
 
-[Driver](http://griddb.org/nodejs_client/NodejsAPIReference.htm)
+[GridDB node.js API Reference](https://griddb.org/node-api/NodeAPIReference.htm)
 
-If you prefer to watch a video, you can take a look here:
-
-<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/9V780gm28aQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 ## Installation
-The GridDB c_client (a preqrequisite to using the Nodejs package) can be found here: [https://github.com/griddb/c_client](https://github.com/griddb/c_client). As with our Node.js package, the c_client too has been simplified. RPM can be downloaded from [here](https://github.com/griddb/c_client/releases). So to get started simply `wget` the latest RPM and install.
+The easiest way to use the node.js client is to install it with the node package manager (npm). So please make sure that you have it installed, with a node.js version of at least v16.
+
+The GridDB c_client is a prerequisite for the node.js connector and is a part of the `griddb-meta` package which you might have used to install GridDB Server onto your machine. You can verify by checking your `/usr/` directory. In there, you should be able to find the corresponding c_client directory (for example: `/usr/griddb_c_client-5.3.0`)
+
+The source code and package files can also be found on GitHub here: [https://github.com/griddb/c_client](https://github.com/griddb/c_client). 
+
+With the prerequisites on hand, we can install the node.js connector. To do so, we can download the source code and build from source from the github page: [https://github.com/griddb/node-api](https://github.com/griddb/node-api) or we can simply use npm.
+
+To use npm, make a new directory and `npm init`. This should handle the basic scaffolding for your project and make a `node_modules` directory. Once it's done, it's simply a matter of telling the package manager to add the node.js client to our project like so: 
 
 ``` bash
-$ wget \
-https://github.com/griddb/c_client/releases/download/v4.2.0/griddb_c_client-4.2.0-1.linux.x86_64.rpm
-```
-then we need to actually install the rpm
-``` bash
-$ sudo rpm -ivh griddb_c_client-4.2.0-1.linux.x86_64.rpm
-```
-and now the c_client is installed and ready in your `/usr/` directory. That was easy!
-Now that the node package manager installs our Nodejs client for us, it will also be a very easy install. If you're starting from scratch, just make a new dir and `npm init`. This should handle the basic scaffolding for your project and make a `node_modules` directory. Once it's done, it's simply a matter of:
-``` bash
-$ npm i griddb_node
+$ npm i griddb-node-api
 ```
 and now you've got the GridDB Node.js client installed and ready for use.
-One small caveat, though, is that the client requires Node.js version 10. If you're using a different version for a different project or something more bleeding edge, I would recommend you to use nvm. The Node Version Manager is a bash script to help you manage several versions of Node.js. Since we currently need version 10, for example, we would:
-``` bash
-$ nvm install 10.16
-```
-and then
-``` bash
-$ nvm use 10.16
-```
-simply confirm you did it right:
-``` bash
-$ node -v
- v10.16.0 
-```
-perfect.
-And now we're almost ready to begin using our favorite language `JavaScript` with GridDB. The last step is to point our `LD_LIBRARY` to our c_client installation.
-``` bash
-$ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/griddb_c_client-4.2-0/lib/
-```
-And we can now officially run JavaScript with our GridDB cluster.
+
+We can now officially run JavaScript with our GridDB cluster.
 
 ## Usage
 To use the client, simply import the griddb library into your program
+
+```javascript
+const griddb = require('griddb-node-api');
 ```
-const griddb = require('griddb_node');
-const fs = require('fs');
-```
+
 To define your actual cluster, it looks like this:
-```
+
+```javascript
 const factory = griddb.StoreFactory.getInstance();
         const store = factory.getStore({
-            "host": '239.0.0.1',
-            "port": 31999,
-            "clusterName": "defaultCluster",
+            "notificationMember": '127.0.0.1:10001',
+            "clusterName": "myCluster",
             "username": "admin",
             "password": "admin"
         });
 ```
 Making containers and defining their schema is easy too (collection container):
-```
+
+```javascript
 const colConInfo = new griddb.ContainerInfo({
             'name': "Person",
             'columnInfoList': [
@@ -72,7 +52,8 @@ const colConInfo = new griddb.ContainerInfo({
         });
 ```
 Time Series container:
-```
+
+```javascript
 var timeConInfo = new griddb.ContainerInfo({
         'name': "HeartRate",
         'columnInfoList': [
@@ -84,7 +65,8 @@ var timeConInfo = new griddb.ContainerInfo({
     });
 ```
 And then to actually put data into your container (and then query), it looks like this:
-```
+
+```javascript
 let time_series;
         store.putContainer(timeConInfo, false)
             .then(ts => {
@@ -113,5 +95,23 @@ let time_series;
                 }
             });
 ```
-## Conclusion
-Now that the entire process of getting up and running with Node.js has been streamlined a bit, we hope to see some more projects out there utilizing Node.js. If you would like to see the entire source code used in the usage section, please download the source file from [here](https://griddb.net/en/download/26126/).
+
+Because the GridDB node api relies on promises, you can also instead opt to use async functions instead. For example: 
+
+```javascript
+const queryCont = async (containerName, queryStr) => {
+
+    const data = [] // arr will be returned
+    try {
+        const col = await store.getContainer(containerName)
+        const query = await col.query(queryStr)
+        const rs = await query.fetch(query)
+        while(rs.hasNext()) {
+            data.push(rs.next())
+        }
+        return data
+    } catch (error) {
+        console.log("error: ", error)
+    }
+}
+```

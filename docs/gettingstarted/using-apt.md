@@ -4,8 +4,7 @@ We have confirmed the operation on Ubuntu 18.04.
 
 ## Install with apt-get
 
-Alternatively you can install GridDB using apt. 
-
+You can install GridDB using apt. 
 
 If you prefer a video: 
 
@@ -36,14 +35,168 @@ To stop your server:
 
     $ sudo systemctl stop gridstore
 
-Once your server is running, you can drop into the shell like so: 
+Once your server is running, you can drop into the shell (java is required): 
 
     $ sudo su gsadm
     $ gs_sh
 	
 ### User and directory structure after installation
 
+The following are the default values when you install and start a new GridDB instance.
 
+This is the output of `gs_stat -u <user>/<pass>` (the default user and password are both `admin`)
+
+```bash
+gsadm@server:/home$ gs_stat -u admin/admin
+A00105: GS_HOME, GS_LOG environment variable not set.
+gsadm@server:/home$ source ~/.bash_profile
+gsadm@server:/home$ gs_stat -u admin/admin
+
+{
+    "checkpoint": {
+        "backupOperation": 0,
+        "duplicateLog": 0,
+        "endTime": 1704321958864,
+        "mode": "NORMAL_CHECKPOINT",
+        "normalCheckpointOperation": 8,
+        "pendingPartition": 0,
+        "periodicCheckpoint": "ACTIVE",
+        "requestedCheckpointOperation": 0,
+        "startTime": 1704321958792
+    },
+    "cluster": {
+        "activeCount": 1,
+        "applyRuleLimitTime": "2024-01-03T22:50:03.095Z",
+        "autoGoal": "ACTIVE",
+        "clusterName": "myCluster",
+        "clusterRevisionId": "1b7bf220-84d2-4a75-9d5e-fe7cbd7dd96d",
+        "clusterRevisionNo": 530,
+        "clusterStatus": "MASTER",
+        "currentRule": "Initial",
+        "designatedCount": 1,
+        "loadBalancer": "ACTIVE",
+        "master": {
+            "address": "127.0.0.1",
+            "port": 10040
+        },
+        "nodeList": [
+            {
+                "address": "127.0.0.1",
+                "port": 10040
+            }
+        ],
+        "nodeStatus": "ACTIVE",
+        "notificationMode": "FIXED_LIST",
+        "partitionStatus": "NORMAL",
+        "startupTime": "2024-01-03T22:05:52.095Z",
+        "syncCount": 2
+    },
+    "currentTime": "2024-01-03T22:50:05Z",
+    "performance": {
+        "backgroundMinRate": 0.1,
+        "backupCount": 0,
+        "checkpointFileFlushCount": 128,
+        "checkpointFileFlushTime": 67,
+        "checkpointWrite": 0,
+        "checkpointWriteCompressTime": 0,
+        "checkpointWriteSize": 0,
+        "checkpointWriteTime": 0,
+        "currentTime": 1704322205315,
+        "dataFileAllocateSize": 327680,
+        "dataFileSize": 327680,
+        "dataFileUsageRate": 0.6,
+        "expirationDetail": {
+            "batchScanNum": 2000,
+            "batchScanTotalNum": 0,
+            "batchScanTotalTime": 0,
+            "erasableExpiredTime": "",
+            "estimatedBatchFree": 0,
+            "estimatedErasableExpiredTime": "",
+            "lastBatchFree": 0,
+            "latestExpirationCheckTime": "Under measurement"
+        },
+        "logFileFlushCount": 256,
+        "logFileFlushTime": 2498,
+        "numBackground": 0,
+        "numConnection": 1,
+        "numNoExpireTxn": 0,
+        "numSession": 0,
+        "numTxn": 0,
+        "ownerCount": 128,
+        "peakProcessMemory": 130265088,
+        "poolBufferMemory": 65536,
+        "processMemory": 130265088,
+        "sqlNumConnection": 1,
+        "sqlStoreSwapRead": 0,
+        "sqlStoreSwapReadSize": 0,
+        "sqlStoreSwapReadTime": 0,
+        "sqlStoreSwapWrite": 0,
+        "sqlStoreSwapWriteSize": 0,
+        "sqlStoreSwapWriteTime": 0,
+        "storeCompressionMode": "NO_BLOCK_COMPRESSION",
+        "storeDetail": {
+            "batchFreeMapData": {
+                "storeMemory": 0,
+                "storeUse": 0,
+                "swapRead": 0,
+                "swapWrite": 0
+            },
+            "batchFreeRowData": {
+                "storeMemory": 0,
+                "storeUse": 0,
+                "swapRead": 0,
+                "swapWrite": 0
+            },
+            "mapData": {
+                "storeMemory": 0,
+                "storeUse": 65536,
+                "swapRead": 0,
+                "swapWrite": 0
+            },
+            "metaData": {
+                "storeMemory": 65536,
+                "storeUse": 65536,
+                "swapRead": 1,
+                "swapWrite": 0
+            },
+            "rowData": {
+                "storeMemory": 0,
+                "storeUse": 65536,
+                "swapRead": 0,
+                "swapWrite": 0
+            }
+        },
+        "storeMemory": 65536,
+        "storeMemoryLimit": 1073741824,
+        "storeTotalUse": 196608,
+        "swapRead": 1,
+        "swapReadSize": 65536,
+        "swapReadTime": 4,
+        "swapReadUncompressTime": 0,
+        "swapWrite": 0,
+        "swapWriteCompressTime": 0,
+        "swapWriteSize": 0,
+        "swapWriteTime": 0,
+        "totalBackupLsn": 0,
+        "totalLockConflictCount": 0,
+        "totalOtherLsn": 0,
+        "totalOwnerLsn": 11,
+        "totalReadOperation": 0,
+        "totalRowRead": 0,
+        "totalRowWrite": 0,
+        "totalWriteOperation": 0,
+        "txnDetail": {
+            "totalBackgroundOperation": 0
+        }
+    },
+    "recovery": {
+        "progressRate": 1
+    },
+    "version": "5.3.0-39942 CE"
+}
+```
+
+In here you can see your version, cluster name, etc.
 
 #### :warning: Note
 - When you install this package, a gsadm OS user are created in the OS. Execute the operating command as the gsadm user.   
