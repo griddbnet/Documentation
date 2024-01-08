@@ -277,6 +277,7 @@ An example on how to build and execute a program is as shown.
 [For Java]
 
 1. Setting environment variables
+2. Edit java Sample file to adhere to network mode (GridDB default is now FIXED_LIST mode, this uses `notification_member` instead of `host` & `port`)
 2. Copy the sample program to the gsSample directory
 3. Build
 4. Run
@@ -284,9 +285,10 @@ An example on how to build and execute a program is as shown.
 ```
 $ export CLASSPATH=${CLASSPATH}:/usr/share/java/gridstore.jar:.
 $ mkdir gsSample
+$ vim gsSample/Sample1.java
 $ cp /usr/gridstore-X.X.X/docs/sample/program/Sample1.java gsSample/.
 $ javac gsSample/Sample1.java
-$ java gsSample/Sample1 239.0.0.1 31999 setup_cluster_name admin your_password
+$ java gsSample/Sample1 127.0.0.1:10001 setup_cluster_name admin your_password
 ```
 
 
