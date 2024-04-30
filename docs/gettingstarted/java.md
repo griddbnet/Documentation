@@ -30,9 +30,8 @@ static class HeartRate {
 To connect to GridDB, you create a Properties instance with the particulars of your GridDB installation.
 ``` java
 Properties props = new Properties();
-props.setProperty("notificationAddress", "239.0.0.1");
-props.setProperty("notificationPort", "31999");
-props.setProperty("clusterName", "defaultCluster");
+props.setProperty("notificationMember", "127.0.0.1:10001");
+props.setProperty("clusterName", "myCluster");
 props.setProperty("user", "admin");
 props.setProperty("password", "admin");
 GridStore store = GridStoreFactory.getInstance().getGridStore(props);
@@ -113,9 +112,8 @@ Connecting to the database with Java consists of creating a Properties file from
 
 ```java
             Properties props = new Properties();
-            props.setProperty("notificationAddress", "239.0.0.1");
-            props.setProperty("notificationPort", "31999");
-            props.setProperty("clusterName", "defaultCluster");
+            props.setProperty("notificationMember", "127.0.0.1:10001");
+            props.setProperty("clusterName", "myCluster");
             props.setProperty("user", "admin");
             props.setProperty("password", "admin");
             store = GridStoreFactory.getInstance().getGridStore(props);
