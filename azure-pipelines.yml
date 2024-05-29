@@ -14,7 +14,7 @@ resources:
   - repository: Documentation
     type: github
     name: griddbnet/Documentation
-    endpoint: github.com_Imisrael
+    endpoint: MyGitHubServiceConnection
     ref: v4.5
 
 pool:
