@@ -1,26 +1,26 @@
-# Installation - CentOS
+# Installation - Rocky Linux
 
-We have confirmed the operation on CentOS 7.9.
+We have confirmed the operation on Rocky Linux 9.4.
 
-## Install with yum
+## Install with yum/dnf
 
-Alternatively you can install GridDB using YUM. 
+You can install GridDB using DNF. 
 
 First create the Yum Repo File:
 
     sudo cat > /etc/yum.repos.d/griddb.repo << EOF
     [griddb]
     name=GridDB.net
-    baseurl=https://griddb.net/yum/el7/5.5/
+    baseurl=https://griddb.net/yum/el7/5.7/
     enabled=1
     gpgcheck=1
-    gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB.txt
+    gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB-2025.txt
     EOF
 
 Then install GridDB:
     
-    $ sudo yum update
-    $ sudo yum -y install griddb-meta
+    $ sudo dnf update
+    $ sudo dnf -y install griddb-meta
     
 #### :warning: Note
 If you would like to use a previous version of GridDB, you can change the baseurl to match that version (for example, version 4.3) 
