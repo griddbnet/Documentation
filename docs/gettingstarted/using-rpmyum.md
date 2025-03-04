@@ -14,7 +14,7 @@ First create the Yum Repo File:
     baseurl=https://griddb.net/yum/el7/5.7/
     enabled=1
     gpgcheck=1
-    gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB-2025.txt
+    gpgkey=https://griddb.net/yum/RPM-GPG-KEY-GridDB.txt
     EOF
 
 Then install GridDB:
