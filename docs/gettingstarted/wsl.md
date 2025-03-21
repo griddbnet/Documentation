@@ -16,7 +16,7 @@ And that is basically the entirety of it; a much more detailed account of gettin
 
 An important note: from my limited testing, it appears as though enabling `systemd` (see below) can only be done when installing Ubuntu from directly inside the Microsoft Store as seen here: https://ubuntu.com/wsl. So if you download Ubuntu from official store, it will appear in your WSL and will work like normal.
 
-Once you install WSL, you will have [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu) available to you and can begin the process of installing GridDB. Though, of course, if you prefer [CentOS](https://en.wikipedia.org/wiki/CentOS) or some other Linux distro, you can run actually run multiple instances of Linux subsystems on your machine -- you simply choose which distro you'd like to run and use.
+Once you install WSL, you will have [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu) available to you and can begin the process of installing GridDB. Though, of course, if you prefer [RockyLinux](https://en.wikipedia.org/wiki/Rocky_Linux) or some other Linux distro, you can run actually run multiple instances of Linux subsystems on your machine -- you simply choose which distro you'd like to run and use.
 
 ## Installing GridDB
 
@@ -86,8 +86,9 @@ gs> help
 You are of course also free to begin connecting directly to your server using the NoSQL interface (Java, Python, Nodejs, etc). The following video will showcase basic CRUD using GridDB via the CLI; the latter half of the video will show hands-on examples. 
 
 <p class="iframe-container">
-<iframe src="https://www.youtube.com/watch?v=5bdc2UNLnj8&list=PLZiizI6Euect9q64akYBkiqLMS78UTwjO&index=15" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/5bdc2UNLnj8?si=ZGvq81JCRfrk6sgn" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
+
 
 #### Using GridDB on WSL Without Systemd
 

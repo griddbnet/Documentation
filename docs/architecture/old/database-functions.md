@@ -1556,7 +1556,7 @@ Add a new column to a container.
     
       - \[Example program\]
         
-        ``` sourceCode java
+        ```java
         // Get container information
         ContainerInfo conInfo = store.getContainerInfo("table1");
         List<ColumnInfo> newColumnList = new ArrayList<ColumnInfo>();

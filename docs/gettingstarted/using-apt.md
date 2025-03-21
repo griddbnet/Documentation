@@ -297,8 +297,7 @@ If you no longer need GridDB, uninstall the package. Execute the following proce
 
 [Example]
 
-    (CentOS)
-    $ sudo apt remove griddb
+    $ sudo apt remove griddb-meta
 
 #### :warning: Note
 - Files under the GridDB home directory such as definition files and data files will not be uninstalled. If you do not need it, delete it manually.

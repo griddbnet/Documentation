@@ -264,7 +264,6 @@ Please download the appropriate package files from the GridDB Github page.
 
 Then, install the package of your target OS.
 	
-	(CentOS)
     $ sudo rpm -ivh griddb_nosql-X.X.X-linux.x86_64.rpm
     
 	X.X.X means version
@@ -298,8 +297,7 @@ If you no longer need GridDB, uninstall the package. Execute the following proce
 
 [Example]
 
-    (CentOS)
-    $ sudo rpm -e griddb_nosql
+    $ sudo dnf remove griddb-meta
 
 #### :warning: Note
 - Files under the GridDB home directory such as definition files and data files will not be uninstalled. If you do not need it, delete it manually.
