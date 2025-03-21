@@ -501,7 +501,7 @@ below.
 
 ##### <span class="header-section-number">2.2.2.1.1</span> DatabaseMetaData.getColumns
 
-``` sourceCode java
+```java
 ResultSet getColumns(String catalog, String schemaPattern, String tableNamePattern, String columnNamePattern)
 ```
 
@@ -689,7 +689,7 @@ ResultSet getColumns(String catalog, String schemaPattern, String tableNamePatte
 
 ##### <span class="header-section-number">2.2.2.1.2</span> DatabaseMetaData.getIndexInfo
 
-``` sourceCode java
+```java
 ResultSet getIndexInfo(String catalog, String schema, String table, boolean unique, boolean approximate)
 ```
 
@@ -727,7 +727,7 @@ ResultSet getIndexInfo(String catalog, String schema, String table, boolean uniq
 
 ##### <span class="header-section-number">2.2.2.1.3</span> DatabaseMetaData.getPrimaryKeys
 
-``` sourceCode java
+```java
 ResultSet getPrimaryKeys(String catalog, String schema, String table)
 ```
 
@@ -755,7 +755,7 @@ ResultSet getPrimaryKeys(String catalog, String schema, String table)
 
 ##### <span class="header-section-number">2.2.2.1.4</span> DatabaseMetaData.getTables
 
-``` sourceCode java
+```java
 ResultSet getTables(String catalog, String schemaPattern, String tableNamePattern, String[] types)
 ```
 
@@ -794,7 +794,7 @@ ResultSet getTables(String catalog, String schemaPattern, String tableNamePatter
 
 ##### <span class="header-section-number">2.2.2.1.5</span> DatabaseMetaData.getTableTypes
 
-``` sourceCode java
+```java
 ResultSet getTableTypes()
 ```
 
@@ -812,7 +812,7 @@ ResultSet getTableTypes()
 
 ##### <span class="header-section-number">2.2.2.1.6</span> DatabaseMetaData.getTypeInfo()
 
-``` sourceCode java
+```java
 ResultSet getTypeInfo()
 ```
 
@@ -1472,7 +1472,7 @@ SQLFeatureNotSupportedException) in the ResultSetMetaData interface.
 
 A JDBC sample programs is given below.
 
-``` sourceCode java
+```java
 // Execute Sample 2 before running this program. 
 package test;
 
