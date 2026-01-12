@@ -1,4 +1,4 @@
-# GridDBnet OSS Documentation
+# GridDBnet Open Source Documentation
 Welcome to GridDBnet OSS Documentation. GridDB is an open source time-series database optimized for IoT and Big Data System. You can find the latest documentation at [docs.griddb.net](https://docs.griddb.net). To contribute, please fork the repository and make a pull request.
 
 ## Getting Started
